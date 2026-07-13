@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/HomeNotes.Api.Server/HomeNotes.Api.Server.csproj" />
+    <Project Path="src/HomeNotes.Core/HomeNotes.Core.csproj" />
+    <Project Path="src/HomeNotes.Desktop/HomeNotes.Desktop.csproj" />
+    <Project Path="src/HomeNotes.Infrastucture/HomeNotes.Infrastucture.csproj" />
+  </Folder>
+</Solution>
