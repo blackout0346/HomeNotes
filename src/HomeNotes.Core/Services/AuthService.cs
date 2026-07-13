@@ -30,7 +30,7 @@ namespace HomeNotes.Core.Services
             var user = new User
             {
                 Login = registerRequest.Login,
-                hashpassword = hashpassword
+                HashPassword = hashpassword
             };
             await _userStore.AddAsync(user);
 
@@ -48,7 +48,7 @@ namespace HomeNotes.Core.Services
             {
                 throw new Exception("User not found.");
             }
-            var hashpaswword =await _hashPassword.VerifyPasswordAsync(loginRequest.Password, user.hashpassword);
+            var hashpaswword =await _hashPassword.VerifyPasswordAsync(loginRequest.Password, user.HashPassword);
 
             if(!hashpaswword)
             {

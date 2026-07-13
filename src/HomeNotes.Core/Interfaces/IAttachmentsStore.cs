@@ -7,10 +7,11 @@ namespace HomeNotes.Core.Interfaces
 {
     public interface IAttachmentsStore
     {
-        public Task<Attachments?> AttachmentsAddAsync(Attachments attachments);
+        public Task AttachmentsAddAsync(Attachments attachments);
         public Task<Attachments?> AttachmentsGetByIdAsync(Guid id);
-        Task<Attachments?> AttachmentsUpdateAsync( Attachments attachments);
-        public Task DeleteAsync(Guid id);
+        Task<IEnumerable<Attachments>> AttachmentsGetByNoteIdAsync(Guid noteId);
+        Task AttachmentsUpdateAsync( Attachments attachments);
+        public Task AttachmentsDeleteAsync(Guid id);
 
     }
 }

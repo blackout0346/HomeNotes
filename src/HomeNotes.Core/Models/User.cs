@@ -12,7 +12,7 @@ namespace HomeNotes.Core.Models
 
         public string Login { get; set; } = string.Empty;
          
-        public string hashpassword { get; set; } = string.Empty;
+        public string HashPassword { get; set; } = string.Empty;
 
         public DateTime CreateAt { get; set; } = DateTime.Now;
         public ICollection<Notes> Notes { get; set; } = new List<Notes>();

@@ -10,16 +10,20 @@ namespace HomeNotes.Core.Models
     {
         [Key]
         public Guid Id { get; set; }
+        public Guid NotesId { get; set; }
+        public Notes Notes { get; set; }
         public string FileName { get; set; } = "";
-        public long Size { get; set; }
+
         public string RelativePath { get; set; } = "";
         public string MimeType { get; set; } = "";
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-        public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
-        public Guid NotesId { get; set; }
+        public long Size { get; set; }
         public bool IsDeleted { get; set; }
         public bool IsSynced { get; set; }
-        public Notes Notes { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
+
+ 
+   
     }
 
 }

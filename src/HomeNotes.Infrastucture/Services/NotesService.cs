@@ -44,13 +44,18 @@ namespace HomeNotes.Infrastucture.Services
         public async Task<IEnumerable<Notes>> NotesGetAllAsync()
         {
             return await _appDbContext.Notes
-         .Where(n => !n.IsDeleted)
-         .ToListAsync();
+           .Where(n => !n.IsDeleted)
+           .ToListAsync();
         }
 
         public async Task<Notes?> NotesGetByIdAsync(Guid id)
         {
             return await _appDbContext.Notes.FirstOrDefaultAsync(n => n.Id == id && !n.IsDeleted);
+        }
+
+        public async Task<IEnumerable<Notes?>>NotesGetByUserIdAsync(Guid userId)
+        {
+            return await _appDbContext.Notes.Where(n => n.UserId == userId && !n.IsDeleted).ToListAsync();
         }
 
         public async Task NotesUpdateAsync(Notes note)

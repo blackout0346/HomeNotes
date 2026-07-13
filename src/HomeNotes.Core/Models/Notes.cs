@@ -9,19 +9,18 @@ namespace HomeNotes.Core.Models
     {
         [Key]
         public Guid Id { get; set; }
- 
+        public Guid UserId { get; set; }
+
+        public User User { get; set; } = null!;
         public string Title { get; set; } = string.Empty;
 
         public string RelativePath { get; set; } = "";
-
-        public Guid UserId { get; set; } 
-
-        public User User { get; set; } = null!;
-
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
-        public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
         public bool IsDeleted { get; set; }
         public bool IsSynced { get; set; }
+        public int Version { get; set; }
         public ICollection<Attachments> Attachments { get; set; } = [];
+
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
     }
 }

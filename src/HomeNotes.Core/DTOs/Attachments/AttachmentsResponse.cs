@@ -13,6 +13,9 @@ namespace HomeNotes.Core.DTOs.Attachments
         public string RelativePath { get; set; } = "";
         public string MimeType { get; set; } = "";
 
+        public DateTime UpdatedAt { get; set; }
+
+        public bool IsDeleted { get; set; }
 
     }
 }
