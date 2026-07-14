@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using HomeNotes.Core.Models;
+using HomeNotes.Core.Exceptions;
 namespace HomeNotes.Core.Services
 {
     public class NotesService : INotesService
@@ -35,6 +36,7 @@ namespace HomeNotes.Core.Services
                 Id = request.Id,
                 Title = request.Title,
                 RelativePath = request.RelativePath,
+                UserId = userId,
                 Version = 1,
                 IsSynced = true,
 
@@ -51,50 +53,47 @@ namespace HomeNotes.Core.Services
                 UserId = note.UserId,
                 Title = note.Title,
                 RelativePath = note.RelativePath,
-                UpdatedAt = note.UpdatedAt
+                UpdatedAt = note.UpdatedAt,
+                Version = note.Version,
 
             };
         }
 
         public async Task DeleteNoteAsync(Guid id)
         {
-            var userId = _getUserCurrentId.UserId;
-            var note = await _notesStore.NotesGetByIdAsync(id);
-            if (note == null || note.UserId != userId)
-            {
-                throw new UnauthorizedAccessException("Note not found or access denied.");
-            }
+
+            var note = await GetOwnedNoteOrThrowAsync(id);
+
             await _notesStore.NotesDeleteAsync(id);
         }
 
         public async Task<NotesResponse?> GetByIdAsync(Guid id)
         {
-            var userId = _getUserCurrentId.UserId;
-            var note = await _notesStore.NotesGetByIdAsync(id);
-
-            if (note == null || note.UserId != userId)
-            {
-                throw new UnauthorizedAccessException("You are not authorized to access this note.");
-            }
+            var note = await GetOwnedNoteOrThrowAsync(id);
             return new NotesResponse
             {
                 Id = note.Id,
+                UserId = note.UserId,
                 Title = note.Title,
+                RelativePath = note.RelativePath,
+                UpdatedAt = note.UpdatedAt,
+                Version = note.Version,
             };
         }
 
         public async Task<IEnumerable<NotesResponse>> GetListAsync()
         {
 
-            var userId = _getUserCurrentId.UserId;
-            var notes = await _notesStore.NotesGetByUserIdAsync(userId);
+            var notes = await _notesStore.NotesGetByUserIdAsync(_getUserCurrentId.UserId);
 
             return notes.Select(n => new NotesResponse
             {
                 Id = n.Id,
+                UserId = n.UserId,
                 Title = n.Title,
                 RelativePath = n.RelativePath,
-                UpdatedAt = n.UpdatedAt
+                UpdatedAt = n.UpdatedAt,
+                Version = n.Version,
             });
         }
 
@@ -110,23 +109,31 @@ namespace HomeNotes.Core.Services
 
         public async Task<NotesResponse> UpdateNoteAsync(Guid id, NotesRequest request)
         {
-            // 1. Достаём заметку и сразу проверяем, что она принадлежит текущему юзеру
+
             var note = await GetOwnedNoteOrThrowAsync(id);
 
-            // 2. Проверка конфликта версий (offline-sync)
+
             if (request.Version != note.Version)
             {
-                return null;
+                throw new ConflictResponse("Note was updated elsewhere.", new NotesResponse
+                {
+                    Id = note.Id,
+                    UserId = note.UserId,
+                    Title = note.Title,
+                    RelativePath = note.RelativePath,
+                    UpdatedAt = note.UpdatedAt,
+                    Version = note.Version
+                }
+                );
             }
 
-            // 3. Обновляем метаданные
             note.Title = request.Title;
             note.RelativePath = request.RelativePath;
             note.Version++;
             note.UpdatedAt = DateTime.UtcNow;
             note.IsSynced = true;
 
-            // 4. Обновляем файл контента, если он был передан
+
             if (request.Content != null)
             {
                 await _fileStore.FileSaveAsync(note.RelativePath, request.Content);

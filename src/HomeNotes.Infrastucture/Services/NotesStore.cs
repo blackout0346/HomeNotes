@@ -7,11 +7,11 @@ using HomeNotes.Core.Interfaces;
 using Microsoft.EntityFrameworkCore;
 namespace HomeNotes.Infrastucture.Services
 {
-    public class NotesService : INotesStore
+    public class NotesStore : INotesStore
     {
         private readonly AppDbContext _appDbContext;
 
-        public NotesService(AppDbContext appDbContext)
+        public NotesStore(AppDbContext appDbContext)
         {
             _appDbContext = appDbContext;
         }
@@ -20,7 +20,7 @@ namespace HomeNotes.Infrastucture.Services
 
         public async Task NotesAddAsync(Notes note)
         {
-            note.IsSynced = false;
+        
             note.UpdatedAt = DateTime.UtcNow;
             note.CreatedAt = DateTime.UtcNow;
             await _appDbContext.Notes.AddAsync(note);
@@ -53,7 +53,7 @@ namespace HomeNotes.Infrastucture.Services
             return await _appDbContext.Notes.FirstOrDefaultAsync(n => n.Id == id && !n.IsDeleted);
         }
 
-        public async Task<IEnumerable<Notes?>>NotesGetByUserIdAsync(Guid userId)
+        public async Task<IEnumerable<Notes>>NotesGetByUserIdAsync(Guid userId)
         {
             return await _appDbContext.Notes.Where(n => n.UserId == userId && !n.IsDeleted).ToListAsync();
         }

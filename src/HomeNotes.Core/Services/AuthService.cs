@@ -12,8 +12,10 @@ namespace HomeNotes.Core.Services
    
         private readonly IHashPassword _hashPassword;
         private readonly IUserStore _userStore;
-        public AuthService(IHashPassword hashPassword, IUserStore userStore)
+        private readonly ITokenService _tokenService;
+        public AuthService(IHashPassword hashPassword, IUserStore userStore, ITokenService tokenService)
         {
+            _tokenService = tokenService;
             _hashPassword = hashPassword;
             _userStore = userStore;
         }
@@ -38,6 +40,7 @@ namespace HomeNotes.Core.Services
             {
                 Login = user.Login,
                 UserId = user.Id,
+                Token = _tokenService.GenerateToken(user.Id, user.Login)
             };
 
         }
@@ -59,6 +62,7 @@ namespace HomeNotes.Core.Services
             {
                 Login = user.Login,
                 UserId = user.Id,
+                Token = _tokenService.GenerateToken(user.Id, user.Login)
             };
         }
 

@@ -8,10 +8,10 @@ using System.Text;
 
 namespace HomeNotes.Infrastucture.Services
 {
-    public class AttachmentsService : IAttachmentsStore
+    public class AttachmentsStore : IAttachmentsStore
     {
         public AppDbContext _appdbcontext;
-        public AttachmentsService(AppDbContext appDbContext)
+        public AttachmentsStore(AppDbContext appDbContext)
         {
             _appdbcontext = appDbContext;
         }
@@ -24,19 +24,29 @@ namespace HomeNotes.Infrastucture.Services
 
         public async Task<Attachments?> AttachmentsGetByIdAsync(Guid id)
         {
-            return await _appdbcontext.Attachments.FirstOrDefaultAsync(f => f.Id == id);
+            return await _appdbcontext.Attachments.FirstOrDefaultAsync(f => f.Id == id && !f.IsDeleted);
 
         }
 
         public async Task<IEnumerable<Attachments>> AttachmentsGetByNoteIdAsync(Guid noteId)
         {
-            return await _appdbcontext.Attachments.Where(p=> p.NotesId == noteId).ToListAsync();
+            return await _appdbcontext.Attachments.Where(p=> p.NotesId == noteId && !p.IsDeleted).ToListAsync();
         }
 
-        public async Task AttachmentsUpdateAsync(Attachments attachments)
+        public async Task<Attachments?> AttachmentsUpdateAsync(Attachments attachments)
         {
-        
+            var existing = await _appdbcontext.Attachments.FindAsync(attachments.Id);
+            if (existing == null)
+            {
+                return null;
+            }
+            existing.FileName = attachments.FileName;
+            existing.MimeType = attachments.MimeType;
+            existing.Size = attachments.Size;
+            existing.UpdatedAt = DateTime.UtcNow;
+            existing.IsSynced = false;
             await _appdbcontext.SaveChangesAsync();
+            return existing;
         }
 
         public async Task AttachmentsDeleteAsync(Guid id)

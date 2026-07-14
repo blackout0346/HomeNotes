@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 namespace HomeNotes.Core.Interfaces
 {
-    interface INotesService
+    public interface INotesService
     {
         public Task<NotesResponse> CreateNoteAsync(NotesRequest request);
 
@@ -16,6 +16,6 @@ namespace HomeNotes.Core.Interfaces
         Task<IEnumerable<NotesResponse>> GetListAsync();
 
         Task<NotesResponse?> GetByIdAsync(Guid id);
-        Task<Notes> GetOwnedNoteOrThrowAsync(Guid id);
+        public Task<Notes> GetOwnedNoteOrThrowAsync(Guid id);
     }
 }

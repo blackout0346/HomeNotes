@@ -8,5 +8,6 @@ namespace HomeNotes.Core.DTOs.Authification
     {
         public Guid UserId { get; set; }
         public string Login { get; set; } = string.Empty;
+        public string Token { get; set; }
     }
 }

@@ -10,7 +10,7 @@ namespace HomeNotes.Core.Interfaces
         public Task AttachmentsAddAsync(Attachments attachments);
         public Task<Attachments?> AttachmentsGetByIdAsync(Guid id);
         Task<IEnumerable<Attachments>> AttachmentsGetByNoteIdAsync(Guid noteId);
-        Task AttachmentsUpdateAsync( Attachments attachments);
+        Task<Attachments?> AttachmentsUpdateAsync( Attachments attachments);
         public Task AttachmentsDeleteAsync(Guid id);
 
     }

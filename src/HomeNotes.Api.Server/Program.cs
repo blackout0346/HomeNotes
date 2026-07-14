@@ -1,13 +1,34 @@
+using HomeNotes.Core.Interfaces;
 using HomeNotes.Infrastucture.Data;
+using HomeNotes.Infrastucture.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
-
+var app = builder.Build();
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
-
-//builder.Services.AddScoped<>;
-var app = builder.Build();
+builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = builder.Configuration["Jwt:Issuer"],
+        ValidAudience = builder.Configuration["Jwt:Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(
+            Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!))
+        
+    };
+});
+builder.Services.AddAuthentication();
+app.UseAuthentication();
+app.UseAuthorization();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {

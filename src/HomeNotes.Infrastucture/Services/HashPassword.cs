@@ -7,7 +7,7 @@ namespace HomeNotes.Infrastucture.Services
 {
     internal class HashPassword : IHashPassword
     {
-        const int workFactor = 11;
+        const int workFactor = 12;
         public async Task<string> HashPasswordAsync(string password)
         {
             return  await Task.Run(() => BCrypt.Net.BCrypt.EnhancedHashPassword(password, workFactor));
