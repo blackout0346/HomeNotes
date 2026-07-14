@@ -26,7 +26,9 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
         
     };
 });
-builder.Services.AddAuthentication();
+
+builder.Services.AddControllers();
+builder.Services.AddHttpContextAccessor();
 app.UseAuthentication();
 app.UseAuthorization();
 
@@ -52,7 +54,7 @@ app.MapGet("/", () => "Hello world!");
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
+
 
 
 app.MapControllers();
