@@ -6,8 +6,9 @@ using System.Security.Authentication;
 
 namespace HomeNotes.Api.Server.Controllers
 {
+
+    [Route("api/auth")]
     [ApiController]
-    [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
         private readonly IAuthService _authService;
@@ -18,8 +19,13 @@ namespace HomeNotes.Api.Server.Controllers
         }
 
         [HttpPost("register")]
+        [ProducesResponseType(typeof(RegisterResponse), 200)]
         public async Task<IActionResult> Register([FromBody] RegisterRequest request)
         {
+            if(!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             try
             {
                 var result = await _authService.RegisterAsync(request);
@@ -32,8 +38,13 @@ namespace HomeNotes.Api.Server.Controllers
         }
 
         [HttpPost("login")]
+        [ProducesResponseType(typeof(LoginResponse), 200)]
         public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             try
             {
                 var result = await _authService.LoginAsync(request);

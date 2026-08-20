@@ -14,7 +14,13 @@ namespace HomeNotes.Core.Models
          
         public string HashPassword { get; set; } = string.Empty;
 
-        public DateTime CreateAt { get; set; } = DateTime.Now;
+        private DateTime _createAt = DateTime.UtcNow;
+
+        public DateTime CreateAt
+        {
+            get => _createAt;
+            set => _createAt = DateTime.SpecifyKind(value, DateTimeKind.Utc);
+        }
         public ICollection<Notes> Notes { get; set; } = new List<Notes>();
     }
 }

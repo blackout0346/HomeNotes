@@ -1,0 +1,16 @@
+[
+  {
+    "Name": "Новый профиль",
+    "Projects": [
+      {
+        "Path": "src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.csproj",
+        "Action": "Start",
+        "DebugTarget": "http"
+      },
+      {
+        "Path": "src\\HomeNotes.Desktop\\HomeNotes.Desktop.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

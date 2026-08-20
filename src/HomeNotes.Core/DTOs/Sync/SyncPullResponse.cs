@@ -7,7 +7,7 @@ namespace HomeNotes.Core.DTOs.Sync
 {
     public class SyncPullResponse
     {
-        public DateTime ServerTime { get; set; }
+        public DateTimeKind ServerTime { get; set; }
         public List<NotesResponse> Notes { get; set; } = [];
     }
 }

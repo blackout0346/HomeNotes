@@ -17,5 +17,7 @@ namespace HomeNotes.Core.Interfaces
 
         Task<NotesResponse?> GetByIdAsync(Guid id);
         public Task<Notes> GetOwnedNoteOrThrowAsync(Guid id);
+        Task<Stream> GetNoteContentAsync(Guid id);
+        Task UpdateNoteContentAsync(Guid id, Stream content);
     }
 }
