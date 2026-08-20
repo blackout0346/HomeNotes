@@ -5,7 +5,7 @@ using System.Text;
 using HomeNotes.Core.Interfaces;
 namespace HomeNotes.Infrastucture.Services
 {
-    internal class HashPassword : IHashPassword
+    public class HashPassword : IHashPassword
     {
         const int workFactor = 12;
         public async Task<string> HashPasswordAsync(string password)

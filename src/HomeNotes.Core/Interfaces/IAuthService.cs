@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HomeNotes.Core.Interfaces
 {
-    internal interface IAuthService
+    public interface IAuthService
     {
         Task<RegisterResponse> RegisterAsync(RegisterRequest registerRequest);
         Task<LoginResponse> LoginAsync(LoginRequest loginRequest);
