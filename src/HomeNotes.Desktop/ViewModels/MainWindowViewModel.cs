@@ -10,7 +10,7 @@ namespace HomeNotes.Desktop.ViewModels
         {
             _authClientService = authClientService;
             //_authClientService.Register("testuser", "password123").Wait();
-            _authClientService.Login("testuser", "password123").Wait();
+            //_authClientService.Login("testuser", "password123").Wait();
 
 
         }

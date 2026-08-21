@@ -29,7 +29,7 @@ namespace HomeNotes.Api.Server.Controllers
             try
             {
                 var result = await _authService.RegisterAsync(request);
-                return Ok(result); // содержит Token, Login, UserId
+                return Ok(result); 
             }
             catch (ConflictResponse ex)
             {
@@ -48,12 +48,11 @@ namespace HomeNotes.Api.Server.Controllers
             try
             {
                 var result = await _authService.LoginAsync(request);
-                return Ok(result); // содержит Token, Login, UserId
+                return Ok(result); 
             }
             catch (AuthenticationException)
             {
-                // намеренно не уточняем, что именно неверно — логин или пароль,
-                // чтобы не давать подсказок для перебора
+      
                 return Unauthorized(new { message = "Invalid login or password." });
             }
         }

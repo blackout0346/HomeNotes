@@ -111,7 +111,27 @@ namespace HomeNotes.Core.Services
             await _notesService.GetOwnedNoteOrThrowAsync(attachment.NotesId);
             return attachment;
         }
+        public async Task<(Stream Stream, string MimeType, string FileName)> GetAttachContentAsync(Guid id)
+        {
+            var attachment = await GetOwnedAttachmentOrThrowAsync(id);
 
+            var stream = await _fileStore.FileGetAsync(attachment.RelativePath);
+            if (stream == null)
+                throw new FileNotFoundException("Attachment content file not found.");
+
+            return (stream, attachment.MimeType, attachment.FileName);
+        }
+
+        public async Task UpdateAttachContentAsync(Guid id, Stream content)
+        {
+            var attachment = await GetOwnedAttachmentOrThrowAsync(id);
+
+            await _fileStore.FileSaveAsync(attachment.RelativePath, content);
+
+            attachment.UpdatedAt = DateTime.UtcNow;
+            attachment.IsSynced = false;
+            await _attachmentsStore.AttachmentsUpdateAsync(attachment);
+        }
 
     }
 }

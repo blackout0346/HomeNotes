@@ -1,4 +1,5 @@
 ﻿using HomeNotes.Core.DTOs.Notes;
+using HomeNotes.Core.DTOs.Sync;
 using HomeNotes.Core.Models;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,8 @@ namespace HomeNotes.Core.Interfaces
         Task<NotesResponse?> GetByIdAsync(Guid id);
         public Task<Notes> GetOwnedNoteOrThrowAsync(Guid id);
         Task<Stream> GetNoteContentAsync(Guid id);
-        Task UpdateNoteContentAsync(Guid id, Stream content);
+        Task<SyncResponse> SyncAsync(SyncRequest request);
+        public Task ApplySyncChangeAsync(Guid userId, NotesRequest request);
+
     }
 }

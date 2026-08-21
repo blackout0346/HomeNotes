@@ -6,8 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HomeNotes.Api.Server.Controllers
 {
-    [Authorize] // <-- обязательно: без этого HttpContext.User будет анонимным,
-                // и ICurrentUserService.UserId внутри сервиса упадёт с UnauthorizedAccessException
+    [Authorize] 
     [Route("api")]
     [ApiController]
     public class NoteController : ControllerBase

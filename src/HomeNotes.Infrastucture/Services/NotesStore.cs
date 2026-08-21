@@ -65,5 +65,14 @@ namespace HomeNotes.Infrastucture.Services
             _appDbContext.Notes.Update(note);
             await _appDbContext.SaveChangesAsync();
         }
+        public async Task<IEnumerable<Notes>> NotesGetChangedSinceAsync(Guid userId, DateTime? since)
+        {
+            var query = _appDbContext.Notes.Where(u => u.UserId == userId);
+            if(since.HasValue)
+            {
+                query = query.Where(n => n.UpdatedAt > since.Value);
+            }
+            return await query.ToListAsync();
+        }
     }
 }

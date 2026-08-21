@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Text;
 using HomeNotes.Core.Models;
 using HomeNotes.Core.Exceptions;
+using HomeNotes.Core.DTOs.Sync;
+using System.Diagnostics;
 namespace HomeNotes.Core.Services
 {
     public class NotesService : INotesService
@@ -47,16 +49,7 @@ namespace HomeNotes.Core.Services
                 await _fileStore.FileSaveAsync(note.RelativePath, request.Content);
 
             }
-            return new NotesResponse
-            {
-                Id = note.Id,
-                UserId = note.UserId,
-                Title = note.Title,
-                RelativePath = note.RelativePath,
-                UpdatedAt = note.UpdatedAt,
-                Version = note.Version,
-
-            };
+            return MapToResponse(note);
         }
 
         public async Task DeleteNoteAsync(Guid id)
@@ -70,15 +63,7 @@ namespace HomeNotes.Core.Services
         public async Task<NotesResponse?> GetByIdAsync(Guid id)
         {
             var note = await GetOwnedNoteOrThrowAsync(id);
-            return new NotesResponse
-            {
-                Id = note.Id,
-                UserId = note.UserId,
-                Title = note.Title,
-                RelativePath = note.RelativePath,
-                UpdatedAt = note.UpdatedAt,
-                Version = note.Version,
-            };
+            return MapToResponse(note);
         }
 
         public async Task<IEnumerable<NotesResponse>> GetListAsync()
@@ -86,15 +71,7 @@ namespace HomeNotes.Core.Services
 
             var notes = await _notesStore.NotesGetByUserIdAsync(_getUserCurrentId.UserId);
 
-            return notes.Select(n => new NotesResponse
-            {
-                Id = n.Id,
-                UserId = n.UserId,
-                Title = n.Title,
-                RelativePath = n.RelativePath,
-                UpdatedAt = n.UpdatedAt,
-                Version = n.Version,
-            });
+            return notes.Select(MapToResponse);
         }
 
         public async Task<Notes> GetOwnedNoteOrThrowAsync(Guid id)
@@ -141,15 +118,117 @@ namespace HomeNotes.Core.Services
 
             await _notesStore.NotesUpdateAsync(note);
 
-            return new NotesResponse
-            {
-                Id = note.Id,
-                UserId = note.UserId,
-                Title = note.Title,
-                RelativePath = note.RelativePath,
-                UpdatedAt = note.UpdatedAt,
-                Version = note.Version
-            };
+            return MapToResponse(note);
+
         }
+        public async Task<Stream> GetNoteContentAsync(Guid id)
+        {
+            var note = await GetOwnedNoteOrThrowAsync(id);
+            var stream = await _fileStore.FileGetAsync(note.RelativePath);
+            if (stream == null)
+                throw new FileNotFoundException("Note content file not found.");
+            return stream;
+        }
+        public async Task UpdateNoteContentAsync(Guid id, Stream content)
+        {
+            var note = GetOwnedNoteOrThrowAsync(id);
+            await _fileStore.FileSaveAsync(note.Result.RelativePath, content);
+            note.Result.UpdatedAt = DateTime.UtcNow;
+            note.Result.Version++;
+            note.Result.IsSynced = true;
+            await _notesStore.NotesUpdateAsync(note.Result);
+        }
+
+
+        public async Task<SyncResponse> SyncAsync(SyncRequest request)
+        {
+            var userId = _getUserCurrentId.UserId;
+            var response = new SyncResponse();
+            foreach (var noteRequest in request.ChangedNotes)
+            {
+                try
+                {
+                    await ApplySyncChangeAsync(userId, noteRequest);
+                }
+                catch (ConflictResponse ex)
+                {
+                    response.Conflicts.Add(new SyncConflict
+                    {
+                        NoteId = noteRequest.Id,
+                        ServerVersion = ex.ServerNote!,
+                        ClientVersion = noteRequest
+                    });
+                }
+                catch (UnauthorizedAccessException ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                }
+            }
+            foreach (var deletedId in request.DeletedNoteIds)
+            {
+                try
+                {
+                    await DeleteNoteAsync(deletedId);
+                }
+                catch (UnauthorizedAccessException ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                }
+            }
+            response.ServerTime = DateTime.UtcNow;
+            var ServerChanged = await _notesStore.NotesGetChangedSinceAsync(userId, request.Since);
+            response.ServerChanges = ServerChanged.Select(MapToResponse).ToList();
+            return response;
+
+
+        }
+        public async Task ApplySyncChangeAsync(Guid userId, NotesRequest request)
+        {
+           var existing = await _notesStore.NotesGetByIdAsync(userId);
+           if(existing == null)
+            {
+                var note = new Notes
+                {
+                    Id = request.Id,
+                    Title = request.Title,
+                    RelativePath = request.RelativePath,
+                    UserId = userId,
+                    Version = 1,
+                    IsSynced = true,
+                };
+                await _notesStore.NotesAddAsync(note);
+                return;
+            }
+            if (existing.UserId != userId)
+            {
+                throw new InvalidOperationException("Note id conflict");
+            }
+            if (existing.IsDeleted)
+            {
+                throw new InvalidOperationException("Note was deleted");
+            }
+            if (existing.Version != request.Version)
+            {
+                throw new ConflictResponse("Note was updated", MapToResponse(existing));
+            }
+            existing.Title = request.Title;
+            existing.RelativePath = request.RelativePath;
+            existing.Version++;
+            existing.UpdatedAt = DateTime.UtcNow;
+            existing.IsSynced = true;
+            await _notesStore.NotesUpdateAsync(existing);
+        }
+        private static NotesResponse MapToResponse(Notes note) => new()
+        {
+            Id = note.Id,
+            UserId = note.UserId,
+            Title = note.Title,
+            RelativePath = note.RelativePath,
+            UpdatedAt = note.UpdatedAt,
+            Version = note.Version,
+            IsDeleted = note.IsDeleted
+        };
+
+    
     }
 }

@@ -11,5 +11,7 @@ namespace HomeNotes.Core.Interfaces
         public Task<AttachmentsResponse?> UpdateAttachAsync(Guid id, AttachmentsRequest attachmentsrequest);
         public Task<AttachmentsResponse?> GetAttachAsync(Guid id);
         public Task DeleteAsync(Guid id);
+        Task<(Stream Stream, string MimeType, string FileName)> GetAttachContentAsync(Guid id);
+        Task UpdateAttachContentAsync(Guid id, Stream content);
     }
 }

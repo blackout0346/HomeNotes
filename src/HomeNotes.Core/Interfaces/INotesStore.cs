@@ -16,6 +16,6 @@ namespace HomeNotes.Core.Interfaces
 
         Task NotesDeleteAsync(Guid id);
         Task<IEnumerable<Notes?>>NotesGetByUserIdAsync(Guid userId);
- 
+        Task<IEnumerable<Notes>> NotesGetChangedSinceAsync(Guid userId, DateTime? since);
     }
 }
