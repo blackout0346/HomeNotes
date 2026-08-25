@@ -229,6 +229,21 @@ namespace HomeNotes.Core.Services
             IsDeleted = note.IsDeleted
         };
 
-    
+        public async Task<IEnumerable<NotesResponse>> RestoreNotesAsync(IEnumerable<Guid> noteIds)
+        {
+            var currentuser = _getUserCurrentId.UserId;
+            var ownedId = new List<Guid>();
+            foreach (var noteId in noteIds)
+            {
+                var note = await _notesStore.NotesGetByIdIncludingDeleteAsync(noteId);
+                if(note != null && note.UserId == currentuser)
+                {
+                    ownedId.Add(noteId);
+                }
+
+            }
+            var restore = await _notesStore.NotesRestoreRangeAsync(ownedId);
+            return restore.Select(MapToResponse);
+        }
     }
 }
