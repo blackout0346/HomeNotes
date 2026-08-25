@@ -74,5 +74,34 @@ namespace HomeNotes.Infrastucture.Services
             }
             return await query.ToListAsync();
         }
+
+    
+      
+        public async Task<IEnumerable<Notes>> NotesRestoreRangeAsync(IEnumerable<Guid> noteId)
+        {
+            var ids = noteId.ToList();
+            var notes =await _appDbContext.Notes.Include(n => n.Attachments).Where(n => ids.Contains(n.Id) && n.IsDeleted).ToListAsync(); 
+            foreach(var note in notes)
+            {
+                note.UpdatedAt = DateTime.UtcNow;
+                note.IsDeleted = false;
+                note.Version++;
+                note.IsSynced = false;
+                foreach (var attachments in note.Attachments.Where(a => a.IsDeleted))
+                {
+                    attachments.IsDeleted = false;
+                    attachments.UpdatedAt = DateTime.UtcNow;
+                    attachments.IsSynced = false;
+                }
+            }
+            await _appDbContext.SaveChangesAsync(); 
+            return notes;
+
+        }
+
+        public async Task<Notes?> NotesGetByIdIncludingDeleteAsync(Guid Id)
+        {
+            return await _appDbContext.Notes.FirstOrDefaultAsync(n => n.Id == Id);
+        }
     }
 }

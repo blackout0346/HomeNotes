@@ -1,4 +1,5 @@
 using HomeNotes.Core.DTOs.Notes;
+using HomeNotes.Core.DTOs.Restore;
 using HomeNotes.Core.Exceptions;
 using HomeNotes.Core.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -104,7 +105,8 @@ namespace HomeNotes.Api.Server.Controllers
             }
         }
         [HttpGet("notes/{id:guid}/content")]
-        [ProducesResponseType(204)]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
         public async Task<IActionResult> GetNoteContent(Guid id)
         {
             try
@@ -131,6 +133,20 @@ namespace HomeNotes.Api.Server.Controllers
             {
                 await _notesService.UpdateNoteContentAsync(id, Request.Body);
                 return NoContent();
+            }
+            catch (UnauthorizedAccessException)
+            {
+                return NotFound();
+            }
+        }
+        [HttpPut("notes/restore")]
+        [ProducesResponseType(typeof(IEnumerable<NotesResponse>), 200)]
+        public async Task<IActionResult> RestoreNotes([FromBody] RestoreNoteRequest request)
+        {
+            try
+            {
+              var result = await _notesService.RestoreNotesAsync(request.NoteIds);
+                return Ok(result);
             }
             catch (UnauthorizedAccessException)
             {

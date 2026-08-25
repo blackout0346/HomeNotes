@@ -21,6 +21,7 @@ namespace HomeNotes.Core.Interfaces
         Task<Stream> GetNoteContentAsync(Guid id);
         Task<SyncResponse> SyncAsync(SyncRequest request);
         public Task ApplySyncChangeAsync(Guid userId, NotesRequest request);
-
+        Task UpdateNoteContentAsync(Guid id, Stream body);
+        Task<IEnumerable<NotesResponse>> RestoreNotesAsync(IEnumerable<Guid> noteIds);
     }
 }

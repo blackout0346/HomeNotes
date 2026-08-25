@@ -3,40 +3,96 @@
   "WorkspaceRootPath": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1F9C88A4-6FA4-2563-7A66-07DB157CCAAC}|src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.api.server\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1F9C88A4-6FA4-2563-7A66-07DB157CCAAC}|src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.csproj|solutionrelative:src\\homenotes.api.server\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1F9C88A4-6FA4-2563-7A66-07DB157CCAAC}|src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.api.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1F9C88A4-6FA4-2563-7A66-07DB157CCAAC}|src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.csproj|solutionrelative:src\\homenotes.api.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1F9C88A4-6FA4-2563-7A66-07DB157CCAAC}|src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.api.server\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{1F9C88A4-6FA4-2563-7A66-07DB157CCAAC}|src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.csproj|solutionrelative:src\\homenotes.api.server\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{1F9C88A4-6FA4-2563-7A66-07DB157CCAAC}|src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.api.server\\homenotes.api.server.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{1F9C88A4-6FA4-2563-7A66-07DB157CCAAC}|src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.csproj|solutionrelative:src\\homenotes.api.server\\homenotes.api.server.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1F9C88A4-6FA4-2563-7A66-07DB157CCAAC}|src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.api.server\\controllers\\attachmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1F9C88A4-6FA4-2563-7A66-07DB157CCAAC}|src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.csproj|solutionrelative:src\\homenotes.api.server\\controllers\\attachmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.core\\interfaces\\igetusercurrentid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|solutionrelative:src\\homenotes.core\\interfaces\\igetusercurrentid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.core\\services\\notesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|solutionrelative:src\\homenotes.core\\services\\notesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1F9C88A4-6FA4-2563-7A66-07DB157CCAAC}|src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.api.server\\controllers\\synccontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1F9C88A4-6FA4-2563-7A66-07DB157CCAAC}|src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.csproj|solutionrelative:src\\homenotes.api.server\\controllers\\synccontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.core\\exceptions\\conflictresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|solutionrelative:src\\homenotes.core\\exceptions\\conflictresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1F9C88A4-6FA4-2563-7A66-07DB157CCAAC}|src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.api.server\\controllers\\notecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1F9C88A4-6FA4-2563-7A66-07DB157CCAAC}|src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.csproj|solutionrelative:src\\homenotes.api.server\\controllers\\notecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.core\\interfaces\\inotesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|solutionrelative:src\\homenotes.core\\interfaces\\inotesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.core\\dtos\\restore\\restorenoterequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|solutionrelative:src\\homenotes.core\\dtos\\restore\\restorenoterequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1F9C88A4-6FA4-2563-7A66-07DB157CCAAC}|src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.api.server\\controllers\\synccontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1F9C88A4-6FA4-2563-7A66-07DB157CCAAC}|src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.csproj|solutionrelative:src\\homenotes.api.server\\controllers\\synccontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1F9C88A4-6FA4-2563-7A66-07DB157CCAAC}|src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.api.server\\controllers\\attachmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1F9C88A4-6FA4-2563-7A66-07DB157CCAAC}|src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.csproj|solutionrelative:src\\homenotes.api.server\\controllers\\attachmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1F9C88A4-6FA4-2563-7A66-07DB157CCAAC}|src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.api.server\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1F9C88A4-6FA4-2563-7A66-07DB157CCAAC}|src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.csproj|solutionrelative:src\\homenotes.api.server\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.core\\services\\notesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|solutionrelative:src\\homenotes.core\\services\\notesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.core\\services\\currentuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|solutionrelative:src\\homenotes.core\\services\\currentuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.core\\interfaces\\inotesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|solutionrelative:src\\homenotes.core\\interfaces\\inotesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.core\\interfaces\\inotesstore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|solutionrelative:src\\homenotes.core\\interfaces\\inotesstore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1812DD1-93DC-CDAA-EE96-1A8E685FE498}|src\\HomeNotes.Infrastucture\\HomeNotes.Infrastucture.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.infrastucture\\services\\notesstore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1812DD1-93DC-CDAA-EE96-1A8E685FE498}|src\\HomeNotes.Infrastucture\\HomeNotes.Infrastucture.csproj|solutionrelative:src\\homenotes.infrastucture\\services\\notesstore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.core\\interfaces\\itokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|solutionrelative:src\\homenotes.core\\interfaces\\itokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.core\\interfaces\\iuserstore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|solutionrelative:src\\homenotes.core\\interfaces\\iuserstore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1812DD1-93DC-CDAA-EE96-1A8E685FE498}|src\\HomeNotes.Infrastucture\\HomeNotes.Infrastucture.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.infrastucture\\homenotes.infrastucture.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{B1812DD1-93DC-CDAA-EE96-1A8E685FE498}|src\\HomeNotes.Infrastucture\\HomeNotes.Infrastucture.csproj|solutionrelative:src\\homenotes.infrastucture\\homenotes.infrastucture.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{90CB4151-96A6-6B8D-EA03-65F2AE563DBC}|src\\HomeNotes.Desktop\\HomeNotes.Desktop.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.desktop\\homenotes.desktop.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{90CB4151-96A6-6B8D-EA03-65F2AE563DBC}|src\\HomeNotes.Desktop\\HomeNotes.Desktop.csproj|solutionrelative:src\\homenotes.desktop\\homenotes.desktop.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1812DD1-93DC-CDAA-EE96-1A8E685FE498}|src\\HomeNotes.Infrastucture\\HomeNotes.Infrastucture.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.infrastucture\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1812DD1-93DC-CDAA-EE96-1A8E685FE498}|src\\HomeNotes.Infrastucture\\HomeNotes.Infrastucture.csproj|solutionrelative:src\\homenotes.infrastucture\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1F9C88A4-6FA4-2563-7A66-07DB157CCAAC}|src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.api.server\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{1F9C88A4-6FA4-2563-7A66-07DB157CCAAC}|src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.csproj|solutionrelative:src\\homenotes.api.server\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.core\\interfaces\\ihashpassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|solutionrelative:src\\homenotes.core\\interfaces\\ihashpassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.core\\interfaces\\ifilestore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|solutionrelative:src\\homenotes.core\\interfaces\\ifilestore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1F9C88A4-6FA4-2563-7A66-07DB157CCAAC}|src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.api.server\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{1F9C88A4-6FA4-2563-7A66-07DB157CCAAC}|src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.csproj|solutionrelative:src\\homenotes.api.server\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.core\\interfaces\\igetusercurrentid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|solutionrelative:src\\homenotes.core\\interfaces\\igetusercurrentid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.core\\dtos\\sync\\syncrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -45,18 +101,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.core\\dtos\\sync\\syncconflict.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|solutionrelative:src\\homenotes.core\\dtos\\sync\\syncconflict.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1812DD1-93DC-CDAA-EE96-1A8E685FE498}|src\\HomeNotes.Infrastucture\\HomeNotes.Infrastucture.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.infrastucture\\services\\notesstore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1812DD1-93DC-CDAA-EE96-1A8E685FE498}|src\\HomeNotes.Infrastucture\\HomeNotes.Infrastucture.csproj|solutionrelative:src\\homenotes.infrastucture\\services\\notesstore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.core\\interfaces\\inotesstore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|solutionrelative:src\\homenotes.core\\interfaces\\inotesstore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.core\\exceptions\\conflictresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|solutionrelative:src\\homenotes.core\\exceptions\\conflictresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.core\\interfaces\\iattachmentsstore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -75,28 +119,12 @@
       "RelativeMoniker": "D:0:0:{B1812DD1-93DC-CDAA-EE96-1A8E685FE498}|src\\HomeNotes.Infrastucture\\HomeNotes.Infrastucture.csproj|solutionrelative:src\\homenotes.infrastucture\\storagefiles\\localfilestorage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B1812DD1-93DC-CDAA-EE96-1A8E685FE498}|src\\HomeNotes.Infrastucture\\HomeNotes.Infrastucture.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.infrastucture\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1812DD1-93DC-CDAA-EE96-1A8E685FE498}|src\\HomeNotes.Infrastucture\\HomeNotes.Infrastucture.csproj|solutionrelative:src\\homenotes.infrastucture\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.core\\interfaces\\itokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|solutionrelative:src\\homenotes.core\\interfaces\\itokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.core\\interfaces\\iuserstore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|solutionrelative:src\\homenotes.core\\interfaces\\iuserstore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.core\\dtos\\notes\\notesrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|solutionrelative:src\\homenotes.core\\dtos\\notes\\notesrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.core\\dtos\\notes\\notesresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|solutionrelative:src\\homenotes.core\\dtos\\notes\\notesresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.core\\interfaces\\ihashpassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|solutionrelative:src\\homenotes.core\\interfaces\\ihashpassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.core\\dtos\\authification\\registerrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -113,10 +141,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.core\\services\\attachmentsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|solutionrelative:src\\homenotes.core\\services\\attachmentsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.core\\interfaces\\ifilestore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|solutionrelative:src\\homenotes.core\\interfaces\\ifilestore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.core\\interfaces\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -145,10 +169,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.core\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|solutionrelative:src\\homenotes.core\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1F9C88A4-6FA4-2563-7A66-07DB157CCAAC}|src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.api.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1F9C88A4-6FA4-2563-7A66-07DB157CCAAC}|src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.csproj|solutionrelative:src\\homenotes.api.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EF7C4BFA-26D6-ADAC-F4DA-6201BBCAA2B9}|src\\HomeNotes.Core\\HomeNotes.Core.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.core\\dtos\\authification\\loginresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -187,10 +207,6 @@
       "RelativeMoniker": "D:0:0:{90CB4151-96A6-6B8D-EA03-65F2AE563DBC}|src\\HomeNotes.Desktop\\HomeNotes.Desktop.csproj|solutionrelative:src\\homenotes.desktop\\app.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1F9C88A4-6FA4-2563-7A66-07DB157CCAAC}|src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.api.server\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{1F9C88A4-6FA4-2563-7A66-07DB157CCAAC}|src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.csproj|solutionrelative:src\\homenotes.api.server\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{90CB4151-96A6-6B8D-EA03-65F2AE563DBC}|src\\HomeNotes.Desktop\\HomeNotes.Desktop.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.desktop\\viewlocator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{90CB4151-96A6-6B8D-EA03-65F2AE563DBC}|src\\HomeNotes.Desktop\\HomeNotes.Desktop.csproj|solutionrelative:src\\homenotes.desktop\\viewlocator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -199,24 +215,12 @@
       "RelativeMoniker": "D:0:0:{90CB4151-96A6-6B8D-EA03-65F2AE563DBC}|src\\HomeNotes.Desktop\\HomeNotes.Desktop.csproj|solutionrelative:src\\homenotes.desktop\\app.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{90CB4151-96A6-6B8D-EA03-65F2AE563DBC}|src\\HomeNotes.Desktop\\HomeNotes.Desktop.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.desktop\\homenotes.desktop.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{90CB4151-96A6-6B8D-EA03-65F2AE563DBC}|src\\HomeNotes.Desktop\\HomeNotes.Desktop.csproj|solutionrelative:src\\homenotes.desktop\\homenotes.desktop.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{90CB4151-96A6-6B8D-EA03-65F2AE563DBC}|src\\HomeNotes.Desktop\\HomeNotes.Desktop.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.desktop\\views\\mainwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{90CB4151-96A6-6B8D-EA03-65F2AE563DBC}|src\\HomeNotes.Desktop\\HomeNotes.Desktop.csproj|solutionrelative:src\\homenotes.desktop\\views\\mainwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1F9C88A4-6FA4-2563-7A66-07DB157CCAAC}|src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.api.server\\homenotes.api.server.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{1F9C88A4-6FA4-2563-7A66-07DB157CCAAC}|src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.csproj|solutionrelative:src\\homenotes.api.server\\homenotes.api.server.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1812DD1-93DC-CDAA-EE96-1A8E685FE498}|src\\HomeNotes.Infrastucture\\HomeNotes.Infrastucture.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.infrastucture\\homenotes.infrastucture.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{B1812DD1-93DC-CDAA-EE96-1A8E685FE498}|src\\HomeNotes.Infrastucture\\HomeNotes.Infrastucture.csproj|solutionrelative:src\\homenotes.infrastucture\\homenotes.infrastucture.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1F9C88A4-6FA4-2563-7A66-07DB157CCAAC}|src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.api.server\\homenotes.api.server.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
-      "RelativeMoniker": "D:0:0:{1F9C88A4-6FA4-2563-7A66-07DB157CCAAC}|src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.csproj|solutionrelative:src\\homenotes.api.server\\homenotes.api.server.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1F9C88A4-6FA4-2563-7A66-07DB157CCAAC}|src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.csproj|c:\\users\\blackbeard\\source\\repos\\homenotes\\src\\homenotes.api.server\\extensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -249,7 +253,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -261,176 +265,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "SyncController.cs",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Api.Server\\Controllers\\SyncController.cs",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Api.Server\\Controllers\\SyncController.cs",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Api.Server\\Controllers\\SyncController.cs",
-              "RelativeToolTip": "src\\HomeNotes.Api.Server\\Controllers\\SyncController.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAA1wBYAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-21T16:23:56.089Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "NotesService.cs",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Services\\NotesService.cs",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\Services\\NotesService.cs",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Services\\NotesService.cs",
-              "RelativeToolTip": "src\\HomeNotes.Core\\Services\\NotesService.cs",
-              "ViewState": "AgIAAMUAAAAAAAAAAAAqwMEAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-13T08:12:31.532Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "INotesService.cs",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Interfaces\\INotesService.cs",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\Interfaces\\INotesService.cs",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Interfaces\\INotesService.cs",
-              "RelativeToolTip": "src\\HomeNotes.Core\\Interfaces\\INotesService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-13T08:12:54.526Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "CurrentUserService.cs",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Services\\CurrentUserService.cs",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\Services\\CurrentUserService.cs",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Services\\CurrentUserService.cs",
-              "RelativeToolTip": "src\\HomeNotes.Core\\Services\\CurrentUserService.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAQwCAAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-13T12:48:04.879Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Api.Server\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Api.Server\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Api.Server\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "src\\HomeNotes.Api.Server\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAowDsAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-20T06:42:12.185Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "NoteController.cs",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Api.Server\\Controllers\\NoteController.cs",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Api.Server\\Controllers\\NoteController.cs",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Api.Server\\Controllers\\NoteController.cs",
-              "RelativeToolTip": "src\\HomeNotes.Api.Server\\Controllers\\NoteController.cs",
-              "ViewState": "AgIAADsAAAAAAAAAAAAIwAgAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-20T12:53:46.846Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "IGetUserCurrentId.cs",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Interfaces\\IGetUserCurrentId.cs",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\Interfaces\\IGetUserCurrentId.cs",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Interfaces\\IGetUserCurrentId.cs",
-              "RelativeToolTip": "src\\HomeNotes.Core\\Interfaces\\IGetUserCurrentId.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-13T12:44:25.516Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "AttachmentController.cs",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Api.Server\\Controllers\\AttachmentController.cs",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Api.Server\\Controllers\\AttachmentController.cs",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Api.Server\\Controllers\\AttachmentController.cs",
-              "RelativeToolTip": "src\\HomeNotes.Api.Server\\Controllers\\AttachmentController.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAHgAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-20T13:06:25.212Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "launchSettings.json",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Api.Server\\Properties\\launchSettings.json",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Api.Server\\Properties\\launchSettings.json",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Api.Server\\Properties\\launchSettings.json",
-              "RelativeToolTip": "src\\HomeNotes.Api.Server\\Properties\\launchSettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-08-20T07:00:35.346Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "SyncRequest.cs",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Sync\\SyncRequest.cs",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\DTOs\\Sync\\SyncRequest.cs",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Sync\\SyncRequest.cs",
-              "RelativeToolTip": "src\\HomeNotes.Core\\DTOs\\Sync\\SyncRequest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-20T13:46:07.875Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "SyncConflict.cs",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Sync\\SyncConflict.cs",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\DTOs\\Sync\\SyncConflict.cs",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Sync\\SyncConflict.cs",
-              "RelativeToolTip": "src\\HomeNotes.Core\\DTOs\\Sync\\SyncConflict.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-20T13:45:47.993Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "NotesStore.cs",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Infrastucture\\Services\\NotesStore.cs",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Infrastucture\\Services\\NotesStore.cs",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Infrastucture\\Services\\NotesStore.cs",
-              "RelativeToolTip": "src\\HomeNotes.Infrastucture\\Services\\NotesStore.cs",
-              "ViewState": "AgIAADUAAAAAAAAAAAAQwEoAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-13T08:55:11.785Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "INotesStore.cs",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Interfaces\\INotesStore.cs",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\Interfaces\\INotesStore.cs",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Interfaces\\INotesStore.cs",
-              "RelativeToolTip": "src\\HomeNotes.Core\\Interfaces\\INotesStore.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAABZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-13T08:59:38.374Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
               "Title": "ConflictResponse.cs",
               "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Exceptions\\ConflictResponse.cs",
               "RelativeDocumentMoniker": "src\\HomeNotes.Core\\Exceptions\\ConflictResponse.cs",
@@ -443,72 +278,163 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "IAttachmentsStore.cs",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Interfaces\\IAttachmentsStore.cs",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\Interfaces\\IAttachmentsStore.cs",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Interfaces\\IAttachmentsStore.cs",
-              "RelativeToolTip": "src\\HomeNotes.Core\\Interfaces\\IAttachmentsStore.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-13T09:03:12.941Z",
+              "DocumentIndex": 1,
+              "Title": "HomeNotes.Api.Server.http",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.http",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.http",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.http",
+              "RelativeToolTip": "src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.http",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2026-07-12T17:15:35.027Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "AuthClientService.cs",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Desktop\\Services\\AuthClientService.cs",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Desktop\\Services\\AuthClientService.cs",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Desktop\\Services\\AuthClientService.cs",
-              "RelativeToolTip": "src\\HomeNotes.Desktop\\Services\\AuthClientService.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAiwBkAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Api.Server\\Program.cs",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Api.Server\\Program.cs",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Api.Server\\Program.cs",
+              "RelativeToolTip": "src\\HomeNotes.Api.Server\\Program.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAADgAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-20T11:43:22.685Z",
+              "WhenOpened": "2026-07-12T17:15:41.078Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "SyncResponse.cs",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Sync\\SyncResponse.cs",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\DTOs\\Sync\\SyncResponse.cs",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Sync\\SyncResponse.cs",
-              "RelativeToolTip": "src\\HomeNotes.Core\\DTOs\\Sync\\SyncResponse.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAjAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "NoteController.cs",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Api.Server\\Controllers\\NoteController.cs",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Api.Server\\Controllers\\NoteController.cs",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Api.Server\\Controllers\\NoteController.cs",
+              "RelativeToolTip": "src\\HomeNotes.Api.Server\\Controllers\\NoteController.cs",
+              "ViewState": "AgIAAHcAAAAAAAAAAAAowGwAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-13T13:49:51.34Z",
+              "WhenOpened": "2026-08-20T12:53:46.846Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "LocalFileStorage.cs",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Infrastucture\\StorageFiles\\LocalFileStorage.cs",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Infrastucture\\StorageFiles\\LocalFileStorage.cs",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Infrastucture\\StorageFiles\\LocalFileStorage.cs",
-              "RelativeToolTip": "src\\HomeNotes.Infrastucture\\StorageFiles\\LocalFileStorage.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAAAwwBAAAAA4AAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "RestoreNoteRequest.cs",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Restore\\RestoreNoteRequest.cs",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\DTOs\\Restore\\RestoreNoteRequest.cs",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Restore\\RestoreNoteRequest.cs",
+              "RelativeToolTip": "src\\HomeNotes.Core\\DTOs\\Restore\\RestoreNoteRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-13T11:28:30.905Z",
+              "WhenOpened": "2026-08-25T11:17:41.496Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "AppDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Infrastucture\\Data\\AppDbContext.cs",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Infrastucture\\Data\\AppDbContext.cs",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Infrastucture\\Data\\AppDbContext.cs",
-              "RelativeToolTip": "src\\HomeNotes.Infrastucture\\Data\\AppDbContext.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAcAAAAKAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "SyncController.cs",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Api.Server\\Controllers\\SyncController.cs",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Api.Server\\Controllers\\SyncController.cs",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Api.Server\\Controllers\\SyncController.cs",
+              "RelativeToolTip": "src\\HomeNotes.Api.Server\\Controllers\\SyncController.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACAAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-12T17:44:55.69Z",
+              "WhenOpened": "2026-08-21T16:23:56.089Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 6,
+              "Title": "AttachmentController.cs",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Api.Server\\Controllers\\AttachmentController.cs",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Api.Server\\Controllers\\AttachmentController.cs",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Api.Server\\Controllers\\AttachmentController.cs",
+              "RelativeToolTip": "src\\HomeNotes.Api.Server\\Controllers\\AttachmentController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-20T13:06:25.212Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "NotesService.cs",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Services\\NotesService.cs",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\Services\\NotesService.cs",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Services\\NotesService.cs",
+              "RelativeToolTip": "src\\HomeNotes.Core\\Services\\NotesService.cs",
+              "ViewState": "AgIAANkAAAAAAAAAAAAwwPUAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-13T08:12:31.532Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Api.Server\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Api.Server\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Api.Server\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "src\\HomeNotes.Api.Server\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-20T06:42:12.185Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "CurrentUserService.cs",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Services\\CurrentUserService.cs",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\Services\\CurrentUserService.cs",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Services\\CurrentUserService.cs",
+              "RelativeToolTip": "src\\HomeNotes.Core\\Services\\CurrentUserService.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwCAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-13T12:48:04.879Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "INotesService.cs",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Interfaces\\INotesService.cs",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\Interfaces\\INotesService.cs",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Interfaces\\INotesService.cs",
+              "RelativeToolTip": "src\\HomeNotes.Core\\Interfaces\\INotesService.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAA1wBgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-13T08:12:54.526Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "INotesStore.cs",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Interfaces\\INotesStore.cs",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\Interfaces\\INotesStore.cs",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Interfaces\\INotesStore.cs",
+              "RelativeToolTip": "src\\HomeNotes.Core\\Interfaces\\INotesStore.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-13T08:59:38.374Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "NotesStore.cs",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Infrastucture\\Services\\NotesStore.cs",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Infrastucture\\Services\\NotesStore.cs",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Infrastucture\\Services\\NotesStore.cs",
+              "RelativeToolTip": "src\\HomeNotes.Infrastucture\\Services\\NotesStore.cs",
+              "ViewState": "AgIAAFYAAAAAAAAAAAAowGcAAABSAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-13T08:55:11.785Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "ITokenService.cs",
               "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Interfaces\\ITokenService.cs",
               "RelativeDocumentMoniker": "src\\HomeNotes.Core\\Interfaces\\ITokenService.cs",
@@ -521,7 +447,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 14,
               "Title": "IUserStore.cs",
               "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Interfaces\\IUserStore.cs",
               "RelativeDocumentMoniker": "src\\HomeNotes.Core\\Interfaces\\IUserStore.cs",
@@ -534,299 +460,45 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "NotesRequest.cs",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Notes\\NotesRequest.cs",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\DTOs\\Notes\\NotesRequest.cs",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Notes\\NotesRequest.cs",
-              "RelativeToolTip": "src\\HomeNotes.Core\\DTOs\\Notes\\NotesRequest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-13T08:26:18.66Z",
+              "DocumentIndex": 16,
+              "Title": "HomeNotes.Desktop.csproj",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Desktop\\HomeNotes.Desktop.csproj",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Desktop\\HomeNotes.Desktop.csproj",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Desktop\\HomeNotes.Desktop.csproj",
+              "RelativeToolTip": "src\\HomeNotes.Desktop\\HomeNotes.Desktop.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAIwCAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-07-13T07:00:46.882Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "NotesResponse.cs",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Notes\\NotesResponse.cs",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\DTOs\\Notes\\NotesResponse.cs",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Notes\\NotesResponse.cs",
-              "RelativeToolTip": "src\\HomeNotes.Core\\DTOs\\Notes\\NotesResponse.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-13T08:13:27.785Z",
+              "DocumentIndex": 15,
+              "Title": "HomeNotes.Infrastucture.csproj",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Infrastucture\\HomeNotes.Infrastucture.csproj",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Infrastucture\\HomeNotes.Infrastucture.csproj",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Infrastucture\\HomeNotes.Infrastucture.csproj",
+              "RelativeToolTip": "src\\HomeNotes.Infrastucture\\HomeNotes.Infrastucture.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-07-13T13:55:22.553Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "IHashPassword.cs",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Interfaces\\IHashPassword.cs",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\Interfaces\\IHashPassword.cs",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Interfaces\\IHashPassword.cs",
-              "RelativeToolTip": "src\\HomeNotes.Core\\Interfaces\\IHashPassword.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAPAAAAAAAAAA==",
+              "DocumentIndex": 17,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Infrastucture\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Infrastucture\\Data\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Infrastucture\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "src\\HomeNotes.Infrastucture\\Data\\AppDbContext.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAcAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-13T06:50:03.519Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-12T17:44:55.69Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "RegisterRequest.cs",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Authification\\RegisterRequest.cs",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\DTOs\\Authification\\RegisterRequest.cs",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Authification\\RegisterRequest.cs",
-              "RelativeToolTip": "src\\HomeNotes.Core\\DTOs\\Authification\\RegisterRequest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-13T06:52:26.254Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "IAttachmentsService.cs",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Interfaces\\IAttachmentsService.cs",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\Interfaces\\IAttachmentsService.cs",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Interfaces\\IAttachmentsService.cs",
-              "RelativeToolTip": "src\\HomeNotes.Core\\Interfaces\\IAttachmentsService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA/AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-13T08:37:41.83Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "AttachmentsResponse.cs",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Attachments\\AttachmentsResponse.cs",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\DTOs\\Attachments\\AttachmentsResponse.cs",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Attachments\\AttachmentsResponse.cs",
-              "RelativeToolTip": "src\\HomeNotes.Core\\DTOs\\Attachments\\AttachmentsResponse.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-13T08:15:23.625Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "AttachmentsService.cs",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Services\\AttachmentsService.cs",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\Services\\AttachmentsService.cs",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Services\\AttachmentsService.cs",
-              "RelativeToolTip": "src\\HomeNotes.Core\\Services\\AttachmentsService.cs",
-              "ViewState": "AgIAAGYAAAAAAAAAAAAcwIYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-13T13:57:53.117Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "IFileStore.cs",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Interfaces\\IFileStore.cs",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\Interfaces\\IFileStore.cs",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Interfaces\\IFileStore.cs",
-              "RelativeToolTip": "src\\HomeNotes.Core\\Interfaces\\IFileStore.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-13T11:37:49.833Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "IAuthService.cs",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Interfaces\\IAuthService.cs",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\Interfaces\\IAuthService.cs",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Interfaces\\IAuthService.cs",
-              "RelativeToolTip": "src\\HomeNotes.Core\\Interfaces\\IAuthService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-13T06:51:53.037Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "MainWindowViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Desktop\\ViewModels\\MainWindowViewModel.cs",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Desktop\\ViewModels\\MainWindowViewModel.cs",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Desktop\\ViewModels\\MainWindowViewModel.cs",
-              "RelativeToolTip": "src\\HomeNotes.Desktop\\ViewModels\\MainWindowViewModel.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAgwAwAAABJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-12T17:14:27.213Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "ViewModelBase.cs",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Desktop\\ViewModels\\ViewModelBase.cs",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Desktop\\ViewModels\\ViewModelBase.cs",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Desktop\\ViewModels\\ViewModelBase.cs",
-              "RelativeToolTip": "src\\HomeNotes.Desktop\\ViewModels\\ViewModelBase.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-20T11:56:31.538Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 36,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Api.Server\\Program.cs",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Api.Server\\Program.cs",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Api.Server\\Program.cs",
-              "RelativeToolTip": "src\\HomeNotes.Api.Server\\Program.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAAADgAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-12T17:15:41.078Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 35,
-              "Title": "AuthService.cs",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Services\\AuthService.cs",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\Services\\AuthService.cs",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Services\\AuthService.cs",
-              "RelativeToolTip": "src\\HomeNotes.Core\\Services\\AuthService.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAQwBgAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-13T07:11:40.809Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "Notes.cs",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Models\\Notes.cs",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\Models\\Notes.cs",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Models\\Notes.cs",
-              "RelativeToolTip": "src\\HomeNotes.Core\\Models\\Notes.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAowBYAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-12T17:30:22.269Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 33,
-              "Title": "User.cs",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Models\\User.cs",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\Models\\User.cs",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Models\\User.cs",
-              "RelativeToolTip": "src\\HomeNotes.Core\\Models\\User.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-12T17:29:31.783Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 38,
-              "Title": "HashPassword.cs",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Infrastucture\\Services\\HashPassword.cs",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Infrastucture\\Services\\HashPassword.cs",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Infrastucture\\Services\\HashPassword.cs",
-              "RelativeToolTip": "src\\HomeNotes.Infrastucture\\Services\\HashPassword.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-13T06:57:58.85Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 34,
-              "Title": "AttachmentsStore.cs",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Infrastucture\\Services\\AttachmentsStore.cs",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Infrastucture\\Services\\AttachmentsStore.cs",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Infrastucture\\Services\\AttachmentsStore.cs",
-              "RelativeToolTip": "src\\HomeNotes.Infrastucture\\Services\\AttachmentsStore.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAwwDoAAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-13T09:54:35.675Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 39,
-              "Title": "UserStore.cs",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Infrastucture\\Services\\UserStore.cs",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Infrastucture\\Services\\UserStore.cs",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Infrastucture\\Services\\UserStore.cs",
-              "RelativeToolTip": "src\\HomeNotes.Infrastucture\\Services\\UserStore.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAmwBQAAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-13T07:56:04.513Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 40,
-              "Title": "TokenService.cs",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Infrastucture\\Services\\TokenService.cs",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Infrastucture\\Services\\TokenService.cs",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Infrastucture\\Services\\TokenService.cs",
-              "RelativeToolTip": "src\\HomeNotes.Infrastucture\\Services\\TokenService.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAQwAAAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-14T13:03:35.931Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 37,
-              "Title": "LoginResponse.cs",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Authification\\LoginResponse.cs",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\DTOs\\Authification\\LoginResponse.cs",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Authification\\LoginResponse.cs",
-              "RelativeToolTip": "src\\HomeNotes.Core\\DTOs\\Authification\\LoginResponse.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAoAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-13T06:52:24.895Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 41,
-              "Title": "AttachmentsRequest.cs",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Attachments\\AttachmentsRequest.cs",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\DTOs\\Attachments\\AttachmentsRequest.cs",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Attachments\\AttachmentsRequest.cs",
-              "RelativeToolTip": "src\\HomeNotes.Core\\DTOs\\Attachments\\AttachmentsRequest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-13T08:14:56.529Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 42,
-              "Title": "LoginRequest.cs",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Authification\\LoginRequest.cs",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\DTOs\\Authification\\LoginRequest.cs",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Authification\\LoginRequest.cs",
-              "RelativeToolTip": "src\\HomeNotes.Core\\DTOs\\Authification\\LoginRequest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-13T06:52:23.681Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 43,
-              "Title": "RegisterResponse.cs",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Authification\\RegisterResponse.cs",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\DTOs\\Authification\\RegisterResponse.cs",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Authification\\RegisterResponse.cs",
-              "RelativeToolTip": "src\\HomeNotes.Core\\DTOs\\Authification\\RegisterResponse.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-13T06:52:27.071Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 44,
-              "Title": "Attachments.cs",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Models\\Attachments.cs",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\Models\\Attachments.cs",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Models\\Attachments.cs",
-              "RelativeToolTip": "src\\HomeNotes.Core\\Models\\Attachments.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-12T17:32:50.762Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 18,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Api.Server\\appsettings.json",
               "RelativeDocumentMoniker": "src\\HomeNotes.Api.Server\\appsettings.json",
@@ -838,7 +510,379 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "IHashPassword.cs",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Interfaces\\IHashPassword.cs",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\Interfaces\\IHashPassword.cs",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Interfaces\\IHashPassword.cs",
+              "RelativeToolTip": "src\\HomeNotes.Core\\Interfaces\\IHashPassword.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-13T06:50:03.519Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "IFileStore.cs",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Interfaces\\IFileStore.cs",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\Interfaces\\IFileStore.cs",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Interfaces\\IFileStore.cs",
+              "RelativeToolTip": "src\\HomeNotes.Core\\Interfaces\\IFileStore.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-13T11:37:49.833Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Api.Server\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Api.Server\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Api.Server\\Properties\\launchSettings.json",
+              "RelativeToolTip": "src\\HomeNotes.Api.Server\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-08-20T07:00:35.346Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "IGetUserCurrentId.cs",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Interfaces\\IGetUserCurrentId.cs",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\Interfaces\\IGetUserCurrentId.cs",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Interfaces\\IGetUserCurrentId.cs",
+              "RelativeToolTip": "src\\HomeNotes.Core\\Interfaces\\IGetUserCurrentId.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-13T12:44:25.516Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "SyncRequest.cs",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Sync\\SyncRequest.cs",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\DTOs\\Sync\\SyncRequest.cs",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Sync\\SyncRequest.cs",
+              "RelativeToolTip": "src\\HomeNotes.Core\\DTOs\\Sync\\SyncRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-20T13:46:07.875Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "SyncConflict.cs",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Sync\\SyncConflict.cs",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\DTOs\\Sync\\SyncConflict.cs",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Sync\\SyncConflict.cs",
+              "RelativeToolTip": "src\\HomeNotes.Core\\DTOs\\Sync\\SyncConflict.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-20T13:45:47.993Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "IAttachmentsStore.cs",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Interfaces\\IAttachmentsStore.cs",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\Interfaces\\IAttachmentsStore.cs",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Interfaces\\IAttachmentsStore.cs",
+              "RelativeToolTip": "src\\HomeNotes.Core\\Interfaces\\IAttachmentsStore.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-13T09:03:12.941Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "AuthClientService.cs",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Desktop\\Services\\AuthClientService.cs",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Desktop\\Services\\AuthClientService.cs",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Desktop\\Services\\AuthClientService.cs",
+              "RelativeToolTip": "src\\HomeNotes.Desktop\\Services\\AuthClientService.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAiwBkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-20T11:43:22.685Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "SyncResponse.cs",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Sync\\SyncResponse.cs",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\DTOs\\Sync\\SyncResponse.cs",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Sync\\SyncResponse.cs",
+              "RelativeToolTip": "src\\HomeNotes.Core\\DTOs\\Sync\\SyncResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-13T13:49:51.34Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "LocalFileStorage.cs",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Infrastucture\\StorageFiles\\LocalFileStorage.cs",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Infrastucture\\StorageFiles\\LocalFileStorage.cs",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Infrastucture\\StorageFiles\\LocalFileStorage.cs",
+              "RelativeToolTip": "src\\HomeNotes.Infrastucture\\StorageFiles\\LocalFileStorage.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAwwBAAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-13T11:28:30.905Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "NotesRequest.cs",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Notes\\NotesRequest.cs",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\DTOs\\Notes\\NotesRequest.cs",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Notes\\NotesRequest.cs",
+              "RelativeToolTip": "src\\HomeNotes.Core\\DTOs\\Notes\\NotesRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-13T08:26:18.66Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "NotesResponse.cs",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Notes\\NotesResponse.cs",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\DTOs\\Notes\\NotesResponse.cs",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Notes\\NotesResponse.cs",
+              "RelativeToolTip": "src\\HomeNotes.Core\\DTOs\\Notes\\NotesResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-13T08:13:27.785Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "RegisterRequest.cs",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Authification\\RegisterRequest.cs",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\DTOs\\Authification\\RegisterRequest.cs",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Authification\\RegisterRequest.cs",
+              "RelativeToolTip": "src\\HomeNotes.Core\\DTOs\\Authification\\RegisterRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-13T06:52:26.254Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "IAttachmentsService.cs",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Interfaces\\IAttachmentsService.cs",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\Interfaces\\IAttachmentsService.cs",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Interfaces\\IAttachmentsService.cs",
+              "RelativeToolTip": "src\\HomeNotes.Core\\Interfaces\\IAttachmentsService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-13T08:37:41.83Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "AttachmentsResponse.cs",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Attachments\\AttachmentsResponse.cs",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\DTOs\\Attachments\\AttachmentsResponse.cs",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Attachments\\AttachmentsResponse.cs",
+              "RelativeToolTip": "src\\HomeNotes.Core\\DTOs\\Attachments\\AttachmentsResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-13T08:15:23.625Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "AttachmentsService.cs",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Services\\AttachmentsService.cs",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\Services\\AttachmentsService.cs",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Services\\AttachmentsService.cs",
+              "RelativeToolTip": "src\\HomeNotes.Core\\Services\\AttachmentsService.cs",
+              "ViewState": "AgIAAGYAAAAAAAAAAAAcwIYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-13T13:57:53.117Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "IAuthService.cs",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Interfaces\\IAuthService.cs",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\Interfaces\\IAuthService.cs",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Interfaces\\IAuthService.cs",
+              "RelativeToolTip": "src\\HomeNotes.Core\\Interfaces\\IAuthService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-13T06:51:53.037Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "MainWindowViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Desktop\\ViewModels\\MainWindowViewModel.cs",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Desktop\\ViewModels\\MainWindowViewModel.cs",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Desktop\\ViewModels\\MainWindowViewModel.cs",
+              "RelativeToolTip": "src\\HomeNotes.Desktop\\ViewModels\\MainWindowViewModel.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAgwAwAAABJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-12T17:14:27.213Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "ViewModelBase.cs",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Desktop\\ViewModels\\ViewModelBase.cs",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Desktop\\ViewModels\\ViewModelBase.cs",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Desktop\\ViewModels\\ViewModelBase.cs",
+              "RelativeToolTip": "src\\HomeNotes.Desktop\\ViewModels\\ViewModelBase.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-20T11:56:31.538Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\Services\\AuthService.cs",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Services\\AuthService.cs",
+              "RelativeToolTip": "src\\HomeNotes.Core\\Services\\AuthService.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwBgAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-13T07:11:40.809Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "Notes.cs",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Models\\Notes.cs",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\Models\\Notes.cs",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Models\\Notes.cs",
+              "RelativeToolTip": "src\\HomeNotes.Core\\Models\\Notes.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAowBYAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-12T17:30:22.269Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Models\\User.cs",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Models\\User.cs",
+              "RelativeToolTip": "src\\HomeNotes.Core\\Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-12T17:29:31.783Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "HashPassword.cs",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Infrastucture\\Services\\HashPassword.cs",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Infrastucture\\Services\\HashPassword.cs",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Infrastucture\\Services\\HashPassword.cs",
+              "RelativeToolTip": "src\\HomeNotes.Infrastucture\\Services\\HashPassword.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-13T06:57:58.85Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "AttachmentsStore.cs",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Infrastucture\\Services\\AttachmentsStore.cs",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Infrastucture\\Services\\AttachmentsStore.cs",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Infrastucture\\Services\\AttachmentsStore.cs",
+              "RelativeToolTip": "src\\HomeNotes.Infrastucture\\Services\\AttachmentsStore.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAwwDoAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-13T09:54:35.675Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "UserStore.cs",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Infrastucture\\Services\\UserStore.cs",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Infrastucture\\Services\\UserStore.cs",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Infrastucture\\Services\\UserStore.cs",
+              "RelativeToolTip": "src\\HomeNotes.Infrastucture\\Services\\UserStore.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAmwBQAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-13T07:56:04.513Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 45,
+              "Title": "TokenService.cs",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Infrastucture\\Services\\TokenService.cs",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Infrastucture\\Services\\TokenService.cs",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Infrastucture\\Services\\TokenService.cs",
+              "RelativeToolTip": "src\\HomeNotes.Infrastucture\\Services\\TokenService.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwAAAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-14T13:03:35.931Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "LoginResponse.cs",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Authification\\LoginResponse.cs",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\DTOs\\Authification\\LoginResponse.cs",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Authification\\LoginResponse.cs",
+              "RelativeToolTip": "src\\HomeNotes.Core\\DTOs\\Authification\\LoginResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAoAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-13T06:52:24.895Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "AttachmentsRequest.cs",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Attachments\\AttachmentsRequest.cs",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\DTOs\\Attachments\\AttachmentsRequest.cs",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Attachments\\AttachmentsRequest.cs",
+              "RelativeToolTip": "src\\HomeNotes.Core\\DTOs\\Attachments\\AttachmentsRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-13T08:14:56.529Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "LoginRequest.cs",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Authification\\LoginRequest.cs",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\DTOs\\Authification\\LoginRequest.cs",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Authification\\LoginRequest.cs",
+              "RelativeToolTip": "src\\HomeNotes.Core\\DTOs\\Authification\\LoginRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-13T06:52:23.681Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "RegisterResponse.cs",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Authification\\RegisterResponse.cs",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\DTOs\\Authification\\RegisterResponse.cs",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\DTOs\\Authification\\RegisterResponse.cs",
+              "RelativeToolTip": "src\\HomeNotes.Core\\DTOs\\Authification\\RegisterResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-13T06:52:27.071Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "Attachments.cs",
+              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Models\\Attachments.cs",
+              "RelativeDocumentMoniker": "src\\HomeNotes.Core\\Models\\Attachments.cs",
+              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\Models\\Attachments.cs",
+              "RelativeToolTip": "src\\HomeNotes.Core\\Models\\Attachments.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-12T17:32:50.762Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
               "Title": "App.axaml.cs",
               "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Desktop\\App.axaml.cs",
               "RelativeDocumentMoniker": "src\\HomeNotes.Desktop\\App.axaml.cs",
@@ -850,7 +894,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 51,
               "Title": "ViewLocator.cs",
               "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Desktop\\ViewLocator.cs",
               "RelativeDocumentMoniker": "src\\HomeNotes.Desktop\\ViewLocator.cs",
@@ -862,7 +906,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 52,
               "Title": "App.axaml",
               "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Desktop\\App.axaml",
               "RelativeDocumentMoniker": "src\\HomeNotes.Desktop\\App.axaml",
@@ -873,19 +917,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
-              "Title": "HomeNotes.Desktop.csproj",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Desktop\\HomeNotes.Desktop.csproj",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Desktop\\HomeNotes.Desktop.csproj",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Desktop\\HomeNotes.Desktop.csproj",
-              "RelativeToolTip": "src\\HomeNotes.Desktop\\HomeNotes.Desktop.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAIwCAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-07-13T07:00:46.882Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 55,
               "Title": "Extensions.cs",
               "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Api.Server\\Extensions.cs",
               "RelativeDocumentMoniker": "src\\HomeNotes.Api.Server\\Extensions.cs",
@@ -898,18 +930,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 53,
-              "Title": "HomeNotes.Api.Server.http",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.http",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.http",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.http",
-              "RelativeToolTip": "src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.http",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
-              "WhenOpened": "2026-07-12T17:15:35.027Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 50,
               "Title": "MainWindow.axaml.cs",
               "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Desktop\\Views\\MainWindow.axaml.cs",
               "RelativeDocumentMoniker": "src\\HomeNotes.Desktop\\Views\\MainWindow.axaml.cs",
@@ -921,7 +941,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 55,
+              "DocumentIndex": 56,
               "Title": "OpenApiXmlCommentSupport.generated.cs",
               "DocumentMoniker": "C:\\Users\\blackbeard\\AppData\\Local\\Temp\\.vsdbgsrc\\2173b1faf924c0953984e8067c60c696649d31be85eb5b8143a454a622e7cdde\\OpenApiXmlCommentSupport.generated.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\2173b1faf924c0953984e8067c60c696649d31be85eb5b8143a454a622e7cdde\\OpenApiXmlCommentSupport.generated.cs",
@@ -933,7 +953,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 54,
               "Title": "HomeNotes.Api.Server.csproj",
               "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.csproj",
               "RelativeDocumentMoniker": "src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.csproj",
@@ -941,23 +961,12 @@
               "RelativeToolTip": "src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-07-12T17:15:26.255Z"
+              "WhenOpened": "2026-07-12T17:15:26.255Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
-              "Title": "HomeNotes.Infrastucture.csproj",
-              "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Infrastucture\\HomeNotes.Infrastucture.csproj",
-              "RelativeDocumentMoniker": "src\\HomeNotes.Infrastucture\\HomeNotes.Infrastucture.csproj",
-              "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Infrastucture\\HomeNotes.Infrastucture.csproj",
-              "RelativeToolTip": "src\\HomeNotes.Infrastucture\\HomeNotes.Infrastucture.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-07-13T13:55:22.553Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 56,
+              "DocumentIndex": 57,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Desktop\\Program.cs",
               "RelativeDocumentMoniker": "src\\HomeNotes.Desktop\\Program.cs",
@@ -969,7 +978,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 57,
+              "DocumentIndex": 58,
               "Title": "HomeNotes.Core.csproj",
               "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Core\\HomeNotes.Core.csproj",
               "RelativeDocumentMoniker": "src\\HomeNotes.Core\\HomeNotes.Core.csproj",
@@ -977,22 +986,24 @@
               "RelativeToolTip": "src\\HomeNotes.Core\\HomeNotes.Core.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-07-12T17:23:56.582Z"
+              "WhenOpened": "2026-07-12T17:23:56.582Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 58,
+              "DocumentIndex": 59,
               "Title": "HomeNotes.Api.Server",
               "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.csproj",
               "RelativeDocumentMoniker": "src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.csproj",
               "ToolTip": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.csproj",
               "RelativeToolTip": "src\\HomeNotes.Api.Server\\HomeNotes.Api.Server.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-07-12T17:15:31.989Z"
+              "WhenOpened": "2026-07-12T17:15:31.989Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 59,
+              "DocumentIndex": 60,
               "Title": "MainWindow.axaml",
               "DocumentMoniker": "C:\\Users\\blackbeard\\source\\repos\\HomeNotes\\src\\HomeNotes.Desktop\\Views\\MainWindow.axaml",
               "RelativeDocumentMoniker": "src\\HomeNotes.Desktop\\Views\\MainWindow.axaml",
