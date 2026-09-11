@@ -1,19 +1,16 @@
-﻿using HomeNotes.Desktop.Services;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using HomeNotes.Desktop.Services;
 
 namespace HomeNotes.Desktop.ViewModels
 {
     public partial class MainWindowViewModel : ViewModelBase
     {
-        public string Greeting { get; } = "Welcome to Avalonia!";
-        public AuthClientService _authClientService;
-        public MainWindowViewModel(AuthClientService authClientService )
+      
+        public object? CurrentViewModel { get; set; }
+        public MainWindowViewModel()
         {
-            _authClientService = authClientService;
-            //_authClientService.Register("testuser", "password123").Wait();
-            //_authClientService.Login("testuser", "password123").Wait();
-
+  
 
         }
-
     }
 }

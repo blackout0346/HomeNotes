@@ -9,6 +9,6 @@ namespace HomeNotes.Core.DTOs.Sync
     {
         public DateTime ServerTime { get; set; } 
         public List<NotesResponse> ServerChanges { get; set; } = []; 
-        public List<SyncConflict> Conflicts { get; set; } = [];
+        public List<NotesResponse> Conflicts { get; set; } = [];
     }
 }
