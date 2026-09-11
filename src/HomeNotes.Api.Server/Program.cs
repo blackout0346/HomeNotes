@@ -32,6 +32,7 @@ builder.Services.AddScoped<IAttachmentsService, AttachmentsService>();
 builder.Services.AddScoped<IGetUserCurrentId, CurrentUserService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
     options.TokenValidationParameters = new TokenValidationParameters
@@ -53,8 +54,10 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-
-    dbContext.Database.Migrate();
+    //dbContext.Database.EnsureDeleted();
+    //dbContext.Database.EnsureCreated();
+    //dbContext.Database.Migrate();
+   
 }
 
 if (app.Environment.IsDevelopment())

@@ -7,6 +7,7 @@ using Avalonia.Threading;
 using HomeNotes.Desktop.Services;
 using HomeNotes.Desktop.ViewModels;
 using HomeNotes.Desktop.Views;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
@@ -16,23 +17,35 @@ namespace HomeNotes.Desktop
     public partial class App : Application
     {
         public IServiceProvider Services { get; }
+        public IConfiguration Configuration { get; }
         public override void Initialize()
         {
             AvaloniaXamlLoader.Load(this);
         }
         public App()
         {
-            Services = ConfigureServices();
+            var builder = new ConfigurationBuilder()
+         .SetBasePath(AppContext.BaseDirectory) 
+         .AddJsonFile("Application.json", optional: false, reloadOnChange: true); 
+
+            Configuration = builder.Build();
+       
+          
+
+
+            Services = ConfigureServices(Configuration);
+           
         }
-        private static IServiceProvider ConfigureServices()
+        private static IServiceProvider ConfigureServices(IConfiguration configuration)
         {
+            var baseurl = configuration["ApiSettings:BaseUrl"];
             var services = new ServiceCollection();
             services.AddHttpClient<AuthClientService>(client =>
             {
-                client.BaseAddress = new Uri("http://localhost:5335/"); 
+                client.BaseAddress = new Uri(baseurl); 
             });
 
-
+            services.AddTransient<RegisterViewModel>();
             services.AddTransient<MainWindowViewModel>();
             return services.BuildServiceProvider();
 
@@ -41,10 +54,13 @@ namespace HomeNotes.Desktop
         {
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
-                var main = Services.GetRequiredService<MainWindowViewModel>();
+         
+                var currentpage = Services.GetRequiredService<MainWindowViewModel>();
+                var register = Services.GetRequiredService<RegisterViewModel>();
+                currentpage.CurrentViewModel = register;
                 desktop.MainWindow = new MainWindow
                 {
-                    DataContext =main,
+                    DataContext = currentpage
                 };
             }
 
