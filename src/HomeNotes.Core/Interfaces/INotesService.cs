@@ -20,7 +20,7 @@ namespace HomeNotes.Core.Interfaces
         public Task<Notes> GetOwnedNoteOrThrowAsync(Guid id);
         Task<Stream> GetNoteContentAsync(Guid id);
         Task<SyncResponse> SyncAsync(SyncRequest request);
-        public Task ApplySyncChangeAsync(Guid userId, NotesRequest request);
+        public Task<Notes?> ApplySyncChangeAsync(Guid userId, NotesRequest request);
         Task UpdateNoteContentAsync(Guid id, Stream body);
         Task<IEnumerable<NotesResponse>> RestoreNotesAsync(IEnumerable<Guid> noteIds);
     }
