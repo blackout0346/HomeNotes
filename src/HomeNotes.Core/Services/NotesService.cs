@@ -271,9 +271,6 @@ namespace HomeNotes.Core.Services
             return restore.Select(MapToResponse);
         }
 
-        Task<Notes?> INotesService.ApplySyncChangeAsync(Guid userId, NotesRequest request)
-        {
-            return ApplySyncChangeAsync(userId, request);
-        }
+    
     }
 }
