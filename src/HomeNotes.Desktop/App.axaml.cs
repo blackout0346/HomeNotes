@@ -27,12 +27,7 @@ namespace HomeNotes.Desktop
             var builder = new ConfigurationBuilder()
          .SetBasePath(AppContext.BaseDirectory) 
          .AddJsonFile("Application.json", optional: false, reloadOnChange: true); 
-
             Configuration = builder.Build();
-       
-          
-
-
             Services = ConfigureServices(Configuration);
            
         }
@@ -40,13 +35,18 @@ namespace HomeNotes.Desktop
         {
             var baseurl = configuration["ApiSettings:BaseUrl"];
             var services = new ServiceCollection();
-            services.AddHttpClient<AuthClientService>(client =>
+            services.AddHttpClient("HomeNotesApi",client =>
             {
                 client.BaseAddress = new Uri(baseurl); 
             });
-
+            services.AddHttpClient<AuthClientService>("HomeNotesApi");
+            services.AddHttpClient<NoteClientService>("HomeNotesApi");
+            services.AddHttpClient<AttachmentClientService>("HomeNotesApi");
+            services.AddHttpClient<SyncClientService>("HomeNotesApi");
             services.AddTransient<RegisterViewModel>();
             services.AddTransient<MainWindowViewModel>();
+            services.AddTransient<NotesWriteViewModel>();
+           
             return services.BuildServiceProvider();
 
         }
