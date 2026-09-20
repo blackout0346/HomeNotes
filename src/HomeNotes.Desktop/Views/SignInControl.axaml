@@ -2,7 +2,59 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="HomeNotes.Desktop.SignInControl">
-  Welcome to Avalonia!
+             x:Class="HomeNotes.Desktop.Views.SignInControl"
+             xmlns:views="using:HomeNotes.Desktop.Views"
+             Background="#811FFF" >
+    <UserControl.Styles>
+        <Style Selector="Button.component">
+            <Setter Property="FontFamily" Value="Akatab" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="CornerRadius" Value="16" />
+            <Setter Property="Margin" Value="10"></Setter>
+
+        </Style>
+        <Style Selector="TextBox.componentInput">
+            <Setter Property="BorderBrush" Value="Black" />
+            <Setter Property="CornerRadius" Value="16" />
+            <Setter Property="Margin" Value="16"/>
+            <Setter Property="Background" Value="White" />
+            <Setter Property="CaretBrush" Value="Black" />
+
+            
+        </Style>
+
+    </UserControl.Styles>
+
+    <Grid RowDefinitions="*,Auto" ColumnDefinitions="*,*" ShowGridLines="True">
+        <Border Grid.Column="0" Grid.RowSpan="2">
+            <Border.Background>
+                <ImageBrush Source="/Assets/Background-Authentication.png"
+                            Stretch="UniformToFill"
+                            Opacity="0.8" AlignmentX="Left" />
+
+            </Border.Background>
+        </Border>
+        <Border Grid.Column="1" Grid.RowSpan="2" Background="#1F1F22" CornerRadius="16,0,0,0" />
+        <StackPanel  Grid.Column="1" Grid.Row="0" VerticalAlignment="Center">
+            <TextBlock  Text="HomeNotes" TextAlignment="Center" Foreground="White" HorizontalAlignment="Center"
+                       Margin="0,0,0,16" />
+            <TextBox   Classes="componentInput" Background="White" PlaceholderText="Введите ваш логин" />
+            <TextBox Classes="componentInput" Background="White" PlaceholderText="Введите ваш пароль" />
+            <HyperlinkButton Content="забыли пароль?" HorizontalAlignment="Center" Foreground="White" />
+            <Button Classes="component" Background="#811FFF" Content="Войти" />
+        </StackPanel>
+        <DockPanel Grid.Row="1" Grid.Column="1">
+            <StackPanel DockPanel.Dock="Bottom">
+                <Button Classes="component" Background="#811FFF" Content="Зарегистрироваться" />
+                <Button Classes="component" Background="#777777" Content="Войти без авторизации" />
+            </StackPanel>
+
+        </DockPanel>
+    </Grid>
+
 </UserControl>

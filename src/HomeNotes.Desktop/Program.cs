@@ -21,5 +21,6 @@ namespace HomeNotes.Desktop
 #endif
                 .WithInterFont()
                 .LogToTrace();
+            
     }
 }

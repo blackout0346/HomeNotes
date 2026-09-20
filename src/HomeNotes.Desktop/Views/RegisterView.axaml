@@ -2,7 +2,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewmodels="using:HomeNotes.Desktop.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="HomeNotes.Desktop.RegisterView">
-  Welcome to Avalonia!
+             x:Class="HomeNotes.Desktop.Views.RegisterView"
+             x:DataType="viewmodels:RegisterViewModel"
+             xmlns:views="using:HomeNotes.Desktop.Views">
+   <Grid>
+     <views:SignInControl IsVisible="{Binding !IsMode}"/>
+     <views:SignUpControl IsVisible="{Binding  IsMode}"/>
+
+   </Grid>
 </UserControl>

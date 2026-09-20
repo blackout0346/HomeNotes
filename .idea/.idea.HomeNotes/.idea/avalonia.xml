@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="src/HomeNotes.Desktop/App.axaml" value="src/HomeNotes.Desktop/HomeNotes.Desktop.csproj" />
+        <entry key="src/HomeNotes.Desktop/Views/MainWindow.axaml" value="src/HomeNotes.Desktop/HomeNotes.Desktop.csproj" />
+        <entry key="src/HomeNotes.Desktop/Views/RegisterView.axaml" value="src/HomeNotes.Desktop/HomeNotes.Desktop.csproj" />
+        <entry key="src/HomeNotes.Desktop/Views/SignInControl.axaml" value="src/HomeNotes.Desktop/HomeNotes.Desktop.csproj" />
+        <entry key="src/HomeNotes.Desktop/Views/SignUpControl.axaml" value="src/HomeNotes.Desktop/HomeNotes.Desktop.csproj" />
+      </map>
+    </option>
+  </component>
+</project>
