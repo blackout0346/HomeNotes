@@ -1,0 +1,87 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="HomeNotes.Desktop.Views.ChooseStorage" Background="#811FFF">
+    <UserControl.Styles>
+        <Style Selector="Button.component">
+            <Setter Property="FontFamily" Value="Akatab" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="CornerRadius" Value="16" />
+            <Setter Property="Margin" Value="10"></Setter>
+        </Style>
+
+        <Style Selector="TextBlock.Title">
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="FontWeight" Value="15"></Setter>
+        </Style>
+        <Style Selector="TextBlock.SubText">
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="Foreground" Value="Gray" />
+        </Style>
+    </UserControl.Styles>
+
+    <Grid RowDefinitions="*,Auto" ColumnDefinitions="*,*" ShowGridLines="True">
+        <Border Grid.Column="0" Grid.RowSpan="2">
+            <Border.Background>
+                <ImageBrush Source="/Assets/Background-Authentication.png"
+                            Stretch="UniformToFill"
+                            Opacity="0.8" AlignmentX="Left" />
+
+            </Border.Background>
+        </Border>
+        <Border Grid.Column="1" Grid.RowSpan="2" Background="#1F1F22" CornerRadius="16,0,0,0" />
+        <StackPanel Grid.Column="1" Grid.Row="0" VerticalAlignment="Center">
+            <TextBlock Classes="Title" Text="Выберите хранилище" TextAlignment="Center" Foreground="White"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,16" />
+            <Border CornerRadius="8" Background="#31353b">
+
+                <StackPanel>
+                    <Grid ColumnDefinitions="auto,*" RowDefinitions="*,*">
+                        <TextBlock Grid.Column="0" Grid.Row="0" Classes="Title" Text="Создать новое хранилище"
+                                   Foreground="White" />
+
+                        <TextBlock Grid.Column="0" Grid.Row="1" Classes="SubText" Text="Создать новое хранилище"
+                                   Foreground="White" />
+
+                        <Button Grid.Column="1" Grid.RowSpan="2" HorizontalAlignment="Right" DockPanel.Dock="Top"
+                                Classes="component" Background="#811FFF"
+                                Content="Создать" />
+
+
+                    </Grid>
+                    <Grid ColumnDefinitions="auto,*" RowDefinitions="*,*">
+                        <TextBlock Grid.Column="0" Grid.Row="0" Classes="Title" Text="Открыть хранилище"
+                                   Foreground="White" />
+
+                        <TextBlock Grid.Column="0" Grid.Row="1" Classes="SubText" Text="Создать новое хранилище"
+                                   Foreground="White" />
+
+                        <Button Grid.Column="1" Grid.RowSpan="2" HorizontalAlignment="Right" DockPanel.Dock="Top"
+                                Classes="component" Background="#777777"
+                                Content="Открыть" />
+
+
+                    </Grid>
+
+                </StackPanel>
+
+
+            </Border>
+
+       
+        </StackPanel>
+        <DockPanel Grid.Row="1" Grid.Column="1">
+            <StackPanel DockPanel.Dock="Bottom">
+
+                <Button Classes="component" Background="#777777" Content="Назад" />
+            </StackPanel>
+
+        </DockPanel>
+    </Grid>
+</UserControl>
