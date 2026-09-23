@@ -46,7 +46,8 @@ namespace HomeNotes.Desktop
             services.AddTransient<RegisterViewModel>();
             services.AddTransient<MainWindowViewModel>();
             services.AddTransient<NotesWriteViewModel>();
-           
+            services.AddSingleton<Func<int, NotesWriteViewModel>>(sp => id =>
+                ActivatorUtilities.CreateInstance<NotesWriteViewModel>(sp, id));
             return services.BuildServiceProvider();
 
         }

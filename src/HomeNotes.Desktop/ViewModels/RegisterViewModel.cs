@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
@@ -11,22 +12,46 @@ namespace HomeNotes.Desktop.ViewModels
     {
         private readonly AuthClientService _authClientService;
         private readonly MainWindowViewModel _mainWindowViewModel;
+        private readonly ChooseStorageViewModel _chooseStorageViewModel;
+        [ObservableProperty] private string _login;
+        [ObservableProperty] private string _password;
         [ObservableProperty]
         private bool _isMode = false;
-
-        public RegisterViewModel(AuthClientService authClientService, MainWindowViewModel mainWindowViewModel)
+        private readonly Func<int, NotesWriteViewModel> _notesWriteViewModelFactory;
+        private string _path;
+        public RegisterViewModel(AuthClientService authClientService, MainWindowViewModel mainWindowViewModel, Func<int, NotesWriteViewModel> notesWriteViewModelFactory)
+        
         {
             _authClientService = authClientService;
             _mainWindowViewModel = mainWindowViewModel;
-
-            TestRegistration();
+            _notesWriteViewModelFactory = notesWriteViewModelFactory;
+          
         }
 
-        public void TestRegistration()
+        [RelayCommand]
+        public Task Register()
         {
-
-            _authClientService.Register("TEST2", "qtgbedg");
+           
+             if (string.IsNullOrEmpty(_login) || string.IsNullOrEmpty(_password))
+             {
+                 return null;
+             }
+             var signUp =_authClientService.Register(_login, _password);
+             if (signUp != null)
+             {
+                 if (_path != null)
+                 {
+                     _mainWindowViewModel.CurrentViewModel = _notesWriteViewModelFactory(signUp.Id);
+                 }
+                 else
+                 {
+                     _mainWindowViewModel.CurrentViewModel = _chooseStorageViewModel;
+                 }
+   
+             }
+             return Task.CompletedTask;
         }
+       
         [RelayCommand]
         void GoToSignUp() => IsMode= true;
         [RelayCommand]

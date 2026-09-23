@@ -20,7 +20,7 @@
             <Setter Property="FontWeight" Value="15"></Setter>
         </Style>
         <Style Selector="TextBlock.SubText">
-            <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontSize" Value="12" />
             <Setter Property="Foreground" Value="Gray" />
         </Style>
     </UserControl.Styles>
@@ -34,11 +34,13 @@
 
             </Border.Background>
         </Border>
+        
         <Border Grid.Column="1" Grid.RowSpan="2" Background="#1F1F22" CornerRadius="16,0,0,0" />
         <StackPanel Grid.Column="1" Grid.Row="0" VerticalAlignment="Center">
             <TextBlock Classes="Title" Text="Выберите хранилище" TextAlignment="Center" Foreground="White"
                        HorizontalAlignment="Center"
                        Margin="0,0,0,16" />
+            <Button Grid.Column="1" Grid.Row="0" Classes="component" Content="быстрый старт" Background="#811FFF"></Button>
             <Border CornerRadius="8" Background="#31353b">
 
                 <StackPanel>
@@ -59,7 +61,7 @@
                         <TextBlock Grid.Column="0" Grid.Row="0" Classes="Title" Text="Открыть хранилище"
                                    Foreground="White" />
 
-                        <TextBlock Grid.Column="0" Grid.Row="1" Classes="SubText" Text="Создать новое хранилище"
+                        <TextBlock Grid.Column="0" Grid.Row="1" Classes="SubText" Text="Открыть хранилище"
                                    Foreground="White" />
 
                         <Button Grid.Column="1" Grid.RowSpan="2" HorizontalAlignment="Right" DockPanel.Dock="Top"
