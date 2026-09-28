@@ -2,6 +2,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:HomeNotes.Desktop.ViewModels"
+             x:DataType="vm:RegisterViewModel"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="HomeNotes.Desktop.Views.SignUpControl"
              xmlns:views="using:HomeNotes.Desktop.Views"
@@ -42,15 +44,15 @@
         <StackPanel Grid.Column="1" Grid.Row="0" VerticalAlignment="Center">
             <TextBlock Text="HomeNotes" TextAlignment="Center" Foreground="White" HorizontalAlignment="Center"
                        Margin="0,0,0,16" />
-            <TextBox Classes="componentInput" Background="White" PlaceholderText="Введите новый логин" />
-            <TextBox Classes="componentInput" Background="White" PlaceholderText="Введите новый пароль" />
+            <TextBox Classes="componentInput" Background="White" PlaceholderText="Введите новый логин"  Text="{Binding Login}"/>
+            <TextBox Classes="componentInput" Background="White" PlaceholderText="Введите новый пароль"  Text="{Binding Password}"/>
           
-            <Button Classes="component" Background="#811FFF" Content="Авторизироваться" />
+            <Button Classes="component" Background="#811FFF" Content="Авторизироваться"  Command="{Binding SignUpCommand}"/>
         </StackPanel>
         <DockPanel Grid.Row="1" Grid.Column="1">
             <StackPanel DockPanel.Dock="Bottom">
 
-                <Button Classes="component" Background="#777777" Content="Выйти" />
+                <Button Classes="component" Background="#777777" Content="Выйти" Command="{Binding GoToSignInCommand}" />
             </StackPanel>
 
         </DockPanel>

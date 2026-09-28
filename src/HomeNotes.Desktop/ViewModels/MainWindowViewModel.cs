@@ -5,12 +5,7 @@ namespace HomeNotes.Desktop.ViewModels
 {
     public partial class MainWindowViewModel : ViewModelBase
     {
-      
-        public object? CurrentViewModel { get; set; }
-        public MainWindowViewModel()
-        {
-  
-
-        }
+        [ObservableProperty] public object? currentViewModel;
+    
     }
 }

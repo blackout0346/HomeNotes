@@ -6,7 +6,8 @@ namespace HomeNotes.Desktop.ViewModels
 {
     public partial class NotesWriteViewModel : ViewModelBase
     {
-        public  NotesWriteViewModel(Guid UserId)
-        {}
+        public NotesWriteViewModel(Guid? UserId = null)
+        {
+        }
     }
 }
