@@ -4,9 +4,9 @@ using Avalonia.Markup.Xaml;
 
 namespace HomeNotes.Desktop.Views;
 
-public partial class ChooseStorage : UserControl
+public partial class ChooseStorageView : UserControl
 {
-    public ChooseStorage()
+    public ChooseStorageView()
     {
         InitializeComponent();
     }

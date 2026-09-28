@@ -3,7 +3,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="HomeNotes.Desktop.Views.ChooseStorage" Background="#811FFF">
+             xmlns:vm="clr-namespace:HomeNotes.Desktop.ViewModels"
+             x:DataType="vm:ChooseStorageViewModel"
+
+             x:Class="HomeNotes.Desktop.Views.ChooseStorageView" Background="#811FFF">
     <UserControl.Styles>
         <Style Selector="Button.component">
             <Setter Property="FontFamily" Value="Akatab" />
@@ -40,7 +43,7 @@
             <TextBlock Classes="Title" Text="Выберите хранилище" TextAlignment="Center" Foreground="White"
                        HorizontalAlignment="Center"
                        Margin="0,0,0,16" />
-            <Button Grid.Column="1" Grid.Row="0" Classes="component" Content="быстрый старт" Background="#811FFF"></Button>
+            <Button Grid.Column="1" Grid.Row="0" Classes="component" Content="быстрый старт" Background="#811FFF" Command="{Binding QuickStartCommand}"/>
             <Border CornerRadius="8" Background="#31353b">
 
                 <StackPanel>
@@ -53,7 +56,7 @@
 
                         <Button Grid.Column="1" Grid.RowSpan="2" HorizontalAlignment="Right" DockPanel.Dock="Top"
                                 Classes="component" Background="#811FFF"
-                                Content="Создать" />
+                                Content="Создать" Command="{Binding SelectStorageFolderCommand}"/>
 
 
                     </Grid>
@@ -66,7 +69,7 @@
 
                         <Button Grid.Column="1" Grid.RowSpan="2" HorizontalAlignment="Right" DockPanel.Dock="Top"
                                 Classes="component" Background="#777777"
-                                Content="Открыть" />
+                                Content="Открыть" Command="{Binding SelectStorageFolderCommand}"/>
 
 
                     </Grid>
@@ -81,7 +84,7 @@
         <DockPanel Grid.Row="1" Grid.Column="1">
             <StackPanel DockPanel.Dock="Bottom">
 
-                <Button Classes="component" Background="#777777" Content="Назад" />
+                <Button Classes="component" Background="#777777" Content="Назад" Command="{Binding BackCommand}" />
             </StackPanel>
 
         </DockPanel>
