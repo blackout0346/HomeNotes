@@ -8,6 +8,7 @@
         <entry key="src/HomeNotes.Desktop/Views/ChooseStorageView.axaml" value="src/HomeNotes.Desktop/HomeNotes.Desktop.csproj" />
         <entry key="src/HomeNotes.Desktop/Views/LivePreviewEditor.axaml" value="src/HomeNotes.Desktop/HomeNotes.Desktop.csproj" />
         <entry key="src/HomeNotes.Desktop/Views/MainWindow.axaml" value="src/HomeNotes.Desktop/HomeNotes.Desktop.csproj" />
+        <entry key="src/HomeNotes.Desktop/Views/NotesWriteView.axaml" value="src/HomeNotes.Desktop/HomeNotes.Desktop.csproj" />
         <entry key="src/HomeNotes.Desktop/Views/RegisterView.axaml" value="src/HomeNotes.Desktop/HomeNotes.Desktop.csproj" />
         <entry key="src/HomeNotes.Desktop/Views/SignInControl.axaml" value="src/HomeNotes.Desktop/HomeNotes.Desktop.csproj" />
         <entry key="src/HomeNotes.Desktop/Views/SignUpControl.axaml" value="src/HomeNotes.Desktop/HomeNotes.Desktop.csproj" />

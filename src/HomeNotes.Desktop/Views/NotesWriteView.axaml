@@ -2,12 +2,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ae="using:AvaloniaEdit"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              xmlns:vm="clr-namespace:HomeNotes.Desktop.ViewModels"
              x:DataType="vm:NotesWriteViewModel"
              xmlns:views="using:HomeNotes.Desktop.Views"
              x:Class="HomeNotes.Desktop.Views.NotesWriteView" Background="#1F1F22">
-    
-    
-    
+
+    <Border Margin="12" Background="#17181A" CornerRadius="12">
+        <ae:TextEditor Name="Editor"
+                       FontFamily="Cascadia Code,Consolas,monospace"
+                       FontSize="15"
+                       ShowLineNumbers="False"
+                       WordWrap="True"
+                       Background="Transparent"
+                       Foreground="White"
+                       Padding="20" />
+    </Border>
+
 </UserControl>
