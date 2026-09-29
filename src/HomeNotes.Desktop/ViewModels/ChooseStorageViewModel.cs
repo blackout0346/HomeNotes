@@ -15,13 +15,13 @@ public partial class ChooseStorageViewModel : ViewModelBase
     public event Action? StorageReady;
     public event Action? BackRequested;
     public IStorage _storage;
-    public MainWindowViewModel _mainWindowViewModel;
+    
 
 
-    public ChooseStorageViewModel(IStorage storage, MainWindowViewModel mainWindowViewModel)
+    public ChooseStorageViewModel(IStorage storage)
     {
 
-        _mainWindowViewModel = mainWindowViewModel;
+   
         _storage = storage;
     }
 
@@ -66,4 +66,5 @@ public partial class ChooseStorageViewModel : ViewModelBase
     {
         BackRequested?.Invoke();
     }
+    
 }

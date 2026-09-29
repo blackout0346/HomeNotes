@@ -13,11 +13,11 @@ using Markdig.Syntax.Inlines;
 
 namespace HomeNotes.Desktop.Views
 {
-    public partial class LivePreviewEditor : UserControl
+    public partial class NotesWriteView : UserControl
     {
         
 
-        public LivePreviewEditor()
+        public NotesWriteView()
         {
             InitializeComponent();
 
