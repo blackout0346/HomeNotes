@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
-using System.Text;
+using System.Linq; // Обязательно для работы метода .Contains()
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -17,9 +17,10 @@ namespace HomeNotes.Desktop.ViewModels
         private readonly IDialogService _dialogService;
         private readonly string[] _filterfile = [".md", ".png", ".img", ".webp"];
 
-
         private FileSystemItem? _fileSystemItem;
-        [ObservableProperty] private ObservableCollection<FileSystemItem> _fileSystemItems = new();
+        
+        [ObservableProperty] 
+        private ObservableCollection<FileSystemItem> _fileSystemItems = new();
 
         public NotesWriteViewModel(IStorage storage, IDialogService dialogService, Guid? UserId = null)
         {
@@ -50,10 +51,7 @@ namespace HomeNotes.Desktop.ViewModels
                 return;
             }
 
-      
             var folderName = new DirectoryInfo(rootPath).Name;
-    
-
             if (string.IsNullOrWhiteSpace(folderName))
             {
                 folderName = rootPath; 
@@ -76,9 +74,10 @@ namespace HomeNotes.Desktop.ViewModels
             {
                 foreach (var dir in Directory.GetDirectories(node.Path))
                 {
-                    var dirNode = new FileSystemItem(System.IO.Path.GetFileName(dir), dir, true);
+                    var dirNode = new FileSystemItem(Path.GetFileName(dir), dir, true);
                     PopulateNode(dirNode);
-                    node.SubItems.Add(dirNode);
+           
+                    node.SubItems?.Add(dirNode);
                 }
 
                 var allFiles = Directory.GetFiles(node.Path);
@@ -87,14 +86,14 @@ namespace HomeNotes.Desktop.ViewModels
                     var extension = Path.GetExtension(file).ToLower();
                     if (_filterfile.Contains(extension))
                     {
-                        node.SubItems.Add(new FileSystemItem(Path.GetFileName(file), file, false));
+                   
+                        node.SubItems?.Add(new FileSystemItem(Path.GetFileName(file), file, false));
                     }
                 }
             }
-            catch (UnauthorizedAccessException e)
+            catch (UnauthorizedAccessException)
             {
-                Console.WriteLine(e);
-                throw;
+               
             }
         }
     }
