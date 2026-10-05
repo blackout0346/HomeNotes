@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
+using HomeNotes.Desktop.Interface;
 
 namespace HomeNotes.Desktop
 {
@@ -44,9 +45,18 @@ namespace HomeNotes.Desktop
             services.AddHttpClient<AttachmentClientService>("HomeNotesApi");
             services.AddHttpClient<SyncClientService>("HomeNotesApi");
             services.AddTransient<RegisterViewModel>();
-            services.AddTransient<MainWindowViewModel>();
+            services.AddSingleton<MainWindowViewModel>();
             services.AddTransient<NotesWriteViewModel>();
-           
+            services.AddTransient<ChooseStorageViewModel>();
+            services.AddTransient<IStorage, StorageService>();
+            services.AddTransient<IDialogService, DialogService>();
+
+            services.AddSingleton<Func<Guid?, NotesWriteViewModel>>(sp => id => 
+                new NotesWriteViewModel(
+                    sp.GetRequiredService<IStorage>(),
+                    sp.GetRequiredService<IDialogService>(),
+                    id
+                ));
             return services.BuildServiceProvider();
 
         }

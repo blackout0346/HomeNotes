@@ -1,12 +1,12 @@
-using Avalonia;
+﻿using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
 namespace HomeNotes.Desktop.Views;
 
-public partial class RegisterView : UserControl
+public partial class ChooseStorageView : UserControl
 {
-    public RegisterView()
+    public ChooseStorageView()
     {
         InitializeComponent();
     }
