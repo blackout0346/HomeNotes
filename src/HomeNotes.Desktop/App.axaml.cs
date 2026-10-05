@@ -19,27 +19,26 @@ namespace HomeNotes.Desktop
     {
         public IServiceProvider Services { get; }
         public IConfiguration Configuration { get; }
+
         public override void Initialize()
         {
             AvaloniaXamlLoader.Load(this);
         }
+
         public App()
         {
             var builder = new ConfigurationBuilder()
-         .SetBasePath(AppContext.BaseDirectory) 
-         .AddJsonFile("Application.json", optional: false, reloadOnChange: true); 
+                .SetBasePath(AppContext.BaseDirectory)
+                .AddJsonFile("Application.json", optional: false, reloadOnChange: true);
             Configuration = builder.Build();
             Services = ConfigureServices(Configuration);
-           
         }
+
         private static IServiceProvider ConfigureServices(IConfiguration configuration)
         {
             var baseurl = configuration["ApiSettings:BaseUrl"];
             var services = new ServiceCollection();
-            services.AddHttpClient("HomeNotesApi",client =>
-            {
-                client.BaseAddress = new Uri(baseurl); 
-            });
+            services.AddHttpClient("HomeNotesApi", client => { client.BaseAddress = new Uri(baseurl); });
             services.AddHttpClient<AuthClientService>("HomeNotesApi");
             services.AddHttpClient<NoteClientService>("HomeNotesApi");
             services.AddHttpClient<AttachmentClientService>("HomeNotesApi");
@@ -48,23 +47,26 @@ namespace HomeNotes.Desktop
             services.AddSingleton<MainWindowViewModel>();
             services.AddTransient<NotesWriteViewModel>();
             services.AddTransient<ChooseStorageViewModel>();
+            services.AddTransient<MarkdownLiveColorizer>();
             services.AddTransient<IStorage, StorageService>();
+            services.AddSingleton<FileSystemItem>();
             services.AddTransient<IDialogService, DialogService>();
 
-            services.AddSingleton<Func<Guid?, NotesWriteViewModel>>(sp => id => 
+            services.AddSingleton<Func<Guid?, NotesWriteViewModel>>(sp => id =>
                 new NotesWriteViewModel(
+                  
+                    sp.GetRequiredService<MarkdownLiveColorizer>(),
                     sp.GetRequiredService<IStorage>(),
                     sp.GetRequiredService<IDialogService>(),
                     id
                 ));
             return services.BuildServiceProvider();
-
         }
+
         public override void OnFrameworkInitializationCompleted()
         {
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
-         
                 var currentpage = Services.GetRequiredService<MainWindowViewModel>();
                 var register = Services.GetRequiredService<RegisterViewModel>();
                 currentpage.CurrentViewModel = register;
