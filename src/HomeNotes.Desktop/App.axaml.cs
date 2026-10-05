@@ -49,8 +49,14 @@ namespace HomeNotes.Desktop
             services.AddTransient<NotesWriteViewModel>();
             services.AddTransient<ChooseStorageViewModel>();
             services.AddTransient<IStorage, StorageService>();
+            services.AddTransient<IDialogService, DialogService>();
+
             services.AddSingleton<Func<Guid?, NotesWriteViewModel>>(sp => id => 
-                new NotesWriteViewModel(id));
+                new NotesWriteViewModel(
+                    sp.GetRequiredService<IStorage>(),
+                    sp.GetRequiredService<IDialogService>(),
+                    id
+                ));
             return services.BuildServiceProvider();
 
         }
