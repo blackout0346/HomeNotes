@@ -5,10 +5,11 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Avalonia.Media.Imaging;
-using AvaloniaEdit.Document; 
+using AvaloniaEdit.Document;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using HomeNotes.Desktop.Interface;
+using HomeNotes.Desktop.Markdown.Preview;
 using HomeNotes.Desktop.Markdown.Rendering;
 using HomeNotes.Desktop.Services;
 
@@ -16,10 +17,11 @@ namespace HomeNotes.Desktop.ViewModels
 {
     public partial class NotesWriteViewModel : ViewModelBase
     {
+        public string? VaultRootPath => _storage.StoragePath;
         private readonly IStorage _storage;
         private readonly IDialogService _dialogService;
         private readonly string[] _filterfile = [".md", ".png", ".img", ".webp"];
-
+        public MarkdownPreviewManager PreviewManager { get; }
         private readonly MarkdownLiveColorizer _colorizer;
         public MarkdownLiveColorizer Colorizer => _colorizer;
 
@@ -32,20 +34,24 @@ namespace HomeNotes.Desktop.ViewModels
         [ObservableProperty] private bool _isEditorVisible = false;
         [ObservableProperty] private bool _isImageVisible = false;
 
-       
+
         [ObservableProperty] private TextDocument _document = new();
 
         private CancellationTokenSource? _saveCts;
         private bool _isLoadingFile = false;
 
-        public NotesWriteViewModel(MarkdownLiveColorizer colorizer, IStorage storage, IDialogService dialogService,
+        public NotesWriteViewModel(
+            MarkdownLiveColorizer colorizer,
+            MarkdownPreviewManager previewManager,
+            IStorage storage,
+            IDialogService dialogService,
             Guid? UserId = null)
         {
             _colorizer = colorizer;
+            PreviewManager = previewManager;
             _storage = storage;
             _dialogService = dialogService;
 
-    
             Document.TextChanged += Document_TextChanged;
 
             LoadTree();
@@ -67,7 +73,7 @@ namespace HomeNotes.Desktop.ViewModels
         {
             FileSystemItems.Clear();
             var rootPath = _storage.StoragePath;
-
+            PreviewManager.VaultRootPath = rootPath;
             if (string.IsNullOrWhiteSpace(rootPath) || !Directory.Exists(rootPath)) return;
 
             var folderName = new DirectoryInfo(rootPath).Name;
@@ -106,7 +112,7 @@ namespace HomeNotes.Desktop.ViewModels
             }
         }
 
-     
+
         partial void OnSelectedItemChanged(FileSystemItem? value)
         {
             if (value == null || value.IsDirectory)
@@ -137,7 +143,7 @@ namespace HomeNotes.Desktop.ViewModels
 
                     Document = new TextDocument(text);
 
-                 
+
                     Document.TextChanged += Document_TextChanged;
                 }
                 catch (Exception ex)
@@ -163,10 +169,9 @@ namespace HomeNotes.Desktop.ViewModels
                     Console.WriteLine($"[LOG] ОШИБКА КАРТИНКИ: {ex.Message}");
                 }
             }
-          
         }
 
-       
+
         private void Document_TextChanged(object? sender, EventArgs e)
         {
             if (_isLoadingFile || SelectedItem == null || !IsEditorVisible) return;

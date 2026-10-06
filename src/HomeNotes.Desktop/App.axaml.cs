@@ -48,19 +48,27 @@ namespace HomeNotes.Desktop
             services.AddSingleton<MainWindowViewModel>();
             services.AddTransient<NotesWriteViewModel>();
             services.AddTransient<ChooseStorageViewModel>();
+
+
             services.AddTransient<MarkdownLiveColorizer>();
+
+
+            services.AddTransient<HomeNotes.Desktop.Markdown.Preview.MarkdownPreviewManager>();
+
             services.AddTransient<IStorage, StorageService>();
-            services.AddSingleton<FileSystemItem>();
+
+
             services.AddTransient<IDialogService, DialogService>();
 
             services.AddSingleton<Func<Guid?, NotesWriteViewModel>>(sp => id =>
                 new NotesWriteViewModel(
-                  
                     sp.GetRequiredService<MarkdownLiveColorizer>(),
+                    sp.GetRequiredService<HomeNotes.Desktop.Markdown.Preview.MarkdownPreviewManager>(),
                     sp.GetRequiredService<IStorage>(),
                     sp.GetRequiredService<IDialogService>(),
                     id
                 ));
+
             return services.BuildServiceProvider();
         }
 
