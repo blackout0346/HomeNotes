@@ -31,6 +31,9 @@ builder.Services.AddScoped<INotesService, NotesService>();
 builder.Services.AddScoped<IAttachmentsService, AttachmentsService>();
 builder.Services.AddScoped<IGetUserCurrentId, CurrentUserService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
@@ -50,13 +53,17 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 builder.Services.AddAuthorization();
 
 var app = builder.Build();
-
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();   // Генерирует JSON-спецификацию (по адресу /swagger/v1/swagger.json)
+    app.UseSwaggerUI(); // Включает веб-интерфейс (по адресу /swagger)
+}
 using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     //dbContext.Database.EnsureDeleted();
     //dbContext.Database.EnsureCreated();
-    dbContext.Database.Migrate();
+    // dbContext.Database.Migrate();
 
 }
 

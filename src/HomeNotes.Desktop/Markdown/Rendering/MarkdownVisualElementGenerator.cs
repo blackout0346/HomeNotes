@@ -1,4 +1,6 @@
-﻿using AvaloniaEdit.Rendering;
+﻿using System;
+using Avalonia.Controls;
+using AvaloniaEdit.Rendering;
 using HomeNotes.Desktop.Markdown.Parser;
 using HomeNotes.Desktop.Markdown.Preview;
 using HomeNotes.Desktop.Markdown.Storage;
@@ -26,33 +28,75 @@ namespace HomeNotes.Desktop.Markdown.Rendering;
  
         public override int GetFirstInterestedOffset(int startOffset)
         {
+            Console.WriteLine(
+                $"[GENERATOR] GetFirstInterestedOffset start={startOffset}");
+            int result = -1;
+
             foreach (var block in _state.Blocks)
             {
-                if (block.StartOffset < startOffset) continue;
-                if (_state.IsCaretInsideBlock(block)) continue;
-                return block.StartOffset;
+                if (block.StartOffset < startOffset)
+                    continue;
+
+                if (_state.IsCaretInsideBlock(block))
+                    continue;
+
+                if (result == -1 ||
+                    block.StartOffset < result)
+                {
+                    result = block.StartOffset;
+                }
             }
-            return -1;
+            Console.WriteLine($"[GENERATOR] result={result}");
+
+            return result;
         }
  
         public override VisualLineElement? ConstructElement(int offset)
         {
+            Console.WriteLine($"[GENERATOR] ConstructElement offset={offset}");
             foreach (var block in _state.Blocks)
             {
-                if (block.StartOffset != offset) continue;
-                if (_state.IsCaretInsideBlock(block)) continue;
- 
-                var control = block switch
+                Console.WriteLine(
+                    $"[GENERATOR] block={block.GetType().Name}, " +
+                    $"Start={block.StartOffset}, End={block.EndOffset}");
+                if (block.StartOffset != offset)
+                    continue;
+
+                if (_state.IsCaretInsideBlock(block))
+                    continue;
+                Console.WriteLine("[GENERATOR] НАШЛИ BLOCK!");
+
+                Control? control = null;
+
+                var image = block as MarkdownImageBlock;
+
+                if (image != null)
                 {
-                    MarkdownImageBlock image => MarkdownImageElement.Build(
-                        MarkdownImageLoader.Load(image.Url, VaultRootPath), image.AltText),
-                    MarkdownTableBlock table => MarkdownTableElement.Build(table),
-                    _ => null
-                };
- 
-                if (control == null) continue;
-                return new InlineObjectElement(block.DocumentLength, control);
+                    control = MarkdownImageElement.Build(
+                        MarkdownImageLoader.Load(
+                            image.Url,
+                            VaultRootPath),
+                        image.AltText);
+                }
+
+                var table = block as MarkdownTableBlock;
+
+                if (table != null)
+                {
+                    control = MarkdownTableElement.Build(table);
+                }
+
+                if (control == null)
+                    continue;
+
+                if (block.StartLine != block.EndLine)
+                    continue;
+
+                return new InlineObjectElement(
+                    block.DocumentLength,
+                    control);
             }
+
             return null;
         }
     }

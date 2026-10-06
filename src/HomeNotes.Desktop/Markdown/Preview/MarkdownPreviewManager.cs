@@ -59,9 +59,45 @@ public class MarkdownPreviewManager : IDisposable
 
     private void Reparse()
     {
-        if (_editor == null) return;
+        if (_editor == null)
+            return;
+
         State.Blocks = MarkdownBlockParser.Parse(_editor.Document);
+
+        foreach (var block in State.Blocks)
+        {
+            Console.WriteLine(
+                $"[PREVIEW] {block.GetType().Name}: " +
+                $"Start={block.StartOffset}, End={block.EndOffset}, " +
+                $"StartLine={block.StartLine}, " +
+                $"EndLine={block.EndLine}");
+        }
     }
 
+    public void Refresh()
+    {
+        if (_editor == null)
+            return;
+
+        Reparse();
+        UpdateCaretLine();
+        _editor.TextArea.TextView.Redraw();
+    }
+    public void OnDocumentChanged()
+    {
+        if (_editor == null)
+            return;
+
+        _editor.Document.TextChanged -= OnTextChanged;
+
+        _generator = null;
+
+        Reparse();
+
+        _editor.Document.TextChanged += OnTextChanged;
+
+        UpdateCaretLine();
+        _editor.TextArea.TextView.Redraw();
+    }
     public void Dispose() => Detach();
 }

@@ -136,13 +136,9 @@ namespace HomeNotes.Desktop.ViewModels
                 {
                     var text = File.ReadAllText(value.Path);
 
-                    if (Document != null)
-                    {
-                        Document.TextChanged -= Document_TextChanged;
-                    }
+                    Document.TextChanged -= Document_TextChanged;
 
-                    Document = new TextDocument(text);
-
+                    Document.Text = text;
 
                     Document.TextChanged += Document_TextChanged;
                 }
