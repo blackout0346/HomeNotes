@@ -5,10 +5,11 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Avalonia.Media.Imaging;
-using AvaloniaEdit.Document; // Обязательно для TextDocument
+using AvaloniaEdit.Document; 
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using HomeNotes.Desktop.Interface;
+using HomeNotes.Desktop.Markdown.Rendering;
 using HomeNotes.Desktop.Services;
 
 namespace HomeNotes.Desktop.ViewModels
@@ -31,7 +32,7 @@ namespace HomeNotes.Desktop.ViewModels
         [ObservableProperty] private bool _isEditorVisible = false;
         [ObservableProperty] private bool _isImageVisible = false;
 
-        // НАТИВНЫЙ ДОКУМЕНТ AVALONIAEDIT
+       
         [ObservableProperty] private TextDocument _document = new();
 
         private CancellationTokenSource? _saveCts;
@@ -44,10 +45,10 @@ namespace HomeNotes.Desktop.ViewModels
             _storage = storage;
             _dialogService = dialogService;
 
-            // Напрямую отслеживаем ввод пользователя
+    
             Document.TextChanged += Document_TextChanged;
 
-            loadTree();
+            LoadTree();
         }
 
         [RelayCommand]
@@ -58,11 +59,11 @@ namespace HomeNotes.Desktop.ViewModels
             {
                 _storage.StoragePath = path;
                 _storage.Save();
-                loadTree();
+                LoadTree();
             }
         }
 
-        public void loadTree()
+        public void LoadTree()
         {
             FileSystemItems.Clear();
             var rootPath = _storage.StoragePath;
@@ -105,7 +106,7 @@ namespace HomeNotes.Desktop.ViewModels
             }
         }
 
-        // Вызывается при клике на файл в TreeView
+     
         partial void OnSelectedItemChanged(FileSystemItem? value)
         {
             if (value == null || value.IsDirectory)
@@ -136,7 +137,7 @@ namespace HomeNotes.Desktop.ViewModels
 
                     Document = new TextDocument(text);
 
-                    // 3. Подписываемся на новый документ для автосохранения
+                 
                     Document.TextChanged += Document_TextChanged;
                 }
                 catch (Exception ex)
@@ -162,12 +163,10 @@ namespace HomeNotes.Desktop.ViewModels
                     Console.WriteLine($"[LOG] ОШИБКА КАРТИНКИ: {ex.Message}");
                 }
             }
-            else
-            {
-            }
+          
         }
 
-        // Вызывается при наборе текста (событие TextChanged)
+       
         private void Document_TextChanged(object? sender, EventArgs e)
         {
             if (_isLoadingFile || SelectedItem == null || !IsEditorVisible) return;

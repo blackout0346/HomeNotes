@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
 using HomeNotes.Desktop.Interface;
+using HomeNotes.Desktop.Markdown.Rendering;
 
 namespace HomeNotes.Desktop
 {

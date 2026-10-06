@@ -32,7 +32,7 @@
 
     </UserControl.Styles>
 
-    <Grid RowDefinitions="*,Auto" ColumnDefinitions="*,*" ShowGridLines="True">
+    <Grid RowDefinitions="*,Auto" ColumnDefinitions="*,*" >
         <Border Grid.Column="0" Grid.RowSpan="2">
             <Border.Background>
                 <ImageBrush Source="/Assets/Background-Authentication.png"

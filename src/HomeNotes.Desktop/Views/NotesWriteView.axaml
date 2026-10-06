@@ -54,7 +54,7 @@
                 <!-- ИСПОЛЬЗУЕМ НАТИВНЫЙ DOCUMENT + COLORIZER ИЗ HELPERS: -->
                 <ae:TextEditor Name="Editor"
                                Document="{Binding Document}"
-                   
+                               helpers:EditorBehavior.Colorizer="{Binding Colorizer}"
                                IsVisible="{Binding IsEditorVisible}"
                                FontFamily="Cascadia Code,Consolas,monospace"
                                FontSize="15"
@@ -64,7 +64,7 @@
                                Foreground="White"
                                Padding="20" />
                                
-                <Image Source="{Binding SelectedImage }"
+                <Image Source="{Binding SelectedImage}"
                        IsVisible="{Binding IsImageVisible}"
                        Stretch="Uniform"
                        Margin="20" />
