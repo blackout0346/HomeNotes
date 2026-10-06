@@ -3,58 +3,42 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:ae="using:AvaloniaEdit"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             xmlns:vm="clr-namespace:HomeNotes.Desktop.ViewModels"
-             xmlns:srv="using:HomeNotes.Desktop.Services"
              xmlns:helpers="using:HomeNotes.Desktop.Helpers"
+             mc:Ignorable="d" d:DesignWidth="1100" d:DesignHeight="650"
+             xmlns:vm="clr-namespace:HomeNotes.Desktop.ViewModels"
              x:DataType="vm:NotesWriteViewModel"
              x:Class="HomeNotes.Desktop.Views.NotesWriteView" Background="#1F1F22">
 
-    <Grid ColumnDefinitions="250, 8, *">
-        
-        <Grid Grid.Column="0" RowDefinitions="*,Auto" Margin="12,12,0,12">
-            <Border Grid.Row="0" Background="#17181A" CornerRadius="16">
-                <TreeView ItemsSource="{Binding FileSystemItems}" 
+    <Grid ColumnDefinitions="260,Auto,*">
+
+        <!-- ===== Дерево файлов/папок ===== -->
+        <Border Grid.Column="0" Background="#17181A" CornerRadius="16,0,0,16">
+            <DockPanel Margin="8">
+                <Button DockPanel.Dock="Top" Content="Сменить папку"
+                        Command="{Binding ChangeFolderCommand}"
+                        Margin="4,4,4,10" Background="#31353b" Foreground="White" CornerRadius="8" />
+
+                <TreeView ItemsSource="{Binding FileSystemItems}"
                           SelectedItem="{Binding SelectedItem}"
-                          Background="Transparent">
-
-                    <TreeView.Styles>
-                        <Style Selector="TreeViewItem">
-                            <Setter Property="IsExpanded" Value="True" />
-                            <Setter Property="MinHeight" Value="32" />
-                            <Setter Property="CornerRadius" Value="6" />
-                            <Setter Property="Margin" Value="0,1" />
-                        </Style>
-                        <Style Selector="TreeViewItem /template/ Border#PART_LayoutRoot:pointerover">
-                            <Setter Property="Background" Value="#252528" />
-                        </Style>
-                        <Style Selector="TreeViewItem:selected /template/ Border#PART_LayoutRoot">
-                            <Setter Property="Background" Value="#333333" />
-                        </Style>
-                    </TreeView.Styles>
-
+                          Background="Transparent" BorderThickness="0">
                     <TreeView.ItemTemplate>
-                        <TreeDataTemplate DataType="srv:FileSystemItem" ItemsSource="{Binding SubItems}">
-                            <Grid ColumnDefinitions="*, Auto" Margin="4,2">
-                                <TextBlock Grid.Column="0" Text="{Binding DisplayName}" Foreground="#D4D4D4" FontSize="14" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" />
-                                <TextBlock Grid.Column="1" Text="{Binding ExtensionTag}" Foreground="#777777" FontSize="11" FontWeight="SemiBold" VerticalAlignment="Center" Margin="12,0,4,0" />
-                            </Grid>
+                        <TreeDataTemplate ItemsSource="{Binding SubItems}">
+                            <TextBlock Text="{Binding Name}" Foreground="White" />
                         </TreeDataTemplate>
                     </TreeView.ItemTemplate>
                 </TreeView>
-            </Border>
+            </DockPanel>
+        </Border>
 
-            <Button Grid.Row="1" Content="Сменить папку" Command="{Binding ChangeFolderCommand}" Background="#811FFF" Foreground="White" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" CornerRadius="8" Margin="0,12,0,0" />
-        </Grid>
+        <GridSplitter Grid.Column="1" Width="6" Background="#1F1F22" ResizeDirection="Columns" />
 
-        <GridSplitter Grid.Column="1" Background="Transparent" ResizeDirection="Columns" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MaxHeight="100"/>
-
-        <Border Grid.Column="2" Margin="0,12,12,12" Background="#17181A" CornerRadius="12">
-            <Panel>
-                <!-- ИСПОЛЬЗУЕМ НАТИВНЫЙ DOCUMENT + COLORIZER ИЗ HELPERS: -->
+        <!-- ===== Редактор с живым превью (картинки/таблицы — настоящие виджеты) ===== -->
+        <Border Grid.Column="2" Background="#17181A" CornerRadius="0,16,16,0">
+            <Grid>
                 <ae:TextEditor Name="Editor"
                                Document="{Binding Document}"
                                helpers:EditorBehavior.Colorizer="{Binding Colorizer}"
+                               helpers:EditorBehavior.PreviewManager="{Binding PreviewManager}"
                                IsVisible="{Binding IsEditorVisible}"
                                FontFamily="Cascadia Code,Consolas,monospace"
                                FontSize="15"
@@ -63,13 +47,13 @@
                                Background="Transparent"
                                Foreground="White"
                                Padding="20" />
-                               
-                <Image Source="{Binding SelectedImage}"
-                       IsVisible="{Binding IsImageVisible}"
+
+                <Image IsVisible="{Binding IsImageVisible}"
+                       Source="{Binding SelectedImage}"
                        Stretch="Uniform"
                        Margin="20" />
-            </Panel>
+            </Grid>
         </Border>
-      
+
     </Grid>
 </UserControl>
