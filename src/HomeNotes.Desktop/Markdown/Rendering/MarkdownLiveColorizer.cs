@@ -3,6 +3,7 @@ using System.Text.RegularExpressions;
 using Avalonia.Media;
 using AvaloniaEdit.Document;
 using AvaloniaEdit.Rendering;
+using HomeNotes.Desktop.Markdown.Parser;
 
 namespace HomeNotes.Desktop.Markdown.Rendering
 {
@@ -13,12 +14,9 @@ namespace HomeNotes.Desktop.Markdown.Rendering
         private static readonly IBrush DimBrush = new SolidColorBrush(Color.Parse("#5A5D63"));
         private static readonly IBrush HeadingBrush = new SolidColorBrush(Colors.White);
         private static readonly IBrush AccentBrush = new SolidColorBrush(Color.Parse("#811FFF"));
-        private static readonly IBrush CodeBrush = new SolidColorBrush(Color.Parse("#F2C078")); // Обычный цвет кода
+        private static readonly IBrush CodeBrush = new SolidColorBrush(Color.Parse("#F2C078"));
         private static readonly IBrush CodeBackground = new SolidColorBrush(Color.Parse("#17181A"));
-        
-        // НОВЫЙ ЦВЕТ: Очень яркий желто-оранжевый специально для активных кавычек ```
-        private static readonly IBrush CodeMarkerActiveBrush = new SolidColorBrush(Color.Parse("#47bfbc")); 
-        
+        private static readonly IBrush CodeMarkerActiveBrush = new SolidColorBrush(Color.Parse("#FFC600")); 
         private static readonly IBrush QuoteBrush = new SolidColorBrush(Color.Parse("#9AA0A6"));
         private static readonly IBrush LinkBrush = new SolidColorBrush(Color.Parse("#811FFF"));
         private static readonly IBrush HighlightBackground = new SolidColorBrush(Color.Parse("#F5D76E"));
@@ -50,17 +48,6 @@ namespace HomeNotes.Desktop.Markdown.Rendering
                 int lineStart = line.Offset;
                 bool isActiveLine = CaretOffset >= line.Offset && CaretOffset <= line.EndOffset;
 
-                bool inCodeBlock = false;
-                for (int i = 1; i < line.LineNumber; i++)
-                {
-                    var prevLine = CurrentContext.Document.GetLineByNumber(i);
-                    var prevText = CurrentContext.Document.GetText(prevLine).TrimStart();
-                    if (prevText.StartsWith("```"))
-                    {
-                        inCodeBlock = !inCodeBlock;
-                    }
-                }
-
                 void SafeChangeLinePart(int start, int end, Action<VisualLineElement> action)
                 {
                     if (start < end && start >= line.Offset && end <= line.EndOffset)
@@ -82,6 +69,37 @@ namespace HomeNotes.Desktop.Markdown.Rendering
                     }
                 }
 
+                // ---- Проверка на строки неактивной таблицы (разделитель и строки данных) ----
+                var blocks = MarkdownBlockParser.Parse(CurrentContext.Document);
+                foreach (var block in blocks)
+                {
+                    if (block is MarkdownTableBlock tableBlock)
+                    {
+                        bool caretInTable = CaretOffset >= tableBlock.StartOffset && CaretOffset <= tableBlock.EndOffset;
+                        if (!caretInTable && line.LineNumber > tableBlock.StartLine && line.LineNumber <= tableBlock.EndLine)
+                        {
+                            // Схлопываем строку под виджетом таблицы в ноль
+                            SafeChangeLinePart(lineStart, line.EndOffset, el =>
+                            {
+                                el.TextRunProperties.SetForegroundBrush(Brushes.Transparent);
+                                el.TextRunProperties.SetFontRenderingEmSize(0.01);
+                            });
+                            return;
+                        }
+                    }
+                }
+
+                bool inCodeBlock = false;
+                for (int i = 1; i < line.LineNumber; i++)
+                {
+                    var prevLine = CurrentContext.Document.GetLineByNumber(i);
+                    var prevText = CurrentContext.Document.GetText(prevLine).TrimStart();
+                    if (prevText.StartsWith("```"))
+                    {
+                        inCodeBlock = !inCodeBlock;
+                    }
+                }
+
                 // ---- Границы многострочных блоков кода ----
                 if (text.TrimStart().StartsWith("```"))
                 {
@@ -89,7 +107,6 @@ namespace HomeNotes.Desktop.Markdown.Rendering
                     {
                         if (isActiveLine)
                         {
-                      
                             el.TextRunProperties.SetForegroundBrush(CodeMarkerActiveBrush); 
                             el.TextRunProperties.SetTypeface(new Typeface(el.TextRunProperties.Typeface.FontFamily, FontStyle.Normal, FontWeight.Bold));
                         }

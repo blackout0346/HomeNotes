@@ -19,6 +19,7 @@ public class EditorBehavior
     public static readonly AttachedProperty<MarkdownPreviewManager?> PreviewManagerProperty =
         AvaloniaProperty.RegisterAttached<EditorBehavior, TextEditor, MarkdownPreviewManager?>("PreviewManager");
 
+
     static EditorBehavior()
     {
         ColorizerProperty.Changed.AddClassHandler<TextEditor>(OnColorizerChanged);

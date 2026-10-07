@@ -11,7 +11,6 @@
 
     <Grid ColumnDefinitions="260,Auto,*">
 
-        <!-- ===== Дерево файлов/папок ===== -->
         <Border Grid.Column="0" Background="#17181A" CornerRadius="16,0,0,16">
             <DockPanel Margin="8">
                 <Button DockPanel.Dock="Top" Content="Сменить папку"
@@ -32,9 +31,9 @@
 
         <GridSplitter Grid.Column="1" Width="6" Background="#1F1F22" ResizeDirection="Columns" />
 
-        <!-- ===== Редактор с живым превью (картинки/таблицы — настоящие виджеты) ===== -->
         <Border Grid.Column="2" Background="#17181A" CornerRadius="0,16,16,0">
             <Grid>
+            
                 <ae:TextEditor Name="Editor"
                                Document="{Binding Document}"
                                helpers:EditorBehavior.Colorizer="{Binding Colorizer}"
@@ -54,6 +53,5 @@
                        Margin="20" />
             </Grid>
         </Border>
-
     </Grid>
 </UserControl>

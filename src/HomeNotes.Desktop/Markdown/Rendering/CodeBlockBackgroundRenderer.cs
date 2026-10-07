@@ -29,7 +29,7 @@ namespace HomeNotes.Desktop.Markdown.Rendering
            
             foreach (var block in codeBlocks)
             {
-                // Координаты относительно НАЧАЛА ДОКУМЕНТА
+               
                 double documentTop =
                     textView.GetVisualTopByDocumentLine(block.StartLine);
 
@@ -51,16 +51,15 @@ namespace HomeNotes.Desktop.Markdown.Rendering
                         lastVisualLine.Height;
                 }
 
-                // Переводим координаты документа
-                // в координаты текущего viewport
+            
                 double top = documentTop - scrollY;
                 double bottom = documentBottom - scrollY;
 
-                // Небольшой отступ
+              
                 top -= 2;
                 bottom += 2;
 
-                // Если блок полностью за экраном — не рисуем
+
                 if (bottom < 0 || top > textView.Bounds.Height)
                     continue;
 

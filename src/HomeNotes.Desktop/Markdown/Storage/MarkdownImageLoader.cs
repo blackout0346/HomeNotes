@@ -37,8 +37,6 @@ public static class MarkdownImageLoader
             return null;
         }
     }
- 
-    // Вызывайте при удалении/переименовании вложений — иначе старые битмапы
-    // могут держаться в памяти дольше, чем нужно.
+
     public static void ClearCache() => Cache.Clear();
 }

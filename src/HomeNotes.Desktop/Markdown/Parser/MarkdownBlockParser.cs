@@ -9,8 +9,6 @@ namespace HomeNotes.Desktop.Markdown.Parser
     public static class MarkdownBlockParser
     {
         private static readonly Regex ImageRegex = new(@"!\[([^\]]*)\]\(([^)]+)\)", RegexOptions.Compiled);
-        // Obsidian wiki-embed: ![[файл.png]] или ![[файл.png|подпись]] — без обычного "(url)",
-        // имя файла одновременно и путь, и подпись (если после "|" ничего не задано).
         private static readonly Regex WikiImageRegex = new(@"!\[\[([^\]|]+)(?:\|[^\]]*)?\]\]", RegexOptions.Compiled);
         private static readonly Regex TableSeparatorRegex =
             new(@"^\s*\|?\s*:?-+:?\s*(?:\|\s*:?-+:?\s*)+\|?\s*$", RegexOptions.Compiled);
@@ -30,7 +28,7 @@ namespace HomeNotes.Desktop.Markdown.Parser
                 var line = document.GetLineByNumber(lineNumber);
                 var text = document.GetText(line);
 
-                // ---- 1. Блоки многострочного кода ----
+            
                 var codeMatch = CodeBlockRegex.Match(text);
                 if (codeMatch.Success)
                 {
@@ -57,14 +55,14 @@ namespace HomeNotes.Desktop.Markdown.Parser
                     continue;
                 }
 
-                // Игнорируем всё остальное, если находимся внутри кода
+    
                 if (inCodeBlock)
                 {
                     lineNumber++;
                     continue;
                 }
 
-                // ---- 2. Картинка ![alt](url) ----
+              
                 var imageMatch = ImageRegex.Match(text);
                 if (imageMatch.Success)
                 {
@@ -79,7 +77,7 @@ namespace HomeNotes.Desktop.Markdown.Parser
                     });
                 }
 
-                // ---- 3. Obsidian wiki-embed ![[файл.png]] ----
+          
                 var wikiImageMatch = WikiImageRegex.Match(text);
                 if (wikiImageMatch.Success)
                 {
@@ -95,7 +93,7 @@ namespace HomeNotes.Desktop.Markdown.Parser
                     });
                 }
 
-                // ---- 4. Таблица ----
+              
                 if (lineNumber < document.LineCount && text.Contains('|'))
                 {
                     var nextLine = document.GetLineByNumber(lineNumber + 1);
@@ -109,7 +107,7 @@ namespace HomeNotes.Desktop.Markdown.Parser
                 lineNumber++;
             }
 
-            // Если конец файла, а кавычки не закрыты — блок тянется до конца
+           
             if (inCodeBlock)
             {
                 var lastLine = document.GetLineByNumber(document.LineCount);

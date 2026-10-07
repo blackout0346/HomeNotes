@@ -1,63 +1,84 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Layout;
 using Avalonia.Media;
-using HomeNotes.Desktop.Markdown.Enum;
 using HomeNotes.Desktop.Markdown.Parser;
+using HomeNotes.Desktop.Markdown.Enum;
 
-namespace HomeNotes.Desktop.Markdown.Rendering;
-
- public static class MarkdownTableElement
+namespace HomeNotes.Desktop.Markdown.Rendering
+{
+    public static class MarkdownTableElement
     {
-        public static Control Build(MarkdownTableBlock table)
+        public static Control Build(MarkdownTableBlock tableBlock)
         {
-            var grid = new Grid { Margin = new Thickness(0, 6) };
- 
-            for (int c = 0; c < table.Headers.Count; c++)
-                grid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto, MinWidth = 80 });
- 
-            for (int r = 0; r <= table.Rows.Count; r++)
-                grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
- 
-            for (int c = 0; c < table.Headers.Count; c++)
-                grid.Children.Add(MakeCell(table.Headers[c], table.Alignments[c], true, 0, c));
- 
-            for (int r = 0; r < table.Rows.Count; r++)
+            var grid = new Grid
             {
-                var row = table.Rows[r];
-                for (int c = 0; c < table.Headers.Count; c++)
+                Margin = new Thickness(0, 10, 0, 10)
+            };
+
+            for (int i = 0; i < tableBlock.Headers.Count; i++)
+            {
+                grid.ColumnDefinitions.Add(new ColumnDefinition(GridLength.Auto));
+            }
+
+            int totalRows = 1 + tableBlock.Rows.Count;
+            for (int i = 0; i < totalRows; i++)
+            {
+                grid.RowDefinitions.Add(new RowDefinition(GridLength.Auto));
+            }
+
+            // Цвет рамок как в Obsidian
+            var borderBrush = new SolidColorBrush(Color.Parse("#3C3F46"));
+
+            void AddCell(string text, int row, int col, bool isHeader, MarkdownColumnAlignment alignment)
+            {
+                var textBlock = new TextBlock
                 {
-                    var text = c < row.Count ? row[c] : "";
-                    var align = c < table.Alignments.Count ? table.Alignments[c] : MarkdownColumnAlignment.Left;
-                    grid.Children.Add(MakeCell(text, align, false, r + 1, c));
+                    Text = text,
+                    Foreground = Brushes.White,
+                    FontWeight = isHeader ? FontWeight.Bold : FontWeight.Normal,
+                    Margin = new Thickness(12, 6),
+                    TextAlignment = alignment == MarkdownColumnAlignment.Center ? TextAlignment.Center :
+                                    alignment == MarkdownColumnAlignment.Right ? TextAlignment.Right :
+                                    TextAlignment.Left,
+                    VerticalAlignment = VerticalAlignment.Center
+                };
+
+                var border = new Border
+                {
+                    BorderBrush = borderBrush,
+                    // Чтобы рамки не дублировались, рисуем их только снизу и справа, 
+                    // а для первой строки и первого столбца добавляем верхнюю/левую грань
+                    BorderThickness = new Thickness(
+                        col == 0 ? 1 : 0, 
+                        row == 0 ? 1 : 0, 
+                        1, 
+                        1),
+                    Child = textBlock
+                };
+
+                Grid.SetRow(border, row);
+                Grid.SetColumn(border, col);
+                grid.Children.Add(border);
+            }
+
+            for (int col = 0; col < tableBlock.Headers.Count; col++)
+            {
+                var alignment = col < tableBlock.Alignments.Count ? tableBlock.Alignments[col] : MarkdownColumnAlignment.Left;
+                AddCell(tableBlock.Headers[col], 0, col, true, alignment);
+            }
+
+            for (int row = 0; row < tableBlock.Rows.Count; row++)
+            {
+                for (int col = 0; col < tableBlock.Headers.Count; col++)
+                {
+                    var cellText = col < tableBlock.Rows[row].Count ? tableBlock.Rows[row][col] : string.Empty;
+                    var alignment = col < tableBlock.Alignments.Count ? tableBlock.Alignments[col] : MarkdownColumnAlignment.Left;
+                    AddCell(cellText, row + 1, col, false, alignment);
                 }
             }
- 
-            return new Border
-            {
-                Background = new SolidColorBrush(Color.Parse("#17181A")),
-                CornerRadius = new CornerRadius(8),
-                Padding = new Thickness(10),
-                Child = grid
-            };
-        }
- 
-        private static Control MakeCell(string text, MarkdownColumnAlignment align, bool isHeader, int row, int col)
-        {
-            var tb = new TextBlock
-            {
-                Text = text,
-                Foreground = Brushes.White,
-                FontWeight = isHeader ? FontWeight.Bold : FontWeight.Normal,
-                Margin = new Thickness(10, 4),
-                TextAlignment = align switch
-                {
-                    MarkdownColumnAlignment.Center => TextAlignment.Center,
-                    MarkdownColumnAlignment.Right => TextAlignment.Right,
-                    _ => TextAlignment.Left
-                }
-            };
-            Grid.SetRow(tb, row);
-            Grid.SetColumn(tb, col);
-            return tb;
+
+            return grid;
         }
     }
+}
