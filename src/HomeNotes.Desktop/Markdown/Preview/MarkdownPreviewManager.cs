@@ -43,7 +43,6 @@ namespace HomeNotes.Desktop.Markdown.Preview
         private void OnTextChanged(object? sender, EventArgs e)
         {
             Reparse();
-            _editor?.TextArea.TextView.Redraw();
         }
 
         private void OnCaretChanged(object? sender, EventArgs e) => UpdateCaretLine();

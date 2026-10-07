@@ -29,7 +29,7 @@ public class EditorBehavior
     public static MarkdownPreviewManager? GetPreviewManager(TextEditor element) => element.GetValue(PreviewManagerProperty);
     public static void SetPreviewManager(TextEditor element, MarkdownPreviewManager? value) => element.SetValue(PreviewManagerProperty, value);
 
-    // Обработчик подключения менеджера таблиц и картинок
+ 
     private static void OnPreviewManagerChanged(TextEditor editor, AvaloniaPropertyChangedEventArgs e)
     {
         if (e.OldValue is MarkdownPreviewManager oldManager)

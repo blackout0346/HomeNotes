@@ -1,4 +1,5 @@
-﻿using Avalonia.Controls;
+﻿using System;
+using Avalonia.Controls;
 using AvaloniaEdit.Rendering;
 using HomeNotes.Desktop.Markdown.Parser;
 using HomeNotes.Desktop.Markdown.Preview;
@@ -18,8 +19,14 @@ namespace HomeNotes.Desktop.Markdown.Rendering
 
         public override int GetFirstInterestedOffset(int startOffset)
         {
+            var document = CurrentContext.Document;
+            if (document == null) return -1;
+
             foreach (var block in _state.Blocks)
             {
+              
+                if (block.StartOffset > document.TextLength) continue;
+
                 if (block.StartOffset >= startOffset)
                 {
                     if (_state.IsCaretInsideBlock(block)) continue;
@@ -35,6 +42,9 @@ namespace HomeNotes.Desktop.Markdown.Rendering
 
         public override VisualLineElement? ConstructElement(int offset)
         {
+            var document = CurrentContext.Document;
+            if (document == null) return null;
+
             foreach (var block in _state.Blocks)
             {
                 if (block.StartOffset == offset)
@@ -55,15 +65,17 @@ namespace HomeNotes.Desktop.Markdown.Rendering
 
                     if (control != null)
                     {
-                        var document = CurrentContext.Document;
-                        var startLine = document.GetLineByNumber(block.StartLine);
-                        
-                      
-                        int lengthToReplace = block is MarkdownTableBlock 
-                            ? startLine.EndOffset - offset 
-                            : block.DocumentLength;
+                       
+                        var currentLine = document.GetLineByOffset(offset);
+                        int maxAvailableInLine = currentLine.EndOffset - offset;
 
-                        return new InlineObjectElement(lengthToReplace, control);
+                        int desiredLength = block is MarkdownTableBlock
+                            ? maxAvailableInLine
+                            : Math.Min(block.DocumentLength, maxAvailableInLine);
+
+                        if (desiredLength <= 0) return null;
+
+                        return new InlineObjectElement(desiredLength, control);
                     }
                 }
             }
