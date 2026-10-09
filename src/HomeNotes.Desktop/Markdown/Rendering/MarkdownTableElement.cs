@@ -1,4 +1,5 @@
-﻿using Avalonia;
+﻿using System;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Layout;
 using Avalonia.Media;
@@ -9,7 +10,9 @@ namespace HomeNotes.Desktop.Markdown.Rendering
 {
     public static class MarkdownTableElement
     {
-        public static Control Build(MarkdownTableBlock tableBlock)
+        public static Control Build(
+            MarkdownTableBlock tableBlock,
+            Action<int, int, string>? onCellChanged = null)
         {
             var grid = new Grid
             {
@@ -17,44 +20,60 @@ namespace HomeNotes.Desktop.Markdown.Rendering
             };
 
             for (int i = 0; i < tableBlock.Headers.Count; i++)
-            {
-                grid.ColumnDefinitions.Add(new ColumnDefinition(GridLength.Auto));
-            }
+                grid.ColumnDefinitions.Add(
+                    new ColumnDefinition(GridLength.Auto));
 
             int totalRows = 1 + tableBlock.Rows.Count;
+
             for (int i = 0; i < totalRows; i++)
-            {
-                grid.RowDefinitions.Add(new RowDefinition(GridLength.Auto));
-            }
+                grid.RowDefinitions.Add(
+                    new RowDefinition(GridLength.Auto));
 
-            // Цвет рамок как в Obsidian
-            var borderBrush = new SolidColorBrush(Color.Parse("#3C3F46"));
+            var borderBrush =
+                new SolidColorBrush(Color.Parse("#3C3F46"));
 
-            void AddCell(string text, int row, int col, bool isHeader, MarkdownColumnAlignment alignment)
+            void AddCell(
+                string text,
+                int row,
+                int col,
+                bool isHeader,
+                MarkdownColumnAlignment alignment)
             {
-                var textBlock = new TextBlock
+                var textBox = new TextBox
                 {
                     Text = text,
                     Foreground = Brushes.White,
-                    FontWeight = isHeader ? FontWeight.Bold : FontWeight.Normal,
-                    Margin = new Thickness(12, 6),
-                    TextAlignment = alignment == MarkdownColumnAlignment.Center ? TextAlignment.Center :
-                                    alignment == MarkdownColumnAlignment.Right ? TextAlignment.Right :
-                                    TextAlignment.Left,
-                    VerticalAlignment = VerticalAlignment.Center
+                    Background = Brushes.Transparent,
+                    BorderThickness = new Thickness(0),
+                    FontWeight = isHeader
+                        ? FontWeight.Bold
+                        : FontWeight.Normal,
+                    Padding = new Thickness(12, 6),
+                    MinWidth = 80,
+                    VerticalContentAlignment = VerticalAlignment.Center,
+                    TextAlignment =
+                        alignment == MarkdownColumnAlignment.Center
+                            ? TextAlignment.Center
+                            : alignment == MarkdownColumnAlignment.Right
+                                ? TextAlignment.Right
+                                : TextAlignment.Left
+                };
+
+                // Передаём новое значение при завершении редактирования.
+                textBox.LostFocus += (_, _) =>
+                {
+                    onCellChanged?.Invoke(row, col, textBox.Text ?? "");
                 };
 
                 var border = new Border
                 {
                     BorderBrush = borderBrush,
-                    // Чтобы рамки не дублировались, рисуем их только снизу и справа, 
-                    // а для первой строки и первого столбца добавляем верхнюю/левую грань
                     BorderThickness = new Thickness(
-                        col == 0 ? 1 : 0, 
-                        row == 0 ? 1 : 0, 
-                        1, 
+                        col == 0 ? 1 : 0,
+                        row == 0 ? 1 : 0,
+                        1,
                         1),
-                    Child = textBlock
+                    Child = textBox
                 };
 
                 Grid.SetRow(border, row);
@@ -64,17 +83,41 @@ namespace HomeNotes.Desktop.Markdown.Rendering
 
             for (int col = 0; col < tableBlock.Headers.Count; col++)
             {
-                var alignment = col < tableBlock.Alignments.Count ? tableBlock.Alignments[col] : MarkdownColumnAlignment.Left;
-                AddCell(tableBlock.Headers[col], 0, col, true, alignment);
+                var alignment =
+                    col < tableBlock.Alignments.Count
+                        ? tableBlock.Alignments[col]
+                        : MarkdownColumnAlignment.Left;
+
+                AddCell(
+                    tableBlock.Headers[col],
+                    0,
+                    col,
+                    true,
+                    alignment);
             }
 
             for (int row = 0; row < tableBlock.Rows.Count; row++)
             {
-                for (int col = 0; col < tableBlock.Headers.Count; col++)
+                for (int col = 0;
+                     col < tableBlock.Headers.Count;
+                     col++)
                 {
-                    var cellText = col < tableBlock.Rows[row].Count ? tableBlock.Rows[row][col] : string.Empty;
-                    var alignment = col < tableBlock.Alignments.Count ? tableBlock.Alignments[col] : MarkdownColumnAlignment.Left;
-                    AddCell(cellText, row + 1, col, false, alignment);
+                    var cellText =
+                        col < tableBlock.Rows[row].Count
+                            ? tableBlock.Rows[row][col]
+                            : string.Empty;
+
+                    var alignment =
+                        col < tableBlock.Alignments.Count
+                            ? tableBlock.Alignments[col]
+                            : MarkdownColumnAlignment.Left;
+
+                    AddCell(
+                        cellText,
+                        row + 1,
+                        col,
+                        false,
+                        alignment);
                 }
             }
 

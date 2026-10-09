@@ -8,6 +8,11 @@ public class MarkdownPreviewState
 {
     public IReadOnlyList<MarkdownBlock> Blocks { get; set; } = Array.Empty<MarkdownBlock>();
     public int CaretLine { get; set; } = -1;
-    public bool IsCaretInsideBlock(MarkdownBlock block) => 
-        block is not MarkdownImageBlock && block.ContainsLine(CaretLine);
+    public bool IsCaretInsideBlock(MarkdownBlock block)
+    {
+        if (block is MarkdownImageBlock)
+            return false;
+
+        return block.ContainsLine(CaretLine);
+    }
 }

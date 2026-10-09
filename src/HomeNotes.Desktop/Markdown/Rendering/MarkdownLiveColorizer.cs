@@ -69,25 +69,7 @@ namespace HomeNotes.Desktop.Markdown.Rendering
                     }
                 }
 
-                // ---- Проверка на строки неактивной таблицы (разделитель и строки данных) ----
-                var blocks = MarkdownBlockParser.Parse(CurrentContext.Document);
-                foreach (var block in blocks)
-                {
-                    if (block is MarkdownTableBlock tableBlock)
-                    {
-                        bool caretInTable = CaretOffset >= tableBlock.StartOffset && CaretOffset <= tableBlock.EndOffset;
-                        if (!caretInTable && line.LineNumber > tableBlock.StartLine && line.LineNumber <= tableBlock.EndLine)
-                        {
-                            // Схлопываем строку под виджетом таблицы в ноль
-                            SafeChangeLinePart(lineStart, line.EndOffset, el =>
-                            {
-                                el.TextRunProperties.SetForegroundBrush(Brushes.Transparent);
-                                el.TextRunProperties.SetFontRenderingEmSize(0.01);
-                            });
-                            return;
-                        }
-                    }
-                }
+                
 
                 bool inCodeBlock = false;
                 for (int i = 1; i < line.LineNumber; i++)

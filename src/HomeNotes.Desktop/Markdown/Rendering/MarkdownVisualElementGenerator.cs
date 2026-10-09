@@ -20,65 +20,64 @@ namespace HomeNotes.Desktop.Markdown.Rendering
         public override int GetFirstInterestedOffset(int startOffset)
         {
             var document = CurrentContext.Document;
-            if (document == null) return -1;
+            if (document == null)
+                return -1;
 
             foreach (var block in _state.Blocks)
             {
-              
-                if (block.StartOffset > document.TextLength) continue;
+                if (block is not MarkdownImageBlock)
+                    continue;
 
-                if (block.StartOffset >= startOffset)
-                {
-                    if (_state.IsCaretInsideBlock(block)) continue;
+                if (block.StartOffset < startOffset ||
+                    block.StartOffset > document.TextLength)
+                    continue;
 
-                    if (block is MarkdownTableBlock || block is MarkdownImageBlock)
-                    {
-                        return block.StartOffset;
-                    }
-                }
+                if (_state.IsCaretInsideBlock(block))
+                    continue;
+
+                return block.StartOffset;
             }
+
             return -1;
         }
 
         public override VisualLineElement? ConstructElement(int offset)
         {
             var document = CurrentContext.Document;
-            if (document == null) return null;
+            if (document == null)
+                return null;
 
             foreach (var block in _state.Blocks)
             {
-                if (block.StartOffset == offset)
-                {
-                    if (_state.IsCaretInsideBlock(block)) return null;
+                if (block is not MarkdownImageBlock imageBlock)
+                    continue;
 
-                    Control? control = null;
+                if (imageBlock.StartOffset != offset)
+                    continue;
 
-                    if (block is MarkdownTableBlock tableBlock)
-                    {
-                        control = MarkdownTableElement.Build(tableBlock);
-                    }
-                    else if (block is MarkdownImageBlock imageBlock)
-                    {
-                        var bitmap = MarkdownImageLoader.Load(imageBlock.Url, VaultRootPath);
-                        control = MarkdownImageElement.Build(bitmap, imageBlock.AltText);
-                    }
+                if (_state.IsCaretInsideBlock(imageBlock))
+                    return null;
 
-                    if (control != null)
-                    {
-                       
-                        var currentLine = document.GetLineByOffset(offset);
-                        int maxAvailableInLine = currentLine.EndOffset - offset;
+                var bitmap = MarkdownImageLoader.Load(
+                    imageBlock.Url,
+                    VaultRootPath);
 
-                        int desiredLength = block is MarkdownTableBlock
-                            ? maxAvailableInLine
-                            : Math.Min(block.DocumentLength, maxAvailableInLine);
+                Control control = MarkdownImageElement.Build(
+                    bitmap,
+                    imageBlock.AltText);
 
-                        if (desiredLength <= 0) return null;
+                var currentLine = document.GetLineByOffset(offset);
+                int maxAvailableInLine = currentLine.EndOffset - offset;
+                int desiredLength = Math.Min(
+                    imageBlock.DocumentLength,
+                    maxAvailableInLine);
 
-                        return new InlineObjectElement(desiredLength, control);
-                    }
-                }
+                if (desiredLength <= 0)
+                    return null;
+
+                return new InlineObjectElement(desiredLength, control);
             }
+
             return null;
         }
     }

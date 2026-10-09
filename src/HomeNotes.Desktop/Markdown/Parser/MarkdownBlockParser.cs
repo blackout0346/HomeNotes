@@ -10,8 +10,7 @@ namespace HomeNotes.Desktop.Markdown.Parser
     {
         private static readonly Regex ImageRegex = new(@"!\[([^\]]*)\]\(([^)]+)\)", RegexOptions.Compiled);
         private static readonly Regex WikiImageRegex = new(@"!\[\[([^\]|]+)(?:\|[^\]]*)?\]\]", RegexOptions.Compiled);
-        private static readonly Regex TableSeparatorRegex =
-            new(@"^\s*\|?\s*:?-+:?\s*(?:\|\s*:?-+:?\s*)+\|?\s*$", RegexOptions.Compiled);
+
         private static readonly Regex CodeBlockRegex = new(@"^\s*```(.*)$", RegexOptions.Compiled);
         public static List<MarkdownBlock> Parse(TextDocument document)
         {
@@ -93,15 +92,12 @@ namespace HomeNotes.Desktop.Markdown.Parser
                     });
                 }
 
-              
-                if (lineNumber < document.LineCount && text.Contains('|'))
+                if (MarkdownTableParser.IsTableStart(document, lineNumber))
                 {
-                    var nextLine = document.GetLineByNumber(lineNumber + 1);
-                    if (TableSeparatorRegex.IsMatch(document.GetText(nextLine)))
-                    {
-                        blocks.Add(ParseTable(document, ref lineNumber));
-                        continue; 
-                    }
+                    blocks.Add(
+                        MarkdownTableParser.ParseTable(document, ref lineNumber));
+
+                    continue;
                 }
 
                 lineNumber++;
@@ -122,73 +118,6 @@ namespace HomeNotes.Desktop.Markdown.Parser
             }
 
             return blocks;
-        }
-
-        private static MarkdownTableBlock ParseTable(TextDocument document, ref int lineNumber)
-        {
-            int startLine = lineNumber;
-            var headerLine = document.GetLineByNumber(lineNumber);
-            var headers = SplitRow(document.GetText(headerLine));
-
-            var separatorLine = document.GetLineByNumber(lineNumber + 1);
-            var alignments = ParseAlignments(document.GetText(separatorLine), headers.Count);
-
-            var rows = new List<List<string>>();
-            int cursor = lineNumber + 2;
-            while (cursor <= document.LineCount)
-            {
-                var rowText = document.GetText(document.GetLineByNumber(cursor));
-                if (!rowText.Contains('|') || string.IsNullOrWhiteSpace(rowText)) break;
-
-                rows.Add(SplitRow(rowText));
-                cursor++;
-            }
-
-            int endLine = cursor - 1;
-            var lastLine = document.GetLineByNumber(endLine);
-            lineNumber = cursor; 
-
-            return new MarkdownTableBlock
-            {
-                Headers = headers,
-                Alignments = alignments,
-                Rows = rows,
-                StartOffset = headerLine.Offset,
-                EndOffset = lastLine.EndOffset,
-                StartLine = startLine,
-                EndLine = endLine
-            };
-        }
-
-        private static List<string> SplitRow(string text)
-        {
-            var trimmed = text.Trim();
-            if (trimmed.StartsWith("|")) trimmed = trimmed[1..];
-            if (trimmed.EndsWith("|")) trimmed = trimmed[..^1];
-
-            var cells = new List<string>();
-            foreach (var cell in trimmed.Split('|'))
-                cells.Add(cell.Trim());
-            return cells;
-        }
-
-        private static List<MarkdownColumnAlignment> ParseAlignments(string separatorText, int columnCount)
-        {
-            var cells = SplitRow(separatorText);
-            var result = new List<MarkdownColumnAlignment>();
-
-            for (int i = 0; i < columnCount; i++)
-            {
-                var cell = i < cells.Count ? cells[i] : "-";
-                bool left = cell.StartsWith(":");
-                bool right = cell.EndsWith(":");
-
-                result.Add(left && right ? MarkdownColumnAlignment.Center
-                    : right ? MarkdownColumnAlignment.Right
-                    : MarkdownColumnAlignment.Left);
-            }
-
-            return result;
         }
     }
 }
