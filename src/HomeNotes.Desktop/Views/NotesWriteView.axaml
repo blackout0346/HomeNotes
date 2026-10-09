@@ -13,10 +13,20 @@
 
         <Border Grid.Column="0" Background="#17181A" CornerRadius="16,0,0,16">
             <DockPanel Margin="8">
-                <Button DockPanel.Dock="Top" Content="Сменить папку"
-                        Command="{Binding ChangeFolderCommand}"
-                        Margin="4,4,4,10" Background="#31353b" Foreground="White" CornerRadius="8" />
-
+                <StackPanel DockPanel.Dock="Bottom">
+                    <Grid ColumnDefinitions="*,*">
+                        <Button Grid.Column="0" HorizontalAlignment="Left"
+                                Content="{Binding TitleFileSystem}"
+                                Command="{Binding ChangeFolderCommand}"
+                                Margin="4,4,4,10" Background="#31353b" Foreground="White" CornerRadius="8" />
+                        <Button Grid.Column="1" Content="Настройки" HorizontalAlignment="Right"
+                                Command="{Binding ChangeFolderCommand}"
+                                Margin="4,4,4,10" Background="#31353b" Foreground="White" CornerRadius="8" />
+                    </Grid>
+                </StackPanel>
+         
+                    <Button DockPanel.Dock="Top" HorizontalAlignment="Stretch" Content="новая заметка " Command="{Binding CreateNote}" Foreground="White"/>
+           
                 <TreeView ItemsSource="{Binding FileSystemItems}"
                           SelectedItem="{Binding SelectedItem}"
                           Background="Transparent" BorderThickness="0">
@@ -26,14 +36,16 @@
                         </TreeDataTemplate>
                     </TreeView.ItemTemplate>
                 </TreeView>
+
             </DockPanel>
+
         </Border>
 
         <GridSplitter Grid.Column="1" Width="6" Background="#1F1F22" ResizeDirection="Columns" />
 
         <Border Grid.Column="2" Background="#17181A" CornerRadius="0,16,16,0">
             <Grid>
-            
+
                 <ae:TextEditor Name="Editor"
                                Document="{Binding Document}"
                                helpers:EditorBehavior.Colorizer="{Binding Colorizer}"
@@ -53,5 +65,6 @@
                        Margin="20" />
             </Grid>
         </Border>
+
     </Grid>
 </UserControl>

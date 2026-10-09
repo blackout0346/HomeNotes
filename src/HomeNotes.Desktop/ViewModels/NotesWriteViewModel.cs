@@ -33,7 +33,7 @@ namespace HomeNotes.Desktop.ViewModels
         [ObservableProperty] private Bitmap? _selectedImage;
         [ObservableProperty] private bool _isEditorVisible = false;
         [ObservableProperty] private bool _isImageVisible = false;
-
+        [ObservableProperty] private string? _titleFileSystem;
 
         [ObservableProperty] private TextDocument _document = new();
 
@@ -71,7 +71,9 @@ namespace HomeNotes.Desktop.ViewModels
 
         public void LoadTree()
         {
+            TitleFileSystem = "";
             FileSystemItems.Clear();
+
             var rootPath = _storage.StoragePath;
             PreviewManager.VaultRootPath = rootPath;
             if (string.IsNullOrWhiteSpace(rootPath) || !Directory.Exists(rootPath)) return;
@@ -81,6 +83,7 @@ namespace HomeNotes.Desktop.ViewModels
 
             _rootFolderItem = new FileSystemItem(folderName, rootPath, true);
             PopulateNode(_rootFolderItem);
+            TitleFileSystem = _rootFolderItem.Name;
             FileSystemItems.Add(_rootFolderItem);
         }
 
@@ -112,12 +115,29 @@ namespace HomeNotes.Desktop.ViewModels
             }
         }
 
+        [RelayCommand]
+        public void CreateNote()
+        {
+            string title = "untitled.md";
+            int count = 0;
+            string path = _storage.StoragePath;
+            string filename = Path.Combine(path, title);
+            while (File.Exists(filename))
+            {
+                count++;
+                title = $"untitled{count}.md";
+                filename = Path.Combine(path, title);
+                
+            }
+            File.WriteAllText(filename, string.Empty);
+            LoadTree(); 
+            
+        }
 
         partial void OnSelectedItemChanged(FileSystemItem? value)
         {
             if (value == null || value.IsDirectory)
             {
-                Console.WriteLine("[LOG] Это папка или сброс выделения. Скрываем редактор.");
                 IsEditorVisible = false;
                 IsImageVisible = false;
                 return;
@@ -162,7 +182,6 @@ namespace HomeNotes.Desktop.ViewModels
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"[LOG] ОШИБКА КАРТИНКИ: {ex.Message}");
                 }
             }
         }
