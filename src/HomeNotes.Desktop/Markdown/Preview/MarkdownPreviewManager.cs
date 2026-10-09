@@ -7,6 +7,7 @@ namespace HomeNotes.Desktop.Markdown.Preview
 {
     public class MarkdownPreviewManager : IDisposable
     {
+        private MarkdownTableVisualElementGenerator? _tableGenerator;
         private MarkdownVisualElementGenerator? _generator;
         private TextEditor? _editor;
         private bool _updatingTableCell;
@@ -28,9 +29,12 @@ namespace HomeNotes.Desktop.Markdown.Preview
             {
                 VaultRootPath = VaultRootPath
             };
-
+            _tableGenerator = new MarkdownTableVisualElementGenerator(
+                State,
+                editor,
+                UpdateTableCell);
             _editor.TextArea.TextView.ElementGenerators.Add(_generator);
-
+            _editor.TextArea.TextView.ElementGenerators.Add(_tableGenerator);
             _editor.Document.TextChanged += OnTextChanged;
             _editor.TextArea.Caret.PositionChanged += OnCaretChanged;
 
@@ -52,6 +56,16 @@ namespace HomeNotes.Desktop.Markdown.Preview
                 _generator = null;
             }
 
+            if (_tableGenerator != null)
+            {
+                _tableGenerator.ResetCollapsedLines();
+
+                _editor.TextArea.TextView.ElementGenerators.Remove(
+                    _tableGenerator);
+
+                _tableGenerator = null;
+            }
+
             _editor.TextArea.TextView.Redraw();
 
             _editor = null;
@@ -61,7 +75,7 @@ namespace HomeNotes.Desktop.Markdown.Preview
         {
             if (_updatingTableCell)
                 return;
-
+            _tableGenerator?.ResetCollapsedLines();
             Reparse();
             _editor?.TextArea.TextView.Redraw();
         }
@@ -84,6 +98,9 @@ namespace HomeNotes.Desktop.Markdown.Preview
                 return;
 
             State.CaretLine = line;
+
+            _tableGenerator?.ResetCollapsedLines();
+
             _editor.TextArea.TextView.Redraw();
         }
 
@@ -129,7 +146,7 @@ namespace HomeNotes.Desktop.Markdown.Preview
             // row 1 и далее — строки данных.
             // Строка-разделитель Markdown пропускается.
             int lineNumber = table.StartLine +
-                (row == 0 ? 0 : row + 1);
+                             (row == 0 ? 0 : row + 1);
 
             if (lineNumber < 1 || lineNumber > document.LineCount)
                 return;
@@ -153,6 +170,7 @@ namespace HomeNotes.Desktop.Markdown.Preview
 
             try
             {
+                _tableGenerator?.ResetCollapsedLines();
                 document.Replace(line.Offset, line.Length, updatedLine);
             }
             finally
