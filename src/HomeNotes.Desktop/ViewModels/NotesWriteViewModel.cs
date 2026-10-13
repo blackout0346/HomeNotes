@@ -10,7 +10,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using HomeNotes.Desktop.Interface;
 using HomeNotes.Desktop.Markdown.Preview;
-using HomeNotes.Desktop.Services;
+using HomeNotes.Desktop.Services; 
 
 namespace HomeNotes.Desktop.ViewModels
 {
@@ -34,6 +34,9 @@ namespace HomeNotes.Desktop.ViewModels
         private FileSystemItem? _rootFolderItem;
         private CancellationTokenSource? _saveCts;
         private bool _isLoadingFile = false;
+        
+     
+        private bool _isRenaming = false; 
 
         public NotesWriteViewModel(
             MarkdownPreviewManager previewManager,
@@ -103,38 +106,64 @@ namespace HomeNotes.Desktop.ViewModels
                     }
                 }
             }
-            catch (UnauthorizedAccessException ex)
+            catch (UnauthorizedAccessException)
             {
-                Console.WriteLine(ex.Message);
+                
             }
         }
 
         [RelayCommand]
         public void CreateNote()
         {
-            
             string path = _storage.StoragePath;
             if (string.IsNullOrEmpty(path)) return;
 
-            string title = "untitled.md";
+            string baseName = "untitled";
+            string title = $"{baseName}.md";
             int count = 0;
             string filename = Path.Combine(path, title);
             
             while (File.Exists(filename))
             {
                 count++;
-                title = $"untitled{count}.md";
+                baseName = $"untitled{count}";
+                title = $"{baseName}.md";
                 filename = Path.Combine(path, title);
             }
             
-            File.WriteAllText(filename, string.Empty);
-            var node = new FileSystemItem(title, filename, true);
-            _rootFolderItem.SubItems.Add(node);
-            SelectedItem = node;
+            string initialContent = $"# {baseName}\n\n";
+
+            try
+            {
+                _saveCts?.Cancel();
+                _isLoadingFile = true; 
+
+                File.WriteAllText(filename, initialContent);
+
+                var node = new FileSystemItem(title, filename, false);
+                _rootFolderItem?.SubItems?.Add(node);
+
+                Document.TextChanged -= Document_TextChanged;
+                Document.Text = initialContent;
+                Document.TextChanged += Document_TextChanged;
+
+                SelectedItem = node;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ошибка при создании файла: {ex.Message}");
+            }
+            finally
+            {
+                _isLoadingFile = false; 
+            }
         }
 
         partial void OnSelectedItemChanged(FileSystemItem? value)
         {
+        
+            if (_isRenaming) return; 
+
             if (value == null || value.IsDirectory)
             {
                 IsEditorVisible = false;
@@ -176,9 +205,8 @@ namespace HomeNotes.Desktop.ViewModels
                     SelectedImage?.Dispose();
                     SelectedImage = new Bitmap(value.Path);
                 }
-                catch(Exception ex)
+                catch
                 {
-                    Console.WriteLine(ex.Message);
                 }
             }
         }
@@ -189,27 +217,99 @@ namespace HomeNotes.Desktop.ViewModels
 
             _saveCts?.Cancel();
             _saveCts = new CancellationTokenSource();
-            _ = SaveDebouncedAsync(Document.Text, SelectedItem.Path, _saveCts.Token);
+            _ = SaveDebouncedAsync(Document.Text, SelectedItem, _saveCts.Token);
         }
 
-        private async Task SaveDebouncedAsync(string text, string path, CancellationToken token)
+        private async Task SaveDebouncedAsync(string text, FileSystemItem item, CancellationToken token)
         {
             try
             {
-                await Task.Delay(500, token);
-                if (!token.IsCancellationRequested)
-                {
-                    await File.WriteAllTextAsync(path, text, token);
-                }
+                await Task.Delay(700, token);
+                if (token.IsCancellationRequested) return;
+
+                bool fileRenamed = TryRenameFileBasedOnHeader(text, item);
+                if (token.IsCancellationRequested) return;
+
+            
+                var pathToSave = SelectedItem?.Path ?? item.Path;
+                await File.WriteAllTextAsync(pathToSave, text, token);
             }
-            catch (TaskCanceledException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            catch (TaskCanceledException) { }
             catch (Exception ex)
             {
                 Console.WriteLine($"Ошибка сохранения: {ex.Message}");
             }
+        }
+
+        private bool TryRenameFileBasedOnHeader(string text, FileSystemItem item)
+        {
+            if (string.IsNullOrWhiteSpace(text) || item == null) return false;
+
+            string firstLine = text.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries).FirstOrDefault() ?? "";
+            if (!firstLine.StartsWith("# ")) return false;
+
+            string newName = firstLine.Substring(2).Trim();
+            if (string.IsNullOrWhiteSpace(newName)) return false;
+
+            char[] invalidChars = Path.GetInvalidFileNameChars();
+            newName = string.Join("_", newName.Split(invalidChars, StringSplitOptions.RemoveEmptyEntries));
+            
+            string newFileName = $"{newName}.md";
+            if (item.Name.Equals(newFileName, StringComparison.OrdinalIgnoreCase)) return false;
+
+            string directory = Path.GetDirectoryName(item.Path) ?? _storage.StoragePath;
+            if (string.IsNullOrEmpty(directory)) return false;
+
+            string newFullPath = Path.Combine(directory, newFileName);
+            if (File.Exists(newFullPath)) return false; 
+
+            try
+            {
+                File.Move(item.Path, newFullPath);
+
+           
+                var newItem = item with { Name = newFileName, Path = newFullPath };
+
+       
+                var parentCollection = FindParentCollection(FileSystemItems, item);
+                if (parentCollection != null)
+                {
+                    int index = parentCollection.IndexOf(item);
+                    if (index >= 0)
+                    {
+                        _isRenaming = true; 
+
+                    
+                        parentCollection[index] = newItem; 
+                        SelectedItem = newItem;
+
+                        _isRenaming = false; 
+                    }
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ошибка переименования: {ex.Message}");
+                return false;
+            }
+        }
+
+       
+        private ObservableCollection<FileSystemItem>? FindParentCollection(ObservableCollection<FileSystemItem> items, FileSystemItem target)
+        {
+            if (items.Contains(target)) return items;
+
+            foreach (var item in items)
+            {
+                if (item.IsDirectory && item.SubItems != null)
+                {
+                    var found = FindParentCollection(item.SubItems, target);
+                    if (found != null) return found;
+                }
+            }
+            return null;
         }
     }
 }
