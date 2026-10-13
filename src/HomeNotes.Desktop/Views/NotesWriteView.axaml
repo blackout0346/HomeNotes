@@ -48,7 +48,7 @@
 
                 <ae:TextEditor Name="Editor"
                                Document="{Binding Document}"
-                               helpers:EditorBehavior.Colorizer="{Binding Colorizer}"
+                              
                                helpers:EditorBehavior.PreviewManager="{Binding PreviewManager}"
                                IsVisible="{Binding IsEditorVisible}"
                                FontFamily="Cascadia Code,Consolas,monospace"

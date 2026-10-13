@@ -10,7 +10,6 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using HomeNotes.Desktop.Interface;
 using HomeNotes.Desktop.Markdown.Preview;
-using HomeNotes.Desktop.Markdown.Rendering;
 using HomeNotes.Desktop.Services;
 
 namespace HomeNotes.Desktop.ViewModels
@@ -21,33 +20,27 @@ namespace HomeNotes.Desktop.ViewModels
         private readonly IStorage _storage;
         private readonly IDialogService _dialogService;
         private readonly string[] _filterfile = [".md", ".png", ".img", ".webp"];
+        
         public MarkdownPreviewManager PreviewManager { get; }
-        private readonly MarkdownLiveColorizer _colorizer;
-        public MarkdownLiveColorizer Colorizer => _colorizer;
 
         [ObservableProperty] private ObservableCollection<FileSystemItem> _fileSystemItems = new();
-
-        private FileSystemItem? _rootFolderItem;
-
         [ObservableProperty] private FileSystemItem? _selectedItem;
         [ObservableProperty] private Bitmap? _selectedImage;
         [ObservableProperty] private bool _isEditorVisible = false;
         [ObservableProperty] private bool _isImageVisible = false;
         [ObservableProperty] private string? _titleFileSystem;
-
         [ObservableProperty] private TextDocument _document = new();
 
+        private FileSystemItem? _rootFolderItem;
         private CancellationTokenSource? _saveCts;
         private bool _isLoadingFile = false;
 
         public NotesWriteViewModel(
-            MarkdownLiveColorizer colorizer,
             MarkdownPreviewManager previewManager,
             IStorage storage,
             IDialogService dialogService,
             Guid? UserId = null)
         {
-            _colorizer = colorizer;
             PreviewManager = previewManager;
             _storage = storage;
             _dialogService = dialogService;
@@ -110,28 +103,34 @@ namespace HomeNotes.Desktop.ViewModels
                     }
                 }
             }
-            catch (UnauthorizedAccessException)
+            catch (UnauthorizedAccessException ex)
             {
+                Console.WriteLine(ex.Message);
             }
         }
 
         [RelayCommand]
         public void CreateNote()
         {
+            
+            string path = _storage.StoragePath;
+            if (string.IsNullOrEmpty(path)) return;
+
             string title = "untitled.md";
             int count = 0;
-            string path = _storage.StoragePath;
             string filename = Path.Combine(path, title);
+            
             while (File.Exists(filename))
             {
                 count++;
                 title = $"untitled{count}.md";
                 filename = Path.Combine(path, title);
-                
             }
-            File.WriteAllText(filename, string.Empty);
-            LoadTree(); 
             
+            File.WriteAllText(filename, string.Empty);
+            var node = new FileSystemItem(title, filename, true);
+            _rootFolderItem.SubItems.Add(node);
+            SelectedItem = node;
         }
 
         partial void OnSelectedItemChanged(FileSystemItem? value)
@@ -145,7 +144,6 @@ namespace HomeNotes.Desktop.ViewModels
 
             var extension = Path.GetExtension(value.Path).ToLower();
 
-
             if (extension == ".md")
             {
                 IsImageVisible = false;
@@ -157,9 +155,7 @@ namespace HomeNotes.Desktop.ViewModels
                     var text = File.ReadAllText(value.Path);
 
                     Document.TextChanged -= Document_TextChanged;
-
                     Document.Text = text;
-
                     Document.TextChanged += Document_TextChanged;
                 }
                 catch (Exception ex)
@@ -180,12 +176,12 @@ namespace HomeNotes.Desktop.ViewModels
                     SelectedImage?.Dispose();
                     SelectedImage = new Bitmap(value.Path);
                 }
-                catch (Exception ex)
+                catch(Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
                 }
             }
         }
-
 
         private void Document_TextChanged(object? sender, EventArgs e)
         {
@@ -206,8 +202,9 @@ namespace HomeNotes.Desktop.ViewModels
                     await File.WriteAllTextAsync(path, text, token);
                 }
             }
-            catch (TaskCanceledException)
+            catch (TaskCanceledException ex)
             {
+                Console.WriteLine(ex.Message);
             }
             catch (Exception ex)
             {

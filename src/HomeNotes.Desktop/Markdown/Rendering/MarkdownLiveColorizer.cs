@@ -4,13 +4,16 @@ using Avalonia.Media;
 using AvaloniaEdit.Document;
 using AvaloniaEdit.Rendering;
 using HomeNotes.Desktop.Markdown.Parser;
+using HomeNotes.Desktop.Markdown.Preview;
 
 namespace HomeNotes.Desktop.Markdown.Rendering
 {
     public class MarkdownLiveColorizer : DocumentColorizingTransformer
     {
+        private readonly MarkdownPreviewState _state;
         public int CaretOffset { get; set; } = -1;
         public int HoveredLine { get; set; } = -1;
+
         private static readonly IBrush DimBrush = new SolidColorBrush(Color.Parse("#5A5D63"));
         private static readonly IBrush HeadingBrush = new SolidColorBrush(Colors.White);
         private static readonly IBrush AccentBrush = new SolidColorBrush(Color.Parse("#811FFF"));
@@ -25,24 +28,23 @@ namespace HomeNotes.Desktop.Markdown.Rendering
 
         private static readonly Regex HeadingRegex = new(@"^(#{1,6})\s+(.*)$", RegexOptions.Compiled);
         private static readonly Regex BoldRegex = new(@"(\*\*|__)(.+?)\1", RegexOptions.Compiled);
-
-        private static readonly Regex ItalicRegex = new(@"(?<!\*)\*(?!\*)([^*]+?)\*(?!\*)|(?<!_)_(?!_)([^_]+?)_(?!_)",
-            RegexOptions.Compiled);
-
+        private static readonly Regex ItalicRegex = new(@"(?<!\*)\*(?!\*)([^*]+?)\*(?!\*)|(?<!_)_(?!_)([^_]+?)_(?!_)", RegexOptions.Compiled);
         private static readonly Regex InlineCodeRegex = new("`([^`]+)`", RegexOptions.Compiled);
         private static readonly Regex ImageRegex = new(@"!\[([^\]]*)\]\(([^)]+)\)", RegexOptions.Compiled);
         private static readonly Regex LinkRegex = new(@"(?<!!)\[([^\]]+)\]\(([^)]+)\)", RegexOptions.Compiled);
         private static readonly Regex ListMarkerRegex = new(@"^(\s*)([-*+]|\d+\.)\s", RegexOptions.Compiled);
-        private static readonly Regex CheckboxRegex = new(@"^(\s*-\s*\[[ xX]\])\s+", RegexOptions.Compiled);
+        private static readonly Regex CheckboxRegex = new(@"^(\s*-\s*[[ xX]])\s+", RegexOptions.Compiled);
         private static readonly Regex StrikethroughRegex = new(@"~~(.+?)~~", RegexOptions.Compiled);
         private static readonly Regex EscapeRegex = new(@"\\([^\w\s])", RegexOptions.Compiled);
-
-        private static readonly Regex TableSeparatorRegex =
-            new(@"^\s*\|?\s*:?-+:?\s*(?:\|\s*:?-+:?\s*)+\|?\s*$", RegexOptions.Compiled);
-
+        private static readonly Regex TableSeparatorRegex = new(@"^\s*\|?\s*:?-+:?\s*(?:\|\s*:?-+:?\s*)+\|?\s*$", RegexOptions.Compiled);
         private static readonly Regex HrRegex = new(@"^\s*([-*_])\s*(?:\1\s*){2,}$", RegexOptions.Compiled);
         private static readonly Regex HighlightRegex = new(@"==(.+?)==", RegexOptions.Compiled);
         private static readonly Regex CalloutRegex = new(@"^\s*>\s*\[!(\w+)\](.*)$", RegexOptions.Compiled);
+
+        public MarkdownLiveColorizer(MarkdownPreviewState state)
+        {
+            _state = state;
+        }
 
         protected override void ColorizeLine(DocumentLine line)
         {
@@ -62,9 +64,9 @@ namespace HomeNotes.Desktop.Markdown.Rendering
                         {
                             ChangeLinePart(start, end, action);
                         }
-                        catch (Exception e)
+                        catch (Exception ex)
                         {
-                            Console.WriteLine(e.Message);
+                            Console.WriteLine(ex.Message);
                         }
                     }
                 }
@@ -72,9 +74,7 @@ namespace HomeNotes.Desktop.Markdown.Rendering
                 void ApplyMarkerStyle(VisualLineElement el)
                 {
                     if (isActiveLine)
-                    {
                         el.TextRunProperties.SetForegroundBrush(DimBrush);
-                    }
                     else
                     {
                         el.TextRunProperties.SetForegroundBrush(Brushes.Transparent);
@@ -82,11 +82,13 @@ namespace HomeNotes.Desktop.Markdown.Rendering
                     }
                 }
 
-                var blocks = MarkdownBlockParser.Parse(CurrentContext.Document);
+                // КРИТИЧНОЕ ИЗМЕНЕНИЕ: Используем кэшированные блоки из памяти
+                var blocks = _state.Blocks; 
 
                 bool isCodeBoundary = false;
                 bool inCodeBlock = false;
                 bool isHoveredOrActiveBlock = false;
+
                 foreach (var block in blocks)
                 {
                     if (block is MarkdownCodeBlock codeBlock)
@@ -98,10 +100,7 @@ namespace HomeNotes.Desktop.Markdown.Rendering
                             else
                                 inCodeBlock = true;
 
-
-                            
-                            bool isCaretInside = CaretOffset >= codeBlock.StartOffset &&
-                                                 CaretOffset <= codeBlock.EndOffset;
+                            bool isCaretInside = CaretOffset >= codeBlock.StartOffset && CaretOffset <= codeBlock.EndOffset;
                             bool isMouseInside = HoveredLine >= codeBlock.StartLine && HoveredLine <= codeBlock.EndLine;
 
                             if (isCaretInside || isMouseInside)
@@ -110,21 +109,17 @@ namespace HomeNotes.Desktop.Markdown.Rendering
                             }
                             break;
                         }
-                        
                     }
                 }
 
-                // ---- Границы многострочных блоков кода ( ``` ) ----
                 if (isCodeBoundary && text.TrimStart().StartsWith("```"))
                 {
                     SafeChangeLinePart(lineStart, line.EndOffset, el =>
                     {
-                        // Подсвечиваем маркеры, если мышь наведена на любую часть блока или внутри стоит каретка
                         if (isHoveredOrActiveBlock)
                         {
                             el.TextRunProperties.SetForegroundBrush(CodeMarkerActiveBrush);
-                            el.TextRunProperties.SetTypeface(new Typeface(el.TextRunProperties.Typeface.FontFamily,
-                                FontStyle.Normal, FontWeight.Bold));
+                            el.TextRunProperties.SetTypeface(new Typeface(el.TextRunProperties.Typeface.FontFamily, FontStyle.Normal, FontWeight.Bold));
                         }
                         else
                         {
@@ -153,8 +148,7 @@ namespace HomeNotes.Desktop.Markdown.Rendering
 
                 if (HrRegex.IsMatch(text) || TableSeparatorRegex.IsMatch(text))
                 {
-                    SafeChangeLinePart(lineStart, line.EndOffset,
-                        el => el.TextRunProperties.SetForegroundBrush(DimBrush));
+                    SafeChangeLinePart(lineStart, line.EndOffset, el => el.TextRunProperties.SetForegroundBrush(DimBrush));
                     return;
                 }
 
@@ -162,8 +156,7 @@ namespace HomeNotes.Desktop.Markdown.Rendering
                 {
                     if (text[i] == '|' && (i == 0 || text[i - 1] != '\\'))
                     {
-                        SafeChangeLinePart(lineStart + i, lineStart + i + 1,
-                            el => el.TextRunProperties.SetForegroundBrush(DimBrush));
+                        SafeChangeLinePart(lineStart + i, lineStart + i + 1, el => el.TextRunProperties.SetForegroundBrush(DimBrush));
                     }
                 }
 
@@ -178,8 +171,7 @@ namespace HomeNotes.Desktop.Markdown.Rendering
 
                     SafeChangeLinePart(contentStart, line.EndOffset, el =>
                     {
-                        el.TextRunProperties.SetTypeface(new Typeface(el.TextRunProperties.Typeface.FontFamily,
-                            FontStyle.Normal, FontWeight.Bold));
+                        el.TextRunProperties.SetTypeface(new Typeface(el.TextRunProperties.Typeface.FontFamily, FontStyle.Normal, FontWeight.Bold));
                         el.TextRunProperties.SetFontRenderingEmSize(size);
                         el.TextRunProperties.SetForegroundBrush(HeadingBrush);
                     });
@@ -192,8 +184,7 @@ namespace HomeNotes.Desktop.Markdown.Rendering
                     SafeChangeLinePart(lineStart, line.EndOffset, el =>
                     {
                         el.TextRunProperties.SetForegroundBrush(CalloutBrush);
-                        el.TextRunProperties.SetTypeface(new Typeface(el.TextRunProperties.Typeface.FontFamily,
-                            FontStyle.Normal, FontWeight.Bold));
+                        el.TextRunProperties.SetTypeface(new Typeface(el.TextRunProperties.Typeface.FontFamily, FontStyle.Normal, FontWeight.Bold));
                     });
                 }
                 else if (text.TrimStart().StartsWith(">"))
@@ -201,8 +192,7 @@ namespace HomeNotes.Desktop.Markdown.Rendering
                     SafeChangeLinePart(lineStart, line.EndOffset, el =>
                     {
                         el.TextRunProperties.SetForegroundBrush(QuoteBrush);
-                        el.TextRunProperties.SetTypeface(new Typeface(el.TextRunProperties.Typeface.FontFamily,
-                            FontStyle.Italic));
+                        el.TextRunProperties.SetTypeface(new Typeface(el.TextRunProperties.Typeface.FontFamily, FontStyle.Italic));
                     });
                 }
 
@@ -214,8 +204,7 @@ namespace HomeNotes.Desktop.Markdown.Rendering
                     SafeChangeLinePart(markerStart, markerEnd, el =>
                     {
                         el.TextRunProperties.SetForegroundBrush(AccentBrush);
-                        el.TextRunProperties.SetTypeface(new Typeface(el.TextRunProperties.Typeface.FontFamily,
-                            FontStyle.Normal, FontWeight.Bold));
+                        el.TextRunProperties.SetTypeface(new Typeface(el.TextRunProperties.Typeface.FontFamily, FontStyle.Normal, FontWeight.Bold));
                     });
                 }
                 else
@@ -228,8 +217,7 @@ namespace HomeNotes.Desktop.Markdown.Rendering
                         SafeChangeLinePart(markerStart, markerEnd, el =>
                         {
                             el.TextRunProperties.SetForegroundBrush(AccentBrush);
-                            el.TextRunProperties.SetTypeface(new Typeface(el.TextRunProperties.Typeface.FontFamily,
-                                FontStyle.Normal, FontWeight.Bold));
+                            el.TextRunProperties.SetTypeface(new Typeface(el.TextRunProperties.Typeface.FontFamily, FontStyle.Normal, FontWeight.Bold));
                         });
                     }
                 }
@@ -245,8 +233,7 @@ namespace HomeNotes.Desktop.Markdown.Rendering
                     SafeChangeLinePart(textStart, textEnd, el =>
                     {
                         el.TextRunProperties.SetForegroundBrush(LinkBrush);
-                        el.TextRunProperties.SetTypeface(new Typeface(el.TextRunProperties.Typeface.FontFamily,
-                            FontStyle.Italic));
+                        el.TextRunProperties.SetTypeface(new Typeface(el.TextRunProperties.Typeface.FontFamily, FontStyle.Italic));
                     });
                     SafeChangeLinePart(textEnd, end, ApplyMarkerStyle);
                 }
@@ -262,8 +249,7 @@ namespace HomeNotes.Desktop.Markdown.Rendering
                     SafeChangeLinePart(textStart, textEnd, el =>
                     {
                         el.TextRunProperties.SetForegroundBrush(LinkBrush);
-                        el.TextRunProperties.SetTypeface(new Typeface(el.TextRunProperties.Typeface.FontFamily,
-                            FontStyle.Normal, FontWeight.Bold));
+                        el.TextRunProperties.SetTypeface(new Typeface(el.TextRunProperties.Typeface.FontFamily, FontStyle.Normal, FontWeight.Bold));
                     });
                     SafeChangeLinePart(textEnd, end, ApplyMarkerStyle);
                 }
@@ -293,9 +279,7 @@ namespace HomeNotes.Desktop.Markdown.Rendering
                     int end = contentEnd + markerLen;
 
                     SafeChangeLinePart(start, contentStart, ApplyMarkerStyle);
-                    SafeChangeLinePart(contentStart, contentEnd,
-                        el => el.TextRunProperties.SetTypeface(new Typeface(el.TextRunProperties.Typeface.FontFamily,
-                            FontStyle.Normal, FontWeight.Bold)));
+                    SafeChangeLinePart(contentStart, contentEnd, el => el.TextRunProperties.SetTypeface(new Typeface(el.TextRunProperties.Typeface.FontFamily, FontStyle.Normal, FontWeight.Bold)));
                     SafeChangeLinePart(contentEnd, end, ApplyMarkerStyle);
                 }
 
@@ -307,8 +291,7 @@ namespace HomeNotes.Desktop.Markdown.Rendering
                     int end = contentEnd + 2;
 
                     SafeChangeLinePart(start, contentStart, ApplyMarkerStyle);
-                    SafeChangeLinePart(contentStart, contentEnd,
-                        el => el.TextRunProperties.SetTextDecorations(TextDecorations.Strikethrough));
+                    SafeChangeLinePart(contentStart, contentEnd, el => el.TextRunProperties.SetTextDecorations(TextDecorations.Strikethrough));
                     SafeChangeLinePart(contentEnd, end, ApplyMarkerStyle);
                 }
 
@@ -321,9 +304,7 @@ namespace HomeNotes.Desktop.Markdown.Rendering
                     int end = start + m.Length;
 
                     SafeChangeLinePart(start, contentStart, ApplyMarkerStyle);
-                    SafeChangeLinePart(contentStart, contentEnd,
-                        el => el.TextRunProperties.SetTypeface(new Typeface(el.TextRunProperties.Typeface.FontFamily,
-                            FontStyle.Italic)));
+                    SafeChangeLinePart(contentStart, contentEnd, el => el.TextRunProperties.SetTypeface(new Typeface(el.TextRunProperties.Typeface.FontFamily, FontStyle.Italic)));
                     SafeChangeLinePart(contentEnd, end, ApplyMarkerStyle);
                 }
 

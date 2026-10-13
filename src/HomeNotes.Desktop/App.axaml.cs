@@ -62,7 +62,7 @@ namespace HomeNotes.Desktop
 
             services.AddSingleton<Func<Guid?, NotesWriteViewModel>>(sp => id =>
                 new NotesWriteViewModel(
-                    sp.GetRequiredService<MarkdownLiveColorizer>(),
+
                     sp.GetRequiredService<HomeNotes.Desktop.Markdown.Preview.MarkdownPreviewManager>(),
                     sp.GetRequiredService<IStorage>(),
                     sp.GetRequiredService<IDialogService>(),
