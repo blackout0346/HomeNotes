@@ -442,9 +442,8 @@ namespace HomeNotes.Desktop.Markdown.Preview
         private static string PadCell(string content, int width, MarkdownColumnAlignment alignment, out int leftPad)
         {
            
-            var lines = content.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
-            int maxLineLen = lines.Max(l => l.Length);
-            int pad = Math.Max(0, width - maxLineLen);
+            content = MarkdownTableSyntax.NormalizeCellContent(content);
+            int pad = Math.Max(0, width - content.Length);
 
             switch (alignment)
             {
@@ -462,13 +461,7 @@ namespace HomeNotes.Desktop.Markdown.Preview
 
         public static List<int> GetPipeIndices(string text)
         {
-            var indices = new List<int>();
-            for (int i = 0; i < text.Length; i++)
-            {
-                if (text[i] == '|' && (i == 0 || text[i - 1] != '\\'))
-                    indices.Add(i);
-            }
-            return indices;
+            return MarkdownTableSyntax.GetPipeIndices(text);
         }
     }
 }

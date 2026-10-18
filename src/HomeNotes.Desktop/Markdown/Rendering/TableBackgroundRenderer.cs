@@ -81,14 +81,14 @@ namespace HomeNotes.Desktop.Markdown.Rendering
                 // 5. Внешняя рамка таблицы
                 drawingContext.DrawRectangle(null, BorderPen, tableRect, 6, 6);
 
-                // 6. Кнопки '+' справа и снизу при наведении на таблицу
-                if (ReferenceEquals(_state.HoveredTable, table))
+                // 6. Показываем только тот контрол, к ближайшему краю которого наведён курсор.
+                if (ReferenceEquals(_state.HoveredTable, table) &&
+                    _state.HoveredTableTarget != TableAddTarget.None)
                 {
-                    var rightBtnRect = GetAddColumnButtonRect(tableRect);
-                    var bottomBtnRect = GetAddRowButtonRect(tableRect);
-
-                    DrawPlusButton(drawingContext, rightBtnRect, _state.IsHoveringAddColumn);
-                    DrawPlusButton(drawingContext, bottomBtnRect, _state.IsHoveringAddRow);
+                    var buttonRect = _state.HoveredTableTarget == TableAddTarget.Column
+                        ? GetAddColumnButtonRect(tableRect)
+                        : GetAddRowButtonRect(tableRect);
+                    DrawPlusButton(drawingContext, buttonRect, _state.IsHoveringTableButton);
                 }
             }
         }
@@ -107,16 +107,16 @@ namespace HomeNotes.Desktop.Markdown.Rendering
             context.DrawLine(iconPen, new Point(center.X, center.Y - halfSize), new Point(center.X, center.Y + halfSize));
         }
 
-        public bool HitTestTableHover(
+        public bool HitTestTableInteraction(
             TextView textView,
             Point pointerInTextView,
             out MarkdownTableBlock? hoveredTable,
-            out bool isHoveringAddCol,
-            out bool isHoveringAddRow)
+            out TableAddTarget target,
+            out bool isHoveringButton)
         {
             hoveredTable = null;
-            isHoveringAddCol = false;
-            isHoveringAddRow = false;
+            target = TableAddTarget.None;
+            isHoveringButton = false;
 
             if (textView.Document == null || !textView.VisualLinesValid)
                 return false;
@@ -131,15 +131,22 @@ namespace HomeNotes.Desktop.Markdown.Rendering
 
                 var rightBtnRect = GetAddColumnButtonRect(tableRect);
                 var bottomBtnRect = GetAddRowButtonRect(tableRect);
-                var hoverZone = tableRect.Inflate(new Thickness(4, 4, 38, 38));
+                var rightEdgeZone = new Rect(tableRect.Right - 8, tableRect.Top, 8 + 6 + rightBtnRect.Width, tableRect.Height);
+                var bottomEdgeZone = new Rect(tableRect.Left, tableRect.Bottom - 8, tableRect.Width, 8 + 6 + bottomBtnRect.Height);
 
-                if (hoverZone.Contains(pointerInTextView) ||
-                    rightBtnRect.Contains(pointerInTextView) ||
-                    bottomBtnRect.Contains(pointerInTextView))
+                if (rightBtnRect.Contains(pointerInTextView) || rightEdgeZone.Contains(pointerInTextView))
                 {
                     hoveredTable = table;
-                    isHoveringAddCol = rightBtnRect.Contains(pointerInTextView);
-                    isHoveringAddRow = bottomBtnRect.Contains(pointerInTextView);
+                    target = TableAddTarget.Column;
+                    isHoveringButton = rightBtnRect.Contains(pointerInTextView);
+                    return true;
+                }
+
+                if (bottomBtnRect.Contains(pointerInTextView) || bottomEdgeZone.Contains(pointerInTextView))
+                {
+                    hoveredTable = table;
+                    target = TableAddTarget.Row;
+                    isHoveringButton = bottomBtnRect.Contains(pointerInTextView);
                     return true;
                 }
             }
@@ -207,15 +214,7 @@ namespace HomeNotes.Desktop.Markdown.Rendering
             double bottom;
             if (table.EndLine < document.LineCount)
             {
-             
-                double totalHeight = 0;
-                for (int ln = table.StartLine; ln <= table.EndLine; ln++)
-                {
-                    var docLn = document.GetLineByNumber(ln);
-                    var vl = textView.GetVisualLine(ln);
-                    totalHeight += vl?.Height ?? textView.DefaultLineHeight;
-                }
-                bottom = top + totalHeight + 4;
+                bottom = textView.GetVisualTopByDocumentLine(table.EndLine + 1) - scrollY + 2;
             }
             else
             {
