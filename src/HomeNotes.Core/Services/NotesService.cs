@@ -2,11 +2,9 @@
 using HomeNotes.Core.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using HomeNotes.Core.Models;
 using HomeNotes.Core.Exceptions;
 using HomeNotes.Core.DTOs.Sync;
-using System.Diagnostics;
 namespace HomeNotes.Core.Services
 {
     public class NotesService : INotesService
@@ -55,7 +53,7 @@ namespace HomeNotes.Core.Services
         public async Task DeleteNoteAsync(Guid id)
         {
 
-            var note = await GetOwnedNoteOrThrowAsync(id);
+            await GetOwnedNoteOrThrowAsync(id);
 
             await _notesStore.NotesDeleteAsync(id);
         }
@@ -131,12 +129,12 @@ namespace HomeNotes.Core.Services
         }
         public async Task UpdateNoteContentAsync(Guid id, Stream content)
         {
-            var note = GetOwnedNoteOrThrowAsync(id);
-            await _fileStore.FileSaveAsync(note.Result.RelativePath, content);
-            note.Result.UpdatedAt = DateTime.UtcNow;
-            note.Result.Version++;
-            note.Result.IsSynced = true;
-            await _notesStore.NotesUpdateAsync(note.Result);
+            var note = await GetOwnedNoteOrThrowAsync(id);
+            await _fileStore.FileSaveAsync(note.RelativePath, content);
+            note.UpdatedAt = DateTime.UtcNow;
+            note.Version++;
+            note.IsSynced = true;
+            await _notesStore.NotesUpdateAsync(note);
         }
 
 
@@ -202,6 +200,8 @@ namespace HomeNotes.Core.Services
                     IsSynced = true,
                 };
                 await _notesStore.NotesAddAsync(note);
+                if (request.Content != null)
+                    await _fileStore.FileSaveAsync(note.RelativePath, request.Content);
                 return null;
             }
 
@@ -239,6 +239,9 @@ namespace HomeNotes.Core.Services
             existing.UpdatedAt = DateTime.UtcNow;
             existing.IsSynced = true;
 
+            if (request.Content != null)
+                await _fileStore.FileSaveAsync(existing.RelativePath, request.Content);
+
             await _notesStore.NotesUpdateAsync(existing);
             return null;
         }
@@ -256,18 +259,18 @@ namespace HomeNotes.Core.Services
 
         public async Task<IEnumerable<NotesResponse>> RestoreNotesAsync(IEnumerable<Guid> noteIds)
         {
-            var currentuser = _getUserCurrentId.UserId;
-            var ownedId = new List<Guid>();
+            var currentUserId = _getUserCurrentId.UserId;
+            var ownedIds = new List<Guid>();
             foreach (var noteId in noteIds)
             {
                 var note = await _notesStore.NotesGetByIdIncludingDeleteAsync(noteId);
-                if(note != null && note.UserId == currentuser)
+                if (note != null && note.UserId == currentUserId)
                 {
-                    ownedId.Add(noteId);
+                    ownedIds.Add(noteId);
                 }
 
             }
-            var restore = await _notesStore.NotesRestoreRangeAsync(ownedId);
+            var restore = await _notesStore.NotesRestoreRangeAsync(ownedIds);
             return restore.Select(MapToResponse);
         }
 

@@ -23,9 +23,9 @@ namespace HomeNotes.Desktop.Services
         {
             try
             {
-                var response = await _httpClient.GetAsync("/api/notes");
+                using var response = await _httpClient.GetAsync("/api/notes");
                 response.EnsureSuccessStatusCode();
-                return await response.Content.ReadFromJsonAsync<IEnumerable<NotesResponse>>();
+                return await ReadRequiredJsonAsync<IEnumerable<NotesResponse>>(response);
             }
             catch (Exception ex)
             {
@@ -39,9 +39,9 @@ namespace HomeNotes.Desktop.Services
         {
             try
             {
-                var response = await _httpClient.GetAsync($"/api/notes/{id}");
+                using var response = await _httpClient.GetAsync($"/api/notes/{id}");
                 response.EnsureSuccessStatusCode();
-                return await response.Content.ReadFromJsonAsync<NotesResponse>();
+                return await ReadRequiredJsonAsync<NotesResponse>(response);
 
             }
             catch (HttpRequestException ex)
@@ -54,9 +54,9 @@ namespace HomeNotes.Desktop.Services
         {
             try
             {
-                var response = await _httpClient.PostAsJsonAsync("/api/notes", request);
+                using var response = await _httpClient.PostAsJsonAsync("/api/notes", request);
                 response.EnsureSuccessStatusCode();
-                return await response.Content.ReadFromJsonAsync<NotesResponse>();
+                return await ReadRequiredJsonAsync<NotesResponse>(response);
             }
             catch (Exception ex)
             {
@@ -69,9 +69,9 @@ namespace HomeNotes.Desktop.Services
         {
             try
             {
-                var response = await _httpClient.PutAsJsonAsync($"/api/notes/{id}", request);
+                using var response = await _httpClient.PutAsJsonAsync($"/api/notes/{id}", request);
                 response.EnsureSuccessStatusCode();
-                return await response.Content.ReadFromJsonAsync<NotesResponse>();
+                return await ReadRequiredJsonAsync<NotesResponse>(response);
             }
             catch (Exception ex)
             {
@@ -83,7 +83,7 @@ namespace HomeNotes.Desktop.Services
         {
             try
             {
-                var response = await _httpClient.DeleteAsync($"/api/notes/{id}");
+                using var response = await _httpClient.DeleteAsync($"/api/notes/{id}");
                 response.EnsureSuccessStatusCode();
             }
             catch (Exception ex)
@@ -97,9 +97,7 @@ namespace HomeNotes.Desktop.Services
         {
             try
             {
-                var response = await _httpClient.GetAsync($"/api/notes/{id}/content");
-                response.EnsureSuccessStatusCode();
-                return await response.Content.ReadAsStreamAsync();
+                return await _httpClient.GetStreamAsync($"/api/notes/{id}/content");
             }
             catch (Exception ex)
             {
@@ -113,8 +111,8 @@ namespace HomeNotes.Desktop.Services
         {
             try
             {
-                var content = new StreamContent(contentStream);
-                var response = await _httpClient.PutAsync($"/api/notes/{id}/content", content);
+                using var content = new StreamContent(contentStream);
+                using var response = await _httpClient.PutAsync($"/api/notes/{id}/content", content);
                 response.EnsureSuccessStatusCode();
             }
             catch (Exception ex)
@@ -129,15 +127,20 @@ namespace HomeNotes.Desktop.Services
         {
             try
             {
-                var response = await _httpClient.PutAsJsonAsync("/api/notes/restore", request);
+                using var response = await _httpClient.PutAsJsonAsync("/api/notes/restore", request);
                 response.EnsureSuccessStatusCode();
-                return await response.Content.ReadFromJsonAsync<IEnumerable<NotesResponse>>();
+                return await ReadRequiredJsonAsync<IEnumerable<NotesResponse>>(response);
             }
             catch (Exception ex)
             {
                 throw new ApplicationException("An error occurred while restoring notes.", ex);
             }
 
+        }
+        private static async Task<T> ReadRequiredJsonAsync<T>(HttpResponseMessage response)
+        {
+            return await response.Content.ReadFromJsonAsync<T>()
+                ?? throw new InvalidDataException("The server returned an empty JSON response.");
         }
     }
 }

@@ -139,6 +139,8 @@ namespace HomeNotes.Desktop.Markdown.Preview
             if (_copyButton != null) _copyButton.IsVisible = false;
             _activeCodeBlock = null;
             State.HoveredTable = null;
+            State.HoveredTableTarget = TableAddTarget.None;
+            State.IsHoveringTableButton = false;
 
             _editor.TextArea.TextView.Redraw();
             _editor = null;
@@ -150,14 +152,14 @@ namespace HomeNotes.Desktop.Markdown.Preview
                 return;
 
             var point = e.GetPosition(_editor.TextArea.TextView);
-            if (_tableBgRenderer.HitTestTableHover(
+            if (_tableBgRenderer.HitTestTableInteraction(
                     _editor.TextArea.TextView,
                     point,
                     out var hoveredTable,
-                    out bool isAddCol,
-                    out bool isAddRow) &&
+                    out var target,
+                    out bool isHoveringButton) &&
                 hoveredTable != null &&
-                (isAddCol || isAddRow))
+                isHoveringButton)
             {
                 e.Handled = true;
 
@@ -166,9 +168,9 @@ namespace HomeNotes.Desktop.Markdown.Preview
                 {
                     _generator?.ResetCollapsedLines();
 
-                    if (isAddCol)
+                    if (target == TableAddTarget.Column)
                         MarkdownTableFormatter.AddColumn(_editor.Document, hoveredTable, _editor);
-                    else if (isAddRow)
+                    else if (target == TableAddTarget.Row)
                         MarkdownTableFormatter.AddRow(_editor.Document, hoveredTable, _editor);
 
                     State.Blocks = MarkdownBlockParser.Parse(_editor.Document);
@@ -210,27 +212,9 @@ namespace HomeNotes.Desktop.Markdown.Preview
         {
             if (_isFormattingTable || _editor?.Document == null) return;
 
-            _isFormattingTable = true;
-            try
-            {
-                _generator?.ResetCollapsedLines();
-                State.Blocks = MarkdownBlockParser.Parse(_editor.Document);
-
-                int caretLine = _editor.Document.GetLineByOffset(_editor.TextArea.Caret.Offset).LineNumber;
-                var activeTable = State.Blocks.OfType<MarkdownTableBlock>()
-                    .FirstOrDefault(t => t.ContainsLine(caretLine));
-
-                if (activeTable != null)
-                {
-                    MarkdownTableFormatter.FormatTable(_editor.Document, activeTable, _editor);
-                    _lastTypedOffset = _editor.TextArea.Caret.Offset;
-                    State.Blocks = MarkdownBlockParser.Parse(_editor.Document);
-                }
-            }
-            finally
-            {
-                _isFormattingTable = false;
-            }
+            _generator?.ResetCollapsedLines();
+            State.Blocks = MarkdownBlockParser.Parse(_editor.Document);
+            _lastTypedOffset = _editor.TextArea.Caret.Offset;
 
             _editor.TextArea.TextView.Redraw();
         }
@@ -310,21 +294,21 @@ namespace HomeNotes.Desktop.Markdown.Preview
             // 1. Проверяем наведение на таблицу и кнопки '+' справа/снизу
             if (_tableBgRenderer != null)
             {
-                _tableBgRenderer.HitTestTableHover(
+                _tableBgRenderer.HitTestTableInteraction(
                     textView,
                     point,
                     out var hoveredTable,
-                    out bool isAddCol,
-                    out bool isAddRow);
+                    out var target,
+                    out bool isHoveringButton);
 
                 if (!ReferenceEquals(State.HoveredTable, hoveredTable) ||
-                    State.IsHoveringAddColumn != isAddCol ||
-                    State.IsHoveringAddRow != isAddRow)
+                    State.HoveredTableTarget != target ||
+                    State.IsHoveringTableButton != isHoveringButton)
                 {
                     State.HoveredTable = hoveredTable;
-                    State.IsHoveringAddColumn = isAddCol;
-                    State.IsHoveringAddRow = isAddRow;
-                    _editor.TextArea.Cursor = (isAddCol || isAddRow) ? HandCursor : IBeamCursor;
+                    State.HoveredTableTarget = target;
+                    State.IsHoveringTableButton = isHoveringButton;
+                    _editor.TextArea.Cursor = isHoveringButton ? HandCursor : IBeamCursor;
                     textView.InvalidateVisual();
                 }
             }
@@ -374,11 +358,11 @@ namespace HomeNotes.Desktop.Markdown.Preview
 
         private void OnPointerExited(object? sender, PointerEventArgs e)
         {
-            if (State.HoveredTable != null)
+            if (State.HoveredTable != null || State.HoveredTableTarget != TableAddTarget.None)
             {
                 State.HoveredTable = null;
-                State.IsHoveringAddColumn = false;
-                State.IsHoveringAddRow = false;
+                State.HoveredTableTarget = TableAddTarget.None;
+                State.IsHoveringTableButton = false;
                 if (_editor != null)
                 {
                     _editor.TextArea.Cursor = IBeamCursor;

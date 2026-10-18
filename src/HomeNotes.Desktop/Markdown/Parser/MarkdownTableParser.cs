@@ -5,7 +5,7 @@ using HomeNotes.Desktop.Markdown.Enum;
 
 namespace HomeNotes.Desktop.Markdown.Parser;
 
-public class MarkdownTableParser
+public static class MarkdownTableParser
 {
     private static readonly Regex TableSeparatorRegex =
         new(@"^\s*\|?\s*:?-+:?\s*(?:\|\s*:?-+:?\s*)+\|?\s*$", RegexOptions.Compiled);
@@ -33,7 +33,7 @@ public class MarkdownTableParser
     {
         int startLine = lineNumber;
         var headerLine = document.GetLineByNumber(lineNumber);
-        var headers = SplitRow(document.GetText(headerLine));
+        var headers = MarkdownTableSyntax.SplitRow(document.GetText(headerLine));
 
         var separatorLine = document.GetLineByNumber(lineNumber + 1);
         var alignments = ParseAlignments(document.GetText(separatorLine), headers.Count);
@@ -47,7 +47,7 @@ public class MarkdownTableParser
             if (!IsTableRow(rowText, headers.Count))
                 break;
 
-            rows.Add(SplitRow(rowText));
+            rows.Add(MarkdownTableSyntax.SplitRow(rowText));
             cursor++;
         }
 
@@ -67,21 +67,9 @@ public class MarkdownTableParser
         };
     }
 
-    private static List<string> SplitRow(string text)
-    {
-        var trimmed = text.Trim();
-        if (trimmed.StartsWith("|")) trimmed = trimmed[1..];
-        if (trimmed.EndsWith("|")) trimmed = trimmed[..^1];
-
-        var cells = new List<string>();
-        foreach (var cell in trimmed.Split('|'))
-            cells.Add(cell.Trim());
-        return cells;
-    }
-
     private static List<MarkdownColumnAlignment> ParseAlignments(string separatorText, int columnCount)
     {
-        var cells = SplitRow(separatorText);
+        var cells = MarkdownTableSyntax.SplitRow(separatorText);
         var result = new List<MarkdownColumnAlignment>();
 
         for (int i = 0; i < columnCount; i++)
@@ -102,6 +90,6 @@ public class MarkdownTableParser
         if (string.IsNullOrWhiteSpace(text) || !text.Contains('|'))
             return false;
 
-        return SplitRow(text).Count == columnCount;
+        return MarkdownTableSyntax.SplitRow(text).Count == columnCount;
     }
 }
