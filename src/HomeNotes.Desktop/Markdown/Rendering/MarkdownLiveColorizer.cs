@@ -36,7 +36,6 @@ namespace HomeNotes.Desktop.Markdown.Rendering
         private static readonly Regex CheckboxRegex = new(@"^(\s*-\s*[[ xX]])\s+", RegexOptions.Compiled);
         private static readonly Regex StrikethroughRegex = new(@"~~(.+?)~~", RegexOptions.Compiled);
         private static readonly Regex EscapeRegex = new(@"\\([^\w\s])", RegexOptions.Compiled);
-        private static readonly Regex TableSeparatorRegex = new(@"^\s*\|?\s*:?-+:?\s*(?:\|\s*:?-+:?\s*)+\|?\s*$", RegexOptions.Compiled);
         private static readonly Regex HrRegex = new(@"^\s*([-*_])\s*(?:\1\s*){2,}$", RegexOptions.Compiled);
         private static readonly Regex HighlightRegex = new(@"==(.+?)==", RegexOptions.Compiled);
         private static readonly Regex CalloutRegex = new(@"^\s*>\s*\[!(\w+)\](.*)$", RegexOptions.Compiled);
@@ -60,14 +59,8 @@ namespace HomeNotes.Desktop.Markdown.Rendering
                 {
                     if (start < end && start >= line.Offset && end <= line.EndOffset)
                     {
-                        try
-                        {
-                            ChangeLinePart(start, end, action);
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.Message);
-                        }
+                        try { ChangeLinePart(start, end, action); }
+                        catch { }
                     }
                 }
 
@@ -82,8 +75,7 @@ namespace HomeNotes.Desktop.Markdown.Rendering
                     }
                 }
 
-                // КРИТИЧНОЕ ИЗМЕНЕНИЕ: Используем кэшированные блоки из памяти
-                var blocks = _state.Blocks; 
+                var blocks = _state.Blocks;
 
                 bool isCodeBoundary = false;
                 bool inCodeBlock = false;
@@ -91,24 +83,60 @@ namespace HomeNotes.Desktop.Markdown.Rendering
 
                 foreach (var block in blocks)
                 {
-                    if (block is MarkdownCodeBlock codeBlock)
+                    if (block is MarkdownCodeBlock codeBlock &&
+                        line.LineNumber >= codeBlock.StartLine &&
+                        line.LineNumber <= codeBlock.EndLine)
                     {
-                        if (line.LineNumber >= codeBlock.StartLine && line.LineNumber <= codeBlock.EndLine)
+                        if (line.LineNumber == codeBlock.StartLine || line.LineNumber == codeBlock.EndLine)
+                            isCodeBoundary = true;
+                        else
+                            inCodeBlock = true;
+
+                        bool isCaretInside = CaretOffset >= codeBlock.StartOffset && CaretOffset <= codeBlock.EndOffset;
+                        bool isMouseInside = HoveredLine >= codeBlock.StartLine && HoveredLine <= codeBlock.EndLine;
+                        isHoveredOrActiveBlock = isCaretInside || isMouseInside;
+                        break;
+                    }
+
+                    if (block is MarkdownTableBlock tableBlock &&
+                        line.LineNumber >= tableBlock.StartLine &&
+                        line.LineNumber <= tableBlock.EndLine)
+                    {
+                        // Строка-разделитель |---|---| полностью невидима
+                        if (line.LineNumber == tableBlock.StartLine + 1)
                         {
-                            if (line.LineNumber == codeBlock.StartLine || line.LineNumber == codeBlock.EndLine)
-                                isCodeBoundary = true;
-                            else
-                                inCodeBlock = true;
-
-                            bool isCaretInside = CaretOffset >= codeBlock.StartOffset && CaretOffset <= codeBlock.EndOffset;
-                            bool isMouseInside = HoveredLine >= codeBlock.StartLine && HoveredLine <= codeBlock.EndLine;
-
-                            if (isCaretInside || isMouseInside)
+                            SafeChangeLinePart(lineStart, line.EndOffset, el =>
                             {
-                                isHoveredOrActiveBlock = true;
-                            }
-                            break;
+                                el.TextRunProperties.SetForegroundBrush(Brushes.Transparent);
+                                el.TextRunProperties.SetFontRenderingEmSize(1);
+                            });
+                            return;
                         }
+
+                        if (line.LineNumber == tableBlock.StartLine)
+                        {
+                            SafeChangeLinePart(lineStart, line.EndOffset, el =>
+                            {
+                                el.TextRunProperties.SetForegroundBrush(HeadingBrush);
+                                el.TextRunProperties.SetTypeface(new Typeface(
+                                    el.TextRunProperties.Typeface.FontFamily,
+                                    FontStyle.Normal,
+                                    FontWeight.Bold));
+                            });
+                        }
+
+                        // Скрываем символы '|', так как сетку рисует TableBackgroundRenderer
+                        for (int i = 0; i < text.Length; i++)
+                        {
+                            if (text[i] == '|' && (i == 0 || text[i - 1] != '\\'))
+                            {
+                                SafeChangeLinePart(lineStart + i, lineStart + i + 1, el =>
+                                {
+                                    el.TextRunProperties.SetForegroundBrush(Brushes.Transparent);
+                                });
+                            }
+                        }
+                        break;
                     }
                 }
 
@@ -146,18 +174,10 @@ namespace HomeNotes.Desktop.Markdown.Rendering
                     SafeChangeLinePart(start, start + 1, ApplyMarkerStyle);
                 }
 
-                if (HrRegex.IsMatch(text) || TableSeparatorRegex.IsMatch(text))
+                if (HrRegex.IsMatch(text))
                 {
                     SafeChangeLinePart(lineStart, line.EndOffset, el => el.TextRunProperties.SetForegroundBrush(DimBrush));
                     return;
-                }
-
-                for (int i = 0; i < text.Length; i++)
-                {
-                    if (text[i] == '|' && (i == 0 || text[i - 1] != '\\'))
-                    {
-                        SafeChangeLinePart(lineStart + i, lineStart + i + 1, el => el.TextRunProperties.SetForegroundBrush(DimBrush));
-                    }
                 }
 
                 var heading = HeadingRegex.Match(text);

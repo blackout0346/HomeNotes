@@ -23,25 +23,29 @@ namespace HomeNotes.Desktop.Markdown.Rendering
 
         public void Draw(TextView textView, DrawingContext drawingContext)
         {
-            if (textView.Document == null) return;
+            var document = textView.Document;
+            if (document == null || !textView.VisualLinesValid)
+                return;
 
-            // КРИТИЧНОЕ ИЗМЕНЕНИЕ: Используем кэшированные блоки
-            var codeBlocks = _state.Blocks.OfType<MarkdownCodeBlock>().ToList();
             double scrollY = textView.ScrollOffset.Y;
-           
-            foreach (var block in codeBlocks)
+
+            foreach (var block in _state.Blocks.OfType<MarkdownCodeBlock>())
             {
+                if (block.StartLine < 1 || block.EndLine > document.LineCount)
+                    continue;
+
                 double documentTop = textView.GetVisualTopByDocumentLine(block.StartLine);
                 double documentBottom;
 
-                if (block.EndLine < textView.Document.LineCount)
+                if (block.EndLine < document.LineCount)
                 {
                     documentBottom = textView.GetVisualTopByDocumentLine(block.EndLine + 1);
                 }
                 else
                 {
-                    var lastVisualLine = textView.GetOrConstructVisualLine(textView.Document.GetLineByNumber(block.EndLine));
-                    documentBottom = lastVisualLine.VisualTop + lastVisualLine.Height;
+                    var lastVisualLine = textView.GetVisualLine(block.EndLine);
+                    double lineHeight = lastVisualLine?.Height ?? textView.DefaultLineHeight;
+                    documentBottom = textView.GetVisualTopByDocumentLine(block.EndLine) + lineHeight;
                 }
 
                 double top = documentTop - scrollY - 2;
@@ -50,10 +54,7 @@ namespace HomeNotes.Desktop.Markdown.Rendering
                 if (bottom < 0 || top > textView.Bounds.Height)
                     continue;
 
-                double x = -10;
-                double width = textView.Bounds.Width + 20;
-
-                var rect = new Rect(x, top, width, Math.Max(0, bottom - top));
+                var rect = new Rect(-10, top, textView.Bounds.Width + 20, Math.Max(0, bottom - top));
                 drawingContext.DrawRectangle(BackgroundBrush, BorderPen, rect, 6, 6);
             }
         }

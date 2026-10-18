@@ -42,7 +42,8 @@ public class MarkdownTableParser
         int cursor = lineNumber + 2;
         while (cursor <= document.LineCount)
         {
-            var rowText = document.GetText(document.GetLineByNumber(cursor));
+            var rowLine = document.GetLineByNumber(cursor);
+            var rowText = document.GetText(rowLine);
             if (!IsTableRow(rowText, headers.Count))
                 break;
 
